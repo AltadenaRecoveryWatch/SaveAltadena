@@ -108,7 +108,7 @@
     <p class="note" style="color:#bfe6d4;margin:6px 0 2px;">When you send, we'll add you to the list so we can keep you posted on hearings and next steps.</p>
 
     <a class="btn big" id="emailEveryone">✉ Send your email to everyone at once</a>
-    <p class="note" style="color:#bfe6d4;">Opens one ready-to-send email to all four local officials <em>plus</em> the SB 1116 committees and the bill's author — asking them to support SB 1090, push for an emergency order, and carve Altadena out of SB 1116.</p>
+    <p class="note" style="color:#bfe6d4;">Opens one ready-to-send email to your four local decision-makers — Supervisor Barger, the Governor, Sen. Pérez, and Asm. Harabedian — asking them to push for an emergency order, pass and strengthen SB 1090, and support carving Altadena out of SB 1116. <em>(State committee members take contact by phone or web form — see the call list below.)</em></p>
     <a class="btn alt" id="copyBtn">⧉ Copy the email text instead</a>
     <p class="note" id="copyNote"></p>
 
@@ -137,25 +137,17 @@
           <div class="acts"><a class="mini" data-key="harabedian">Write the email</a><a class="mini call" href="tel:+16263511917">Call (626) 351-1917</a></div>
         </div>
 
-        <p style="color:#d9f2e6;font-size:14px;margin:16px 0 6px;"><strong style="color:#fff;">SB 1116 committees + author</strong> — ask for the Altadena carve-out:</p>
-        <a class="mini" id="emailCommittees" style="margin-bottom:10px;">✉ Email all the committees at once</a>
-        <div class="official">
-          <div class="who">Assembly Economic Development, Growth &amp; Household Impact</div>
-          <div class="acts"><a class="mini call" href="tel:+19163192062">Solache (Chair) · (916) 319-2062</a><a class="mini call" href="tel:+19163192058">Castillo (V-Chair) · (916) 319-2058</a></div>
+        <p style="color:#d9f2e6;font-size:14px;margin:16px 0 6px;"><strong style="color:#fff;">SB 1116 committee members + author</strong> — most legislators take contact by <strong>phone or web form, not email</strong>, so call or use their contact page:</p>
+        <div class="acts" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <a class="mini call" href="tel:+19163192017">Haney (Housing Chair) · (916) 319-2017</a>
+          <a class="mini call" href="tel:+19163192014">Buffy Wicks · (916) 319-2014</a>
+          <a class="mini call" href="tel:+19163192025">Ash Kalra · (916) 319-2025</a>
+          <a class="mini call" href="tel:+19163192024">Alex Lee · (916) 319-2024</a>
+          <a class="mini call" href="tel:+19166514014">Sen. Caballero (author) · (916) 651-4014</a>
+          <a class="mini call" href="tel:+19166514011">Sen. Wiener · (916) 651-4011</a>
         </div>
-        <div class="official">
-          <div class="who">Assembly Local Government</div>
-          <div class="acts"><a class="mini call" href="tel:+19163192039">Carrillo (Chair) · (916) 319-2039</a><a class="mini call" href="tel:+19163192070">Ta (V-Chair) · (916) 319-2070</a></div>
-        </div>
-        <div class="official">
-          <div class="who">Assembly Housing &amp; Community Development</div>
-          <div class="acts"><a class="mini call" href="tel:+19163192017">Haney (Chair) · (916) 319-2017</a><a class="mini call" href="tel:+19163192005">Patterson (V-Chair) · (916) 319-2005</a></div>
-        </div>
-        <div class="official">
-          <div class="who">Sen. Anna Caballero — author of SB 1123 &amp; SB 1116</div>
-          <div class="acts"><a class="mini call" href="tel:+19166514014">Call Caballero · (916) 651-4014</a></div>
-        </div>
-        <p style="color:#d9f2e6;font-size:13.5px;margin:10px 0 0;"><strong style="color:#fff;">Call script:</strong> "Hi, I'm an Altadena resident and Eaton Fire survivor. I'm not asking you to oppose SB 1116 — I'm asking you to support a carve-out for the Eaton Fire disaster area, and to support SB 1090, so we can rebuild before these density laws apply here. Thank you."</p>
+        <a class="mini" href="Altadena_legislator_call_list.pdf" target="_blank" style="margin-top:10px;">📋 Full call list — Assembly &amp; Senate (phones + contact forms) →</a>
+        <p style="color:#d9f2e6;font-size:13.5px;margin:10px 0 0;"><strong style="color:#fff;">Call script:</strong> "Hi, I'm an Altadena resident. I'm asking the member to carve the Eaton Fire disaster area out of SB 1116 and to support SB 1090 — we're not trying to block housing statewide, just to let Altadena recover first. Thank you."</p>
       </div>
     </details>
 
@@ -325,7 +317,7 @@
   // ---- ONE-CLICK: email everyone (officials + committees + author) ----
   var SUBJECT_ALL = "Protect Altadena fire survivors — SB 1090, an emergency order, and an SB 1116 carve-out";
   function bodyAll(){
-    return "Dear Supervisor Barger, Governor Newsom, Senator Pérez, Assemblymember Harabedian, Senator Caballero, and members of the Assembly committees reviewing SB 1116,\n\n" +
+    return "Dear Supervisor Barger, Governor Newsom, Senator Pérez, and Assemblymember Harabedian,\n\n" +
 "I am an Altadena resident, and I am writing in alarm. After the Eaton Fire, speculators are using SB 1123 to subdivide our burned single-family lots into as many as ten units each — by right, with no public hearing. At least ten such subdivisions are already in Los Angeles County records, and developers are filing Certificates of Compliance to lock in their rights before any protection can take effect. Our community is still climbing back — fighting insurers, remediating homes, waiting to rebuild — and this piles one more burden on people already suffering.\n\n" +
 "After the same disaster, the Pacific Palisades received an emergency order suspending SB 9 — but it was keyed to a fire-hazard map that left most of Altadena out. We did not get a protection written for us; we got a hand-me-down that does not fit our community.\n\n" +
 "I am asking you to act now, each within your power:\n\n" +
@@ -336,9 +328,7 @@
   }
   document.getElementById('emailEveryone').addEventListener('click', function(){
     enroll();
-    var a = Object.keys(OFFICIALS).map(function(k){return OFFICIALS[k].email;});
-    var b = Object.keys(OFFICIALS2).map(function(k){return OFFICIALS2[k].email;});
-    var all = a.concat(b).join(",");
+    var all = Object.keys(OFFICIALS).map(function(k){return OFFICIALS[k].email;}).join(",");
     var url = "mailto:" + all + "?subject=" + encodeURIComponent(SUBJECT_ALL) + "&body=" + encodeURIComponent(bodyAll());
     if(CONFIG.trackingEmail){ url += "&" + TRACK_MODE + "=" + encodeURIComponent(CONFIG.trackingEmail); }
     window.location.href = url;
