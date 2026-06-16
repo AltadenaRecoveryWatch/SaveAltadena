@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>SB 1090 — Campaign Dashboard (private)</title>
+<style>
+  body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#241a17;background:#faf1ec;margin:0;padding:24px;}
+  .wrap{max-width:760px;margin:0 auto;}
+  h1{color:#7a2e1d;font-size:24px;margin-bottom:4px;}
+  p.sub{color:#5d4b44;font-size:14px;margin-bottom:18px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;}
+  .stat{background:#fff;border:1px solid #e3d2ca;border-radius:12px;padding:18px;}
+  .stat .n{font-size:40px;font-weight:800;color:#7a2e1d;line-height:1;}
+  .stat .l{font-size:13px;color:#5d4b44;margin-top:6px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;}
+  .note{background:#fff;border-left:5px solid #c0572f;border-radius:8px;padding:12px 15px;margin-top:18px;font-size:13.5px;color:#3a2c27;}
+  button{cursor:pointer;border:none;background:#c0572f;color:#fff;font-weight:700;border-radius:7px;padding:9px 14px;font-size:14px;margin-top:14px;}
+  a{color:#c0572f;}
+</style>
+</head>
+<body><div class="wrap">
+  <h1>SB 1090 Campaign Dashboard</h1>
+  <p class="sub">Private — live counts from the site. Bookmark this page; it isn't linked anywhere. Counts only (no personal data).</p>
+  <div class="grid">
+    <div class="stat"><div class="n" id="petition">—</div><div class="l">Petition signatures</div></div>
+    <div class="stat"><div class="n" id="rsvp">—</div><div class="l">RSVPs (total)</div></div>
+    <div class="stat"><div class="n" id="rsvp_yes">—</div><div class="l">RSVPs attending</div></div>
+    <div class="stat"><div class="n" id="testimony">—</div><div class="l">Testimony sign-ups</div></div>
+    <div class="stat"><div class="n" id="calls">—</div><div class="l">Calls logged</div></div>
+    <div class="stat"><div class="n" id="signups">—</div><div class="l">List sign-ups</div></div>
+  </div>
+  <button onclick="loadAll()">↻ Refresh</button>
+  <div class="note"><b>For names &amp; details</b> (to coordinate carpools, testimony, and follow-ups), open the Supabase dashboard → Table Editor (login-protected): tables <code>petition</code>, <code>rsvp</code>, <code>testimony</code>, <code>call_log</code>, <code>signups</code>. This page intentionally shows totals only, so it's safe to keep open or share with organizers without exposing personal information.</div>
+
+  <div class="note" style="border-left-color:#1f3a2e;"><b>Key allies / coordination contacts</b> — internal, for organizers; <b>not</b> public "contact this person" targets.<br><br>
+    <b>Natalie Vartanian</b> — Senior Field Deputy (Santa Clarita Valley), Office of L.A. County Supervisor Kathryn Barger. Friendly ally; confirmed the two-committee targeting and the chairs (Haney / Carrillo). Coordinate with her, don't target her. <i>Email: confirm with Barger's office (not yet on file).</i><br><br>
+    <b>Barger office staff</b> (already cc'd on the County parcel letters): Anish Saraiya — asaraiya@bos.lacounty.gov · Sussy Nemer — SNemer@bos.lacounty.gov · Leonel Bautista — LBautista@bos.lacounty.gov.<br><br>
+    <b>Author / co-author offices:</b> Sen. Sasha Renée Pérez (author) — Edmundo Cuevas, Chief of Staff, Edmundo.Cuevas@sen.ca.gov · Asm. John Harabedian (co-author, represents Altadena/AD 41). Coordinate the witness list with Sen. Pérez's office.
+  </div>
+</div>
+<script>
+var SB_URL='https://vmjauvdrxzjxzfjrlevv.supabase.co';
+var SB_KEY='sb_publishable_fx2DSgqy0PizzNV3ESY99Q_00jujiO7';
+function H(){return {'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};}
+function rpc(fn,el){fetch(SB_URL+'/rest/v1/rpc/'+fn,{method:'POST',headers:H(),body:'{}'}).then(function(r){return r.ok?r.json():null;}).then(function(n){document.getElementById(el).textContent=(n===null?'—':Number(n).toLocaleString());}).catch(function(){document.getElementById(el).textContent='—';});}
+function loadAll(){rpc('petition_count','petition');rpc('rsvp_count','rsvp');rpc('rsvp_attending_count','rsvp_yes');rpc('testimony_count','testimony');rpc('call_log_count','calls');rpc('signups_count','signups');}
+loadAll();
+</script>
+</body>
+</html>
