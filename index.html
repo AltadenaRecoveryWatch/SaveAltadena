@@ -101,7 +101,7 @@
     <div class="trackcard"><h3>② Send it — two ways</h3><p class="dl">File it · and send it to the members</p><p>File it with the committee (by June 17), and send the same letter to the Assembly members — routed by your district. Plus petition, testimony, and RSVP.</p><a class="btn" href="#send">How to send →</a></div>
   </div>
   <div class="toc">
-    <a href="#build">Build your letter</a><a href="#send">Send it</a><a href="#finder">Am I a constituent?</a><a href="#testify">Testify</a><a href="#rsvp">RSVP</a><a href="#why">Why it matters</a><a href="#statewide">Statewide</a><a href="#timeline">Dates</a><a href="#share">Share</a><a href="#volunteer">Volunteer</a>
+    <a href="#build">Build your letter</a><a href="#send">Send it</a><a href="#finder">Am I a constituent?</a><a href="#rsvp">RSVP</a><a href="#why">Why it matters</a><a href="#statewide">Statewide</a><a href="#timeline">Dates</a><a href="#share">Share</a><a href="#volunteer">Volunteer</a>
   </div>
 </div></div>
 
@@ -164,7 +164,7 @@
 <section id="track2" class="t2"><div class="wrap">
   <span class="kicker two">STEP 2 · TRACK B — CONSTITUENT VOICE</span>
   <h2>Track B — Send your letter to the members</h2>
-  <p class="sub">Members count constituent contacts. Use the same letter you built above — copy it, then work the list, starting with the <b>Chairs</b>. Tap a member's <b>form</b> to paste your letter, or the number to <b>call</b>, and check the box when done (saves on this device).</p>
+  <p class="sub">Members count constituent contacts. Use the same letter you built above — copy it, then work the list, starting with the <b>Chairs</b>. Tap a member's <b>form</b> to paste your letter, or the number to <b>call</b>, and check <b>“letter”</b> or <b>“called”</b> when done (saves on this device).</p>
 
   <div id="finder" class="finder">
     <b>Are you a constituent of a committee member?</b> That's the most powerful contact you can make.
@@ -191,21 +191,15 @@
   </div>
 
   <h3>Housing &amp; Community Development — hearing June 24 (priority)</h3>
-  <table id="hcd"><thead><tr><th>Member</th><th>District &amp; area</th><th>Email (form)</th><th>Call &amp; check ✓</th></tr></thead><tbody></tbody></table>
+  <table id="hcd"><thead><tr><th>Member</th><th>District &amp; area</th><th>Email (form)</th><th>✉ letter / 📞 called — check ✓</th></tr></thead><tbody></tbody></table>
+  <div class="row"><button class="btn navy" onclick="logContacts()">✓ Log my calls &amp; letters →</button></div>
   <h3>Local Government — hearing TBD</h3>
-  <table id="lg"><thead><tr><th>Member</th><th>District &amp; area</th><th>Email (form)</th><th>Call &amp; check ✓</th></tr></thead><tbody></tbody></table>
+  <table id="lg"><thead><tr><th>Member</th><th>District &amp; area</th><th>Email (form)</th><th>✉ letter / 📞 called — check ✓</th></tr></thead><tbody></tbody></table>
+  <div class="row"><button class="btn navy" onclick="logContacts()">✓ Log my calls &amp; letters →</button></div>
+  <div class="ok" id="callOk" style="display:none;"></div>
   <div class="staffbox">Not in any of these districts? Your best moves: <b>call</b> the members above (calls count even from non-constituents), and <b>recruit friends who live in these districts</b> to <a href="#build">build and send their own letter above</a>.</div>
 
   <div class="alert">Then ask Gov. Newsom to pause SB 1123's by-right lot-splitting across the <b>entire</b> Eaton Fire disaster area — not just the fire-hazard map. <a class="btn green" style="margin-left:6px;" href="tel:+19164452841">Call the Governor: (916) 445-2841</a></div>
-
-  <h3>Log your calls</h3>
-  <p class="sub">Check the box next to each member you called in the list above, then log them all at once so we can track coverage. (Your name is optional.)</p>
-  <div class="grid2">
-    <div><label>Your name (optional)</label><input id="logName"></div>
-    <div><label>Your city (optional)</label><input id="logCity"></div>
-  </div>
-  <div class="row"><button class="btn" onclick="logCalls()">Log my calls →</button></div>
-  <div class="ok" id="callOk" style="display:none;">Logged — thank you! Every call counts.</div>
 
   <h3 style="margin-top:24px;">Having a phone-bank party?</h3>
   <p class="sub">Grab a few neighbors, split the list, and dial together. Everything you need — with our strongest, most current arguments built in:</p>
@@ -217,26 +211,6 @@
   </div>
 </div></section>
 
-
-<!-- TESTIFY -->
-<section id="testify"><div class="wrap">
-  <h2>Sign up to testify</h2>
-  <p class="sub">Willing to support SB 1090 in person June 24 or remotely? <b>We coordinate the witness list with Senator Pérez's office</b> and will follow up about timing.</p>
-  <form onsubmit="return submitForm(event,'testimony','testOk',mapTest)">
-    <div class="grid2">
-      <div><label>Name</label><input name="name" required></div>
-      <div><label>Email</label><input name="email" type="email" required></div>
-      <div><label>Mobile</label><input name="phone"></div>
-      <div><label>City</label><input name="city"></div>
-      <div><label>How would you testify?</label><select name="mode"><option>In person (Sacramento, June 24)</option><option>Remotely</option><option>Either</option></select></div>
-      <div><label>Affected resident/owner?</label><select name="affected"><option>Prefer not to say</option><option>Yes</option><option>No</option></select></div>
-    </div>
-    <label>Availability / notes</label><input name="availability">
-    <label>Your story in one line (optional)</label><input name="comment">
-    <div class="row"><button class="btn" type="submit">I'm willing to testify</button></div>
-    <div class="ok" id="testOk">Thank you — we'll coordinate with Sen. Pérez's office and follow up.</div>
-  </form>
-</div></section>
 
 <!-- RSVP -->
 <section id="rsvp"><div class="wrap">
@@ -339,20 +313,39 @@ function setDone(a){try{localStorage.setItem(KEY,JSON.stringify(a));}catch(e){}}
 function rid(cm,ad){return cm+'_'+ad;}
 function updateProg(){document.getElementById('prog').textContent=getDone().length+' of 22 contacted';}
 function toggle(cm,ad,tr){var d=getDone(),id=rid(cm,ad),i=d.indexOf(id);if(i>=0){d.splice(i,1);tr.classList.remove('done');}else{d.push(id);tr.classList.add('done');}setDone(d);updateProg();}
-function resetChecks(){setDone([]);document.querySelectorAll('tr.done').forEach(function(t){t.classList.remove('done');});document.querySelectorAll('input.chk').forEach(function(c){c.checked=false;});updateProg();}
-function fill(id,rows,cm){var tb=document.querySelector('#'+id+' tbody'),done=getDone();rows.forEach(function(r){var tr=document.createElement('tr');var i=rid(cm,r[3]);var dn=done.indexOf(i)>=0;if(r[5])tr.className='chair';if(dn)tr.className+=' done';
+var LKEY='sb1090_letters_v1';
+function getLetters(){try{return JSON.parse(localStorage.getItem(LKEY)||'[]');}catch(e){return [];}}
+function setLetters(a){try{localStorage.setItem(LKEY,JSON.stringify(a));}catch(e){}}
+function toggleLetter(cm,ad){var d=getLetters(),id=rid(cm,ad),i=d.indexOf(id);if(i>=0){d.splice(i,1);}else{d.push(id);}setLetters(d);}
+function resetChecks(){setDone([]);setLetters([]);document.querySelectorAll('tr.done').forEach(function(t){t.classList.remove('done');});document.querySelectorAll('input.chk,input.lck').forEach(function(c){c.checked=false;});updateProg();}
+function fill(id,rows,cm){var tb=document.querySelector('#'+id+' tbody'),done=getDone(),letters=getLetters();rows.forEach(function(r){var tr=document.createElement('tr');var i=rid(cm,r[3]);var dn=done.indexOf(i)>=0;var ltd=letters.indexOf(i)>=0;if(r[5])tr.className='chair';if(dn)tr.className+=' done';
   var role=r[1]?(' <span class="tag'+(r[5]?' pri':'')+'">'+r[1]+'</span>'):'';
   var c1=document.createElement('td');c1.innerHTML='<b>'+r[0]+'</b>'+role;
   var c2=document.createElement('td');c2.textContent=r[2];
   var c3=document.createElement('td');c3.innerHTML='<a class="lk2" target="_blank" rel="noopener" href="'+form(r[3])+'">Open '+r[3]+' ▸</a>';
   var c4=document.createElement('td');
   var ph=document.createElement('a');ph.className='call';ph.href='tel:+1'+r[4];ph.textContent=fmtPhone(r[4]);
+  c4.appendChild(ph);
+  var lbl2=document.createElement('label');lbl2.style.cssText='display:inline-flex;align-items:center;gap:5px;margin-left:10px;font-size:12.5px;white-space:nowrap;cursor:pointer;';
+  var cb2=document.createElement('input');cb2.type='checkbox';cb2.className='lck';cb2.checked=ltd;cb2.style.cssText='width:15px;height:15px;accent-color:#c0572f;';cb2.onclick=function(){toggleLetter(cm,r[3]);};
+  lbl2.appendChild(cb2);lbl2.appendChild(document.createTextNode('letter'));
   var lbl=document.createElement('label');lbl.style.cssText='display:inline-flex;align-items:center;gap:5px;margin-left:10px;font-size:12.5px;white-space:nowrap;cursor:pointer;';
   var cb=document.createElement('input');cb.type='checkbox';cb.className='chk';cb.checked=dn;cb.style.cssText='width:15px;height:15px;accent-color:#1f3a2e;';cb.onclick=function(){toggle(cm,r[3],tr);};
   lbl.appendChild(cb);lbl.appendChild(document.createTextNode('called'));
-  c4.appendChild(ph);c4.appendChild(lbl);
+  c4.appendChild(lbl2);c4.appendChild(lbl);
   tr.appendChild(c1);tr.appendChild(c2);tr.appendChild(c3);tr.appendChild(c4);tb.appendChild(tr);});}
-function logCalls(){var done=getDone();if(!done.length){alert('Check the box next to each member you called in the list above first.');return;}var nm=(document.getElementById('logName')||{}).value||'';var ct=(document.getElementById('logCity')||{}).value||'';var rows=[];done.forEach(function(idr){var p=idr.split('_'),cm=p[0],ad=p[1],arr=cm==='hcd'?HCD:LG,mem=null;arr.forEach(function(r){if(r[3]===ad)mem=r[0];});if(mem)rows.push({caller_name:nm||null,caller_city:ct||null,member:mem,committee:cm==='hcd'?'Housing & Community Development':'Local Government',outcome:'Called',notes:null});});if(!rows.length){alert('No members to log.');return;}fetch(SB_URL+'/rest/v1/call_log',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(rows)}).then(function(r){if(r.ok){document.getElementById('callOk').style.display='block';}else{alert('Sorry — logging failed. Please try again or email noelhyun@gmail.com.');}}).catch(function(){alert('Network error — please try again.');});}
+function memberFor(cm,ad){var arr=cm==='hcd'?HCD:LG,mem=null;arr.forEach(function(r){if(r[3]===ad)mem=r[0];});return mem;}
+function logContacts(){
+  var calls=getDone(),letters=getLetters();
+  if(!calls.length&&!letters.length){alert('Check “called” or “letter” next to the members you contacted in the lists above first.');return;}
+  var nm=gv('lname'),em=gv('lemail');
+  if(!nm||!em){alert('Please add your name and email at the top of the page (in “Build your letter”) so we can record your outreach and follow up.');var ln=document.getElementById('lname');if(ln){ln.focus();ln.scrollIntoView({behavior:'smooth',block:'center'});}return;}
+  function row(idr,action){var p=idr.split('_'),cm=p[0],ad=p[1],mem=memberFor(cm,ad);if(!mem)return null;return {name:nm,email:em,official:mem,official_key:ad,committee:cm==='hcd'?'Housing & Community Development':'Local Government',action:action,source:'sb1090-hub'};}
+  var rows=[];
+  calls.forEach(function(idr){var r=row(idr,'call');if(r)rows.push(r);});
+  letters.forEach(function(idr){var r=row(idr,'letter');if(r)rows.push(r);});
+  if(!rows.length){alert('Nothing to log.');return;}
+  fetch(SB_URL+'/rest/v1/outreach_log',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(rows)}).then(function(r){if(r.ok){var nc=rows.filter(function(x){return x.action==='call';}).length,nl=rows.length-nc,ok=document.getElementById('callOk');ok.textContent='Logged '+nl+' letter'+(nl===1?'':'s')+' and '+nc+' call'+(nc===1?'':'s')+' — thank you! We’ll be in touch about next steps.';ok.style.display='block';ok.scrollIntoView({behavior:'smooth',block:'center'});}else{alert('Sorry — logging failed. Please try again or email noelhyun@gmail.com.');}}).catch(function(){alert('Network error — please try again.');});}
 // constituent finder
 var ADMAP={};HCD.forEach(function(r){ADMAP[parseInt(r[2],10)]=ADMAP[parseInt(r[2],10)]||[];ADMAP[parseInt(r[2],10)].push(r[0]+' (Housing & CD)');});
 LG.forEach(function(r){var k=parseInt(r[2],10);ADMAP[k]=ADMAP[k]||[];if(ADMAP[k].indexOf(r[0]+' (Housing & CD)')<0)ADMAP[k].push(r[0]+' (Local Government)');});
