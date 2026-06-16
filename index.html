@@ -101,7 +101,7 @@
     <div class="trackcard"><h3>② Send it — two ways</h3><p class="dl">File it · and send it to the members</p><p>File it with the committee (by June 17), and send the same letter to the Assembly members — routed by your district. Plus petition, testimony, and RSVP.</p><a class="btn" href="#send">How to send →</a></div>
   </div>
   <div class="toc">
-    <a href="#build">Build your letter</a><a href="#send">Send it</a><a href="#finder">Am I a constituent?</a><a href="#rsvp">RSVP</a><a href="#why">Why it matters</a><a href="#statewide">Statewide</a><a href="#timeline">Dates</a><a href="#share">Share</a><a href="#volunteer">Volunteer</a>
+    <a href="#build">Build your letter</a><a href="#send">Send it</a><a href="#finder">Am I a constituent?</a><a href="#why">Why it matters</a><a href="#statewide">Statewide</a><a href="#timeline">Dates</a><a href="#share">Share</a><a href="#yardsign">Yard sign</a>
   </div>
 </div></div>
 
@@ -213,27 +213,7 @@
 </div></section>
 
 
-<!-- RSVP -->
-<section id="rsvp"><div class="wrap">
-  <h2>RSVP — June 24 Sacramento delegation</h2>
-  <p class="sub">Constituent faces in the room move votes. Tell us you're coming so we can coordinate carpools and a headcount.</p>
-  <form onsubmit="return submitForm(event,'rsvp','rsvpOk',mapRsvp)">
-    <div class="grid2">
-      <div><label>Full name</label><input name="name" required></div>
-      <div><label>Email</label><input name="email" type="email" required></div>
-      <div><label>Mobile</label><input name="phone"></div>
-      <div><label>City / ZIP</label><input name="city_zip"></div>
-      <div><label>Eaton Fire survivor / affected owner?</label><select name="affected"><option>Prefer not to say</option><option>Yes</option><option>No</option></select></div>
-      <div><label>Attend June 24 in Sacramento?</label><select name="attend"><option>Yes, I'll be there</option><option>Maybe</option><option>No, but I'll help remotely</option></select></div>
-      <div><label>Travel</label><select name="travel"><option>Drive myself</option><option>Want a carpool seat</option><option>Can offer a carpool</option><option>Not sure yet</option></select></div>
-      <div><label>Willing to give public comment?</label><select name="public_comment"><option>From the room only</option><option>Yes, 1–2 min</option><option>Maybe, with coaching</option></select></div>
-    </div>
-    <label>Accommodations (accessibility, language, childcare)</label><input name="accommodations">
-    <label>If you can't attend, how else can you help?</label><input name="help_remote" placeholder="Calls / emails / share">
-    <div class="row"><button class="btn" type="submit">Count me in</button></div>
-    <div class="ok" id="rsvpOk">You're on the list — we'll email logistics and talking points before June 24.</div>
-  </form>
-</div></section>
+<!-- RSVP section removed — June 24 Sacramento sign-ups are now handled via the follow-up email (emails Noel directly). -->
 
 <!-- WHY -->
 <section id="why"><div class="wrap">
@@ -273,17 +253,25 @@
   <p class="muted" style="margin-top:8px;">Graphics: <a href="sb1090-social.png" download>square post</a> · <a href="sb1090-story.png" download>story</a>. More in <a href="resources.html">Resources</a>.</p>
 </div></section>
 
-<!-- VOLUNTEER -->
-<section id="volunteer"><div class="wrap">
-  <h2>Volunteer &amp; stay connected</h2>
-  <p class="sub">A few people doing one job each makes this run. Claim a role, or <a href="altadena_action_app.html#signup">join the list</a> to stay in the loop.</p>
-  <div class="grid2">
-    <div class="card"><h3>Phone-bank lead</h3><p class="muted">Organize call shifts; track coverage.</p><a class="btn ghost2" href="mailto:noelhyun@gmail.com?subject=Volunteer%3A%20Phone-bank%20lead">Claim</a></div>
-    <div class="card"><h3>NorCal outreach lead</h3><p class="muted">Recruit allies in fire-affected northern counties.</p><a class="btn ghost2" href="mailto:noelhyun@gmail.com?subject=Volunteer%3A%20NorCal%20outreach%20lead">Claim</a></div>
-    <div class="card"><h3>Sacramento logistics lead</h3><p class="muted">Carpools, timing, materials for June 24.</p><a class="btn ghost2" href="mailto:noelhyun@gmail.com?subject=Volunteer%3A%20Sacramento%20logistics%20lead">Claim</a></div>
-    <div class="card"><h3>Testimony coordinator</h3><p class="muted">Work sign-ups; coordinate with Sen. Pérez's office.</p><a class="btn ghost2" href="mailto:noelhyun@gmail.com?subject=Volunteer%3A%20Testimony%20coordinator">Claim</a></div>
-  </div>
+<!-- YARD SIGN -->
+<section id="yardsign" class="t1"><div class="wrap">
+  <h2>Put a "Save Altadena" sign in your yard</h2>
+  <p class="sub">A street full of signs shows legislators and neighbors how many of us are watching. Signs are coordinated by volunteer Gilien Silsby and cost <strong>$13 each — reimburse Gilien via Venmo (@Gilien-Silsby)</strong>. Fill this in and we'll open an email to Gilien with your request.</p>
+  <form onsubmit="return yardRequest(event)">
+    <div class="grid2">
+      <div><label>Name</label><input name="name" required></div>
+      <div><label>Email</label><input name="email" type="email" required></div>
+    </div>
+    <div class="grid2">
+      <div><label>Address</label><input name="address" required></div>
+      <div><label>Mobile (optional)</label><input name="phone"></div>
+    </div>
+    <div class="row"><button class="btn" type="submit">Request a yard sign →</button></div>
+  </form>
+  <p class="muted">This opens an email to Gilien Silsby (gsilsby10@gmail.com), who coordinates the signs. She'll confirm the cost and her Venmo for reimbursement.</p>
 </div></section>
+
+<!-- Volunteer section removed — roles are now captured via what people click in the follow-up email. -->
 
 <footer><div class="wrap">
   <strong>Altadena Recovery Watch</strong> — in coordination with Save Altadena. Informal community group; not a nonprofit; no payments are processed on this site. Advocacy material — not legal advice.<br>
@@ -459,6 +447,11 @@ function copyOrg(){if(navigator.clipboard)navigator.clipboard.writeText(ORG_TEMP
 function mapCall(o){return {caller_name:o.caller_name,caller_city:o.caller_city,member:o.member,committee:o.committee,call_date:o.call_date||null,outcome:o.outcome,notes:o.notes};}
 function mapPet(o){return {name:o.name,city:o.city,comment:o.comment};}
 function mapRsvp(o){return o;}
+function mapYard(o){return {name:o.name,email:o.email,address:o.address,phone:o.phone,source:'yard_sign'};}
+function yardRequest(e){e.preventDefault();var o=vals(e.target);
+ var body="Hi Gilien,\n\nI would like to request a Save Altadena yard sign.\n\nName: "+(o.name||'')+"\nAddress: "+(o.address||'')+"\nEmail: "+(o.email||'')+"\nPhone: "+(o.phone||'')+"\n\nI understand the signs are $13 each, and I will Venmo you (@Gilien-Silsby) to reimburse you. Thank you for organizing these!";
+ location.href="mailto:gsilsby10@gmail.com?subject="+encodeURIComponent("Yard sign request — Save Altadena")+"&body="+encodeURIComponent(body);
+ return false;}
 function mapTest(o){return o;}
 function submitForm(e,table,okId,mapFn,after){e.preventDefault();var f=e.target,row=mapFn(vals(f)),btn=f.querySelector('button[type=submit]');if(btn){btn.disabled=true;btn.textContent='Sending…';}
  fetch(SB_URL+'/rest/v1/'+table,{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(row)}).then(function(r){
