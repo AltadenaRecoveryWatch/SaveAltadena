@@ -18,7 +18,11 @@
   header{background:var(--brick);color:#fff;padding:14px 18px;}
   header h1{font-size:19px;margin:0 0 3px;}
   header p{font-size:13px;color:#f1c9b8;margin:0;}
-  .layout{display:flex;height:calc(100vh - 190px);min-height:420px;}
+  .layout{display:flex;height:calc(100vh - 250px);min-height:420px;}
+  .actionbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:9px 14px;background:#faf1ec;border-bottom:1px solid #ecd6cc;}
+  .actionbar .cta{display:inline-block;width:auto;margin:0;padding:9px 15px;font-size:13.5px;flex:0 1 auto;}
+  .actionbar .share{margin-left:auto;}
+  @media(max-width:620px){.actionbar .share{margin-left:0;}}
   #side{width:330px;max-width:44%;overflow:auto;border-right:1px solid #e3d2ca;background:#faf6f4;}
   #map{flex:1;}
   .note{font-size:12px;color:#5d4b44;padding:10px 14px;border-bottom:1px solid #ecd6cc;background:#fff4ee;}
@@ -64,23 +68,13 @@
   <p>Confirmed subdivisions and at-risk lots — where SB 1123 exposure is highest</p>
 </header>
 <div id="statbar" class="statbar">Loading…</div>
+<div class="actionbar">
+  <a class="cta" href="altadena_action_app.html">✊ Take action — email the Governor &amp; your reps →</a>
+  <a class="cta" style="background:#33240f;" href="mailto:noelhyun@gmail.com?subject=Report%20an%20Altadena%20lot%20%E2%80%94%20possible%20SB%201123%20subdivision&amp;body=Address%20of%20the%20lot%3A%20%0AWhat%20you%20know%20(filing%2C%20LLC%2C%20listed%20for%20sale%2C%20etc.)%3A%20%0AYour%20name%20%26%20contact%3A%20">🚩 Report a lot being subdivided →</a>
+  <span class="share">Share: <a id="shX" target="_blank">X</a> · <a id="shF" target="_blank">Facebook</a> · <a id="shE">Email</a> · <a id="shC">Copy link</a></span>
+</div>
 <div class="layout">
   <div id="side">
-    <div class="note">Speculative subdivision sites and lots at risk. Some are <strong>confirmed in County records (✔)</strong>; others are <strong>at-risk / watch (●)</strong> — flagged but not yet confirmed. For organizing awareness only — not an accusation about any owner or property.</div>
-    <a class="cta" href="altadena_action_app.html">✊ Take action — email the Governor &amp; your reps →</a>
-    <a class="cta" style="background:#33240f;" href="altadena_action_app.html#signup">📋 Join the list — stay in the fight →</a>
-    <a class="report" href="mailto:noelhyun@gmail.com?subject=New%20Altadena%20site%20to%20report">Know a lot being subdivided — or at risk? Report it →</a>
-    <div class="tally" id="tally"></div>
-    <div class="share">Share: <a id="shX" target="_blank">X</a> · <a id="shF" target="_blank">Facebook</a> · <a id="shE">Email</a> · <a id="shC">Copy link</a></div>
-
-    <div class="legend">
-      <h3>What the map shows</h3>
-      <div class="leg"><div class="sw" style="background:#ee1c25;"></div><div><strong>Confirmed subdivision (✔)</strong> — verified SB 1123 / tract-map lot split in LA County records. Lot count &amp; link in the pin.</div></div>
-      <div class="leg"><div class="sw" style="background:#ff8a00;"></div><div><strong>Other / mixed status (◆)</strong> — confirmed in County records but not an active lot split (e.g., a voided SB 1123 application, unit-stacking via duplexes + ADUs, or a precursor "future SB 1123" filing such as a Certificate of Compliance).</div></div>
-      <div class="leg"><div class="sw" style="background:#eab308;"></div><div><strong>At-risk / watch (●)</strong> — a burned lot flagged as vulnerable to subdivision (resident-reported or fitting the SB 1123 profile), but <strong>not yet confirmed</strong> in County records.</div></div>
-      <p style="margin-top:7px;color:#5d4b44;font-size:12px;">A lot faces the highest SB 1123 risk (the by-right 10-unit path) when it's <strong>vacant/burned, on municipal sewer, and outside a fire-hazard zone.</strong> Verify a specific parcel with the official sources below.</p>
-    </div>
-
     <div class="status" id="status">Loading map…</div>
     <div id="list"></div>
 
@@ -91,7 +85,7 @@
       <a href="https://pw.lacounty.gov/smpm/sewermap/" target="_blank">LA County Public Works — sewer service map ↗</a>
       <a href="https://planning.lacounty.gov/" target="_blank">LA County Planning — zoning ↗</a>
     </div>
-    <div class="foot">Pins placed by automatic address lookup and may be approximate. As of June 2026. Research, not legal advice.</div>
+    <div class="foot">Speculative subdivision sites and lots at risk. Some are <strong>confirmed in County records (✔)</strong>; others are <strong>at-risk / watch (●)</strong> — flagged but not yet confirmed. For organizing awareness only — not an accusation about any owner or property. Pins are placed by automatic address lookup and may be approximate. As of June 2026. Research, not legal advice.</div>
   </div>
   <div id="map"></div>
 </div>
@@ -110,20 +104,26 @@
     "1145 E Altadena Dr": "✔ Confirmed — <b>10-lot tract map</b> (MAP085196, completed 3/3/2026); likely SB 1123 (record doesn't specify). <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/70324b22-e0f1-49fd-b497-6e219b1e42a9\" target=\"_blank\">view record ↗</a>",
     "30 W Harriet St": "✔ Confirmed SB 1123 subdivision — one burned lot into <b>3 parcels</b> (LA County EPIC-LA). <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/bc6659b1-d4d2-49b7-b9d9-1c6d3dec85cb\" target=\"_blank\">view record ↗</a>",
     "25 E Palm St": "✔ Confirmed SB 1123 subdivision — <b>4 lots</b> (LA County EPIC-LA). <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/441ebc09-f3e6-41d5-8d38-c70b0848f74f\" target=\"_blank\">view record ↗</a>",
-    "2261 Sinaloa Ave": "Mixed status. An SB 1123 application to split into <b>6 lots was VOIDED</b> (<a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/8eda47c3-d6ea-4339-a346-174ab3cb584f\" target=\"_blank\">view ↗</a>); the owner now has an active permit — <b>CREB2026001434, applied 6/9/2026</b> (County Disaster Recovery Permit) — for <b>2 duplexes + 2 ADUs = 6 units</b> on the lot (<a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/permit/a1160e4d-d4db-4b91-94ee-162e9d45cc96\" target=\"_blank\">view ↗</a>).",
+    "2261 Sinaloa Ave": "✔ Confirmed SB 1123 site. An SB 1123 application to split into <b>6 lots was VOIDED</b> (<a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/8eda47c3-d6ea-4339-a346-174ab3cb584f\" target=\"_blank\">view ↗</a>); the owner now has an active permit — <b>CREB2026001434, applied 6/9/2026</b> (County Disaster Recovery Permit) — for <b>2 duplexes + 2 ADUs = 6 units</b> on the lot (<a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/permit/a1160e4d-d4db-4b91-94ee-162e9d45cc96\" target=\"_blank\">view ↗</a>).",
     "1540 E Altadena Dr": "✔ Confirmed SB 1123 project — Vesting Tentative Tract Map under Gov. Code §66499.41: 10 fee-simple lots + 1 remainder, up to <b>10 single-family units</b> (1 inclusionary at 120% AMI). <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/c4b0834c-4553-48e3-a7b9-448c5bae914f\" target=\"_blank\">view subdivision ↗</a> · recorded <b>10-lot map MAP085197</b> (completed 3/3/2026): <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/fac1a754-5150-45ab-9cc0-90c8a3a202d0\" target=\"_blank\">view map ↗</a> · the developer has also filed a <b>Certificate of Compliance</b> (RPAP2026002583, applied 6/12/2026) — apparently to vest lot rights. <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/3cc291ba-e9bb-4ed6-81ca-1a6a580513f9\" target=\"_blank\">view COC ↗</a>",
     "1068 Dolores Dr": "✔ Confirmed SB 1123 subdivision — Tentative Parcel Map (MAP085202, applied 3/25/2026): <b>7 residential lots / 7 units</b>. <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/5e0d36dd-36ed-4de8-9b96-0b5db41d42e0\" target=\"_blank\">view record ↗</a>",
-    "2271 Maiden Lane": "◆ SB 1123 lot-split filed — now <b>VOID</b>. A 10-lot SB 1123 Vesting Tentative Tract Map (TR85003 · plan RPPL2025004320 · Gov. Code 66499.41) to split one lot into ten single-family lots was filed 10/6/2025 and is now <b>Void</b> (3/19/2026). An earlier Certificate of Compliance (plan RPAP2025004080, 8/20/2025) was labeled <b>\"FUTURE SB1123 PROPOSED.\"</b> Worth watching — voided lot-splits have been re-filed elsewhere. <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/0e380628-6f75-4bc1-8685-d5c9df0d172d\" target=\"_blank\">view tract map ↗</a> · <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/0e380628-6f75-4bc1-8685-d5c9df0d172d?tab=attachments\" target=\"_blank\">see the plans ↗</a> · <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/2c727fd3-3a97-4c83-9c2d-40c1b8410e39\" target=\"_blank\">view CoC ↗</a>",
+    "2271 Maiden Lane": "✔ Confirmed SB 1123 lot-split filing — now <b>VOID</b>. A 10-lot SB 1123 Vesting Tentative Tract Map (TR85003 · plan RPPL2025004320 · Gov. Code 66499.41) to split one lot into ten single-family lots was filed 10/6/2025 and is now <b>Void</b> (3/19/2026). An earlier Certificate of Compliance (plan RPAP2025004080, 8/20/2025) was labeled <b>\"FUTURE SB1123 PROPOSED.\"</b> Worth watching — voided lot-splits have been re-filed elsewhere. <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/0e380628-6f75-4bc1-8685-d5c9df0d172d\" target=\"_blank\">view tract map ↗</a> · <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/0e380628-6f75-4bc1-8685-d5c9df0d172d?tab=attachments\" target=\"_blank\">see the plans ↗</a> · <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/2c727fd3-3a97-4c83-9c2d-40c1b8410e39\" target=\"_blank\">view CoC ↗</a>",
     "2821 Santa Rosa Ave": "✔ Confirmed — COMPLETED <b>11-lot subdivision</b> (MAP085194, completed 2/27/2026); the developer has ALSO filed a <b>Certificate of Compliance</b> (RPAP2026002584, applied 6/12/2026) — apparently to lock in / vest lot rights. <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/5e332b40-52f2-4779-800d-3be855aae464\" target=\"_blank\">view subdivision ↗</a> · <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/bdad3b57-3a73-45d5-87ff-99032d10372b\" target=\"_blank\">view COC ↗</a>"
   };
-  var ALT = { "2261 Sinaloa Ave": true, "2271 Maiden Lane": true };
+  var ALT = {};
   // At-risk / watch: flagged as vulnerable to SB 1123 subdivision but NOT yet confirmed in County records.
-  var VULN = { "2262 N Glenrose Ave": true, "416 E Altadena Dr": true, "1049 Concha St": true, "306 W Ventura St": true, "366 W Harriet St": true, "653 E Pine St": true };
+  var VULN = { "2262 N Glenrose Ave": true, "416 E Altadena Dr": true };
   // At-risk addresses with a specific confirming note (kept gold, not red).
   var NOTE = { "2262 N Glenrose Ave": "● At-risk — County <b>Sewer Area Study</b> (ESTU2026000072, applied 2/17/2026, in review) required as part of <b>Tentative Parcel Map No. 85060</b> (RPPL2025005460): a subdivision is being pursued. <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/009eb51d-f2b9-4580-9f58-c3f8754f2d10\" target=\"_blank\">view record ↗</a>" };
+  // SB 9 projects (NOT SB 1123) — shown in yellow for information only, not flagged as speculation.
+  var SB9 = { "653 E Pine St": true, "366 W Harriet St": true, "306 W Ventura St": true };
+  NOTE["306 W Ventura St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks.";
+  NOTE["416 E Altadena Dr"] = "● <b>At-risk — watch closely.</b> No County subdivision application is on file yet, but an <b>LLC has been confirmed formed for this lot with Woody Gruninger as the agent</b> — the same developer behind multiple confirmed SB 1123 subdivisions in Altadena. A likely SB 1123 target.";
+  NOTE["653 E Pine St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Parcel-map pre-application to create <b>3 single-family lots</b> (RPAP2026001355, accepted 4/20/2026). An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/18dfd299-fb02-4a82-84d2-18eb1593f55a\" target=\"_blank\">view record ↗</a>";
+  NOTE["366 W Harriet St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB 9 lot subdivision proposing <b>single-family homes with ADUs</b> (RPAP2025004788, applied 10/2/2025, pre-application). An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/28158d49-cf6f-4d1c-b969-bbfb15735f4c\" target=\"_blank\">view record ↗</a>";
   var LOTS = 84; // total new lots across confirmed subdivisions — update when adding sites
-  (function(){var conf=Object.keys(DETAILS).filter(function(a){return !ALT[a];}).length;var mixed=Object.keys(ALT).length;var atrisk=Object.keys(VULN).length;var total=conf+mixed+atrisk;var sb=document.getElementById('statbar');if(sb){sb.innerHTML='<span class="big">'+total+'</span> Altadena lots affected or at risk · <span class="big">'+LOTS+'+</span> new lots proposed from burned homes<span class="sub">'+conf+' confirmed subdivisions, '+mixed+' mixed-status, and '+atrisk+' at-risk lots. Each pin is a burned family lot a developer has carved up — or could carve up next. Updated '+new Date().toLocaleDateString()+'.</span>';}})();
-  (function(){var u=encodeURIComponent(location.href);var t=encodeURIComponent('Speculators are subdividing burned Altadena lots — 10 confirmed subdivisions turning 10 lots into 80+. See the map and take action:');var x=document.getElementById('shX'),f=document.getElementById('shF'),e=document.getElementById('shE'),c=document.getElementById('shC'),ty=document.getElementById('tally');if(x)x.href='https://twitter.com/intent/tweet?text='+t+'&url='+u;if(f)f.href='https://www.facebook.com/sharer/sharer.php?u='+u;if(e)e.href='mailto:?subject='+encodeURIComponent('Save Altadena — speculation map')+'&body='+t+'%0A%0A'+u;if(c)c.addEventListener('click',function(){navigator.clipboard.writeText(location.href).then(function(){c.textContent='Link copied!';});});var conf=Object.keys(DETAILS).filter(function(a){return !ALT[a];}).length;var mixed=Object.keys(ALT).length;var atrisk=Object.keys(VULN).length;var total=conf+mixed+atrisk;if(ty)ty.innerHTML='Running tally: <b>'+total+'</b> lots affected or at risk ('+conf+' confirmed · '+mixed+' mixed · '+atrisk+' at-risk) · <b>≈'+LOTS+'</b> new lots · <b>≈'+(LOTS+6)+'</b> total new homes proposed · <b>3</b> Certificate-of-Compliance filings (apparent vesting moves).';})();
+  (function(){var conf=Object.keys(DETAILS).filter(function(a){return !ALT[a];}).length;var mixed=Object.keys(ALT).length;var atrisk=Object.keys(VULN).length;var sb9c=Object.keys(SB9).length;var total=conf+mixed+atrisk;var parts=[];if(conf)parts.push(conf+' confirmed subdivisions');if(mixed)parts.push(mixed+' mixed-status');if(atrisk)parts.push(atrisk+' at-risk');var sb=document.getElementById('statbar');if(sb){sb.innerHTML='<span class="big">'+total+'</span> Altadena lots affected or at risk<span class="sub">'+parts.join(', ')+'. Each pin is a burned family lot a developer has carved up — or could carve up next. Updated '+new Date().toLocaleDateString()+'.</span>';}})();
+  (function(){var u=encodeURIComponent(location.href);var t=encodeURIComponent('Speculators are subdividing burned Altadena lots — 10 confirmed subdivisions turning 10 lots into 80+. See the map and take action:');var x=document.getElementById('shX'),f=document.getElementById('shF'),e=document.getElementById('shE'),c=document.getElementById('shC'),ty=document.getElementById('tally');if(x)x.href='https://twitter.com/intent/tweet?text='+t+'&url='+u;if(f)f.href='https://www.facebook.com/sharer/sharer.php?u='+u;if(e)e.href='mailto:?subject='+encodeURIComponent('Save Altadena — speculation map')+'&body='+t+'%0A%0A'+u;if(c)c.addEventListener('click',function(){navigator.clipboard.writeText(location.href).then(function(){c.textContent='Link copied!';});});var conf=Object.keys(DETAILS).filter(function(a){return !ALT[a];}).length;var mixed=Object.keys(ALT).length;var atrisk=Object.keys(VULN).length;var sb9c=Object.keys(SB9).length;var total=conf+mixed+atrisk;var bits=[];if(conf)bits.push(conf+' confirmed');if(mixed)bits.push(mixed+' mixed');if(atrisk)bits.push(atrisk+' at-risk');if(ty)ty.innerHTML='Running tally: <b>'+total+'</b> lots affected or at risk ('+bits.join(' · ')+') · <b>3</b> Certificate-of-Compliance filings (apparent vesting moves).';})();
   // 2) To show the EXACT fire-hazard and sewer boundaries, replace the approximate polygons below
   //    with real GeoJSON from CAL FIRE (FHSZ) and LA County Public Works (sewer service area),
   //    or add them as Esri layers. The shaded zones here are hand-approximated for orientation.
@@ -133,8 +133,9 @@
     "1145 E Altadena Dr","369 E Altadena Dr","1134 E Altadena Dr","1068 Dolores Dr",
     "25 E Palm St","30 W Harriet St",
     "2261 Sinaloa Ave","2271 Maiden Lane",
-    "2262 N Glenrose Ave","416 E Altadena Dr","1049 Concha St",
-    "306 W Ventura St","366 W Harriet St","653 E Pine St"
+    "2262 N Glenrose Ave","416 E Altadena Dr",
+    "306 W Ventura St",
+    "653 E Pine St","366 W Harriet St"
   ];
   var CITY = ", Altadena, CA 91001";
 
@@ -143,14 +144,24 @@
 
   var pinsGroup = L.layerGroup().addTo(map);
 
+  // ---- On-map color legend ----
+  var mapLegend = L.control({position:'topright'});
+  mapLegend.onAdd=function(){var d=L.DomUtil.create('div','');d.innerHTML='<div style="background:#fff;padding:8px 11px;border-radius:8px;box-shadow:0 1px 6px rgba(0,0,0,.25);font:12px/1.55 Helvetica,Arial,sans-serif;color:#241a17;">'
+    +'<div style="font-weight:800;color:#7a2e1d;margin-bottom:4px;">Legend</div>'
+    +'<div><span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:#ee1c25;margin-right:6px;vertical-align:middle;"></span>Confirmed SB 1123 subdivision</div>'
+    +'<div><span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:#ff8a00;margin-right:6px;vertical-align:middle;"></span>At-risk / watch</div>'
+    +'<div><span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:#9aa0a6;margin-right:6px;vertical-align:middle;"></span>SB 9 project (info only)</div>'
+    +'</div>';return d;};
+  mapLegend.addTo(map);
+
   // ---- Pins (client-side geocoding with cache) ----
   var list=document.getElementById('list'), statusEl=document.getElementById('status'), bounds=[];
   function gmaps(a){ return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(a+CITY); }
-  function icon(n,confirmed,alt,vuln){ var bg=alt?'#ff8a00':(confirmed?'#ee1c25':(vuln?'#eab308':'#8a8a8a')); var cls=(confirmed&&!alt)?'mk pulse':'mk'; return L.divIcon({html:'<div class="'+cls+'" style="background:'+bg+'"><span>'+n+'</span></div>', iconSize:[26,26], iconAnchor:[13,26], popupAnchor:[0,-24]}); }
-  ADDRESSES.forEach(function(a,i){var n=i+1;var conf=!!DETAILS[a];var alt=!!ALT[a];var vuln=!!VULN[a];var col=alt?'#ff8a00':(conf?'#ee1c25':(vuln?'#eab308':'#8a8a8a'));var mark=alt?' <span style="color:#ff8a00;font-weight:700;">◆</span>':(conf?' <span style="color:#ee1c25;font-weight:700;">✔</span>':(vuln?' <span style="color:#eab308;font-weight:700;">●</span>':''));var row=document.createElement('div');row.className='item';row.id='row'+n;row.innerHTML='<div class="pin" style="background:'+col+'">'+n+'</div><div><div class="addr">'+a+mark+'</div><div class="sub" id="sub'+n+'">Locating…</div></div>';list.appendChild(row);});
+  function icon(n,confirmed,alt,vuln,sb9){ var bg=alt?'#ff8a00':(confirmed?'#ee1c25':(vuln?'#ff8a00':(sb9?'#9aa0a6':'#8a8a8a'))); var cls=(confirmed&&!alt)?'mk pulse':'mk'; return L.divIcon({html:'<div class="'+cls+'" style="background:'+bg+'"><span>'+n+'</span></div>', iconSize:[26,26], iconAnchor:[13,26], popupAnchor:[0,-24]}); }
+  ADDRESSES.forEach(function(a,i){var n=i+1;var conf=!!DETAILS[a];var alt=!!ALT[a];var vuln=!!VULN[a];var sb9=!!SB9[a];var col=alt?'#ff8a00':(conf?'#ee1c25':(vuln?'#ff8a00':(sb9?'#9aa0a6':'#8a8a8a')));var mark=alt?' <span style="color:#ff8a00;font-weight:700;">◆</span>':(conf?' <span style="color:#ee1c25;font-weight:700;">✔</span>':(vuln?' <span style="color:#ff8a00;font-weight:700;">●</span>':(sb9?' <span style="color:#6f767d;font-weight:700;">●</span>':'')));var row=document.createElement('div');row.className='item';row.id='row'+n;row.innerHTML='<div class="pin" style="background:'+col+'">'+n+'</div><div><div class="addr">'+a+mark+'</div><div class="sub" id="sub'+n+'">Locating…</div></div>';list.appendChild(row);});
   function cGet(a){try{return (JSON.parse(localStorage.getItem('alt_geo')||'{}'))[a];}catch(e){return null;}}
   function cSet(a,ll){try{var c=JSON.parse(localStorage.getItem('alt_geo')||'{}');c[a]=ll;localStorage.setItem('alt_geo',JSON.stringify(c));}catch(e){}}
-  function place(i,ll){var n=i+1,a=ADDRESSES[i];var info=DETAILS[a]||NOTE[a]||(VULN[a]?'At-risk / watch — resident-flagged, not yet confirmed in County records.':'Resident-flagged · unverified.');var m=L.marker(ll,{icon:icon(n,!!DETAILS[a],!!ALT[a],!!VULN[a])}).addTo(pinsGroup);m.bindPopup('<strong>'+n+'. '+a+'</strong><br><span style="font-size:12px;color:#888;">'+info+'</span><br><a href="'+gmaps(a)+'" target="_blank">Open in Google Maps ↗</a>');bounds.push(ll);document.getElementById('sub'+n).innerHTML=(DETAILS[a]?'<span style="color:#0f6e56;font-weight:600;">'+DETAILS[a]+'</span><br>':(NOTE[a]?'<span style="color:#a07a00;">'+NOTE[a]+'</span><br>':(VULN[a]?'<span style="color:#a07a00;font-style:italic;">At-risk / watch — flagged, not yet confirmed.</span><br>':'')))+'<a href="'+gmaps(a)+'" target="_blank">Map ↗</a>';document.getElementById('row'+n).onclick=function(){map.setView(ll,17);m.openPopup();};}
+  function place(i,ll){var n=i+1,a=ADDRESSES[i];var info=DETAILS[a]||NOTE[a]||(VULN[a]?'At-risk / watch — resident-flagged, not yet confirmed in County records.':'Resident-flagged · unverified.');var m=L.marker(ll,{icon:icon(n,!!DETAILS[a],!!ALT[a],!!VULN[a],!!SB9[a])}).addTo(pinsGroup);m.bindPopup('<strong>'+n+'. '+a+'</strong><br><span style="font-size:12px;color:#888;">'+info+'</span><br><a href="'+gmaps(a)+'" target="_blank">Open in Google Maps ↗</a>');bounds.push(ll);document.getElementById('sub'+n).innerHTML=(DETAILS[a]?'<span style="color:#0f6e56;font-weight:600;">'+DETAILS[a]+'</span><br>':(NOTE[a]?'<span style="color:#a07a00;">'+NOTE[a]+'</span><br>':(VULN[a]?'<span style="color:#a07a00;font-style:italic;">At-risk / watch — flagged, not yet confirmed.</span><br>':'')))+'<a href="'+gmaps(a)+'" target="_blank">Map ↗</a>';document.getElementById('row'+n).onclick=function(){map.setView(ll,17);m.openPopup();};}
   function fail(i){var n=i+1;document.getElementById('sub'+n).innerHTML='<span class="bad">auto-location failed</span> · <a href="'+gmaps(ADDRESSES[i])+'" target="_blank">Map ↗</a>';}
   var done=0,found=0;
   function tick(){done++;statusEl.textContent='Located '+found+' of '+ADDRESSES.length+' sites'+(done<ADDRESSES.length?' …':'');if(done===ADDRESSES.length&&bounds.length){map.fitBounds(bounds,{padding:[50,50]});}}
