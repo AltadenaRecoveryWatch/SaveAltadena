@@ -41,7 +41,18 @@
   .contactbox a{color:#ffd9c9;}
   footer{background:#241a17;color:#cbb;padding:22px 0;font-size:13px;}
   footer a{color:#ffd9c9;}
-  @media(max-width:620px){.grid{grid-template-columns:1fr;}}
+  .coverage{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center;}
+  .vid{position:relative;display:block;border-radius:10px;overflow:hidden;border:1px solid #e3d2ca;}
+  .vid img{display:block;width:100%;height:auto;}
+  .vid .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(238,28,37,.92);box-shadow:0 2px 10px rgba(0,0,0,.35);}
+  .vid .play:after{content:'';position:absolute;top:50%;left:54%;transform:translate(-50%,-50%);border-style:solid;border-width:12px 0 12px 20px;border-color:transparent transparent transparent #fff;}
+  .presslist{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid #eee;}
+  .presslist li{padding:12px 0;border-bottom:1px solid #eee;}
+  .presslist .src{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--coral);font-weight:800;}
+  .presslist a.hl{display:block;font-size:16.5px;font-weight:700;color:var(--brick);text-decoration:none;margin:2px 0 3px;}
+  .presslist a.hl:hover{text-decoration:underline;}
+  .presslist .blurb{font-size:13.5px;color:#5d4b44;}
+  @media(max-width:620px){.grid,.coverage{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -59,6 +70,46 @@
 <section><div class="wrap">
   <h2>The story in one paragraph</h2>
   <p>A year and a half after the Eaton Fire, out-of-town developers are using California's lot-split law (<strong>SB 1123</strong>) to subdivide burned single-family lots into up to 10 units each — by right, with no public hearing. At least ten subdivisions are already in L.A. County records, together turning ten burned lots into more than 80. After the same fire, the Pacific Palisades received an emergency order suspending these density laws — but it was keyed to a fire-hazard map that left most of Altadena out. <strong>Altadena got a hand-me-down, not a protection written for it.</strong> Residents are asking the Governor to protect the whole disaster area now.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>In the news</h2>
+  <p class="sub">Recent coverage of post-fire lot-splitting in Altadena.</p>
+  <div class="coverage">
+    <a class="vid" href="https://youtu.be/xvBwlL0qEaU" target="_blank" rel="noopener">
+      <img src="https://i.ytimg.com/vi/xvBwlL0qEaU/hqdefault.jpg" alt="NBC4 Los Angeles: Some Altadena residents push back against multi-unit rebuilds">
+      <span class="play"></span>
+    </a>
+    <div>
+      <div style="font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--coral);font-weight:800;">NBC4 Los Angeles</div>
+      <h3 style="color:var(--brick);font-size:18px;margin:4px 0 8px;">"Some Altadena residents push back against multi-unit rebuilds"</h3>
+      <p style="font-size:14.5px;color:#3a2c27;margin-bottom:12px;">NBC4 reports on Eaton Fire survivors confronting speculative multi-unit rebuilds on burned Altadena lots — and the push to pass SB 1090.</p>
+      <a class="dl" href="https://youtu.be/xvBwlL0qEaU" target="_blank" rel="noopener">▶ Watch the story</a>
+    </div>
+  </div>
+
+  <ul class="presslist">
+    <li>
+      <span class="src">Pasadena Now · June 17, 2026</span>
+      <a class="hl" href="https://pasadenanow.com/main/bill-to-shield-altadena-from-developers-divides-the-town-it-aims-to-protect" target="_blank" rel="noopener">Bill to Shield Altadena From Developers Divides the Town It Aims to Protect</a>
+      <span class="blurb">Sen. Pérez presents SB 1090 to a packed June 16 town council meeting; affordable-housing nonprofits warn a blanket SB 9 / SB 1123 ban could also stall their projects, and the Jan. 1, 2027 start invites a developer rush. First Assembly Housing Committee hearing June 24.</span>
+    </li>
+    <li>
+      <span class="src">CBS Los Angeles · June 16, 2026</span>
+      <a class="hl" href="https://www.cbsnews.com/losangeles/news/altadena-eaton-fire-victims-council-meeting-home-developers-split-lots/" target="_blank" rel="noopener">Eaton Fire survivors sound off at Altadena council meeting to prevent invasion of home developers</a>
+      <span class="blurb">Survivors packed the June 16 town council meeting demanding restrictions on developers buying burned lots for multi-unit projects; Supervisor Barger backed tougher rules.</span>
+    </li>
+    <li>
+      <span class="src">Voices from the Burn Zone · June 15, 2026</span>
+      <a class="hl" href="https://voicesfromtheburnzone.substack.com/p/speak-up-altadena-town-council-meets" target="_blank" rel="noopener">Speak Up, Altadena: Town Council Meets Tuesday Night</a>
+      <span class="blurb">A call to attend the June 16 Town Council meeting on SB 9 / SB 1090.</span>
+    </li>
+    <li>
+      <span class="src">Pasadena Now · June 12, 2026</span>
+      <a class="hl" href="https://pasadenanow.com/main/local-electeds-seek-protections-from-density-laws-already-suspended-for-palisades" target="_blank" rel="noopener">Local Electeds Seek Protections From Density Laws Already Suspended for Palisades</a>
+      <span class="blurb">Officials back an SB 1090 moratorium on SB 9 / SB 1123 for Altadena; investors bought 44% of 91001 lots sold in Q3 2025.</span>
+    </li>
+  </ul>
 </div></section>
 
 <section><div class="wrap">
