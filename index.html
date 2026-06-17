@@ -248,10 +248,10 @@
   <div class="row">
     <a class="btn brick" id="shareFb" target="_blank" rel="noopener">Facebook</a>
     <a class="btn brick" id="shareTw" target="_blank" rel="noopener">X / Twitter</a>
+    <button class="btn brick" onclick="igShare()">Instagram</button>
     <button class="btn ghost2" onclick="copyLink()">Copy page link</button>
   </div>
-  <p class="muted" style="margin-top:8px;">Graphics: <a href="sb1090-social.png" download>square post</a> · <a href="sb1090-story.png" download>story</a>. More in <a href="resources.html">Resources</a>.</p>
-  <p class="muted" style="margin-top:4px;">“Preying on a fire-ravaged community”: <a href="speculators-square.png" download>square</a> · <a href="speculators-story.png" download>story</a> · <a href="speculators-wide.png" download>wide</a>.</p>
+  <p class="muted" style="margin-top:8px;">Graphics — “Preying on a fire-ravaged community”: <a href="speculators-square.png" download>square</a> · <a href="speculators-story.png" download>story</a> · <a href="speculators-wide.png" download>wide</a>. More in <a href="resources.html">Resources</a>.</p>
 </div></section>
 
 <!-- YARD SIGN -->
@@ -463,6 +463,7 @@ function submitForm(e,table,okId,mapFn,after){e.preventDefault();var f=e.target,
 function loadCount(){fetch(SB_URL+'/rest/v1/rpc/petition_count',{method:'POST',headers:H(),body:'{}'}).then(function(r){return r.ok?r.json():null;}).then(function(n){if(n!==null)document.getElementById('petCount').textContent=Number(n).toLocaleString();});}
 function afterPet(){var el=document.getElementById('petCount'),n=parseInt((el.textContent||'0').replace(/,/g,''))||0;el.textContent=(n+1).toLocaleString();}
 function copyLink(){var u=location.href;if(navigator.clipboard)navigator.clipboard.writeText(u);alert('Link copied: '+u);}
+function igShare(){var cap="After the Eaton Fire, speculators are buying burned Altadena lots and using SB 1123 to pack up to 10 units onto them — by right, with no public hearing — before families can even rebuild. SB 1090 would stop it; the committee hearing is June 24. Take action — link in our bio. #SaveAltadena #Altadena #EatonFire #SB1090 #SB1123";if(navigator.clipboard)navigator.clipboard.writeText(cap);alert('Caption copied. Instagram does not allow link-sharing — so: 1) download a graphic below, 2) open Instagram and create a post or story, 3) paste this caption and put the site link in your bio.');}
 (function(){var u=encodeURIComponent(location.href);document.getElementById('shareFb').href='https://www.facebook.com/sharer/sharer.php?u='+u;document.getElementById('shareTw').href='https://twitter.com/intent/tweet?text='+encodeURIComponent('Support SB 1090 — protect Altadena\'s fire recovery. Act: ')+u;})();
 Array.prototype.forEach.call(document.querySelectorAll('button[type=submit]'),function(b){b.setAttribute('data-l',b.textContent);});
 populateConns();populateLpoint();setDefaultLetter();restoreBuilder();wireBuilderSave();fill('hcd',HCD,'hcd');fill('lg',LG,'lg');updateProg();
