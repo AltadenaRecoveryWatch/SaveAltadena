@@ -118,7 +118,7 @@
   };
   var ALT = { "2261 Sinaloa Ave": true, "2271 Maiden Lane": true };
   // At-risk / watch: flagged as vulnerable to SB 1123 subdivision but NOT yet confirmed in County records.
-  var VULN = { "126 E Palm St": true, "2262 N Glenrose Ave": true, "416 E Altadena Dr": true, "1049 Concha St": true };
+  var VULN = { "126 E Palm St": true, "2262 N Glenrose Ave": true, "416 E Altadena Dr": true, "1049 Concha St": true, "306 W Ventura St": true, "366 W Harriet St": true, "653 E Pine St": true };
   var LOTS = 84; // total new lots across confirmed subdivisions — update when adding sites
   (function(){var conf=Object.keys(DETAILS).filter(function(a){return !ALT[a];}).length;var mixed=Object.keys(ALT).length;var atrisk=Object.keys(VULN).length;var total=conf+mixed+atrisk;var sb=document.getElementById('statbar');if(sb){sb.innerHTML='<span class="big">'+total+'</span> Altadena lots affected or at risk · <span class="big">'+LOTS+'+</span> new lots proposed from burned homes<span class="sub">'+conf+' confirmed subdivisions, '+mixed+' mixed-status, and '+atrisk+' at-risk lots. Each pin is a burned family lot a developer has carved up — or could carve up next. Updated '+new Date().toLocaleDateString()+'.</span>';}})();
   (function(){var u=encodeURIComponent(location.href);var t=encodeURIComponent('Speculators are subdividing burned Altadena lots — 10 confirmed subdivisions turning 10 lots into 80+. See the map and take action:');var x=document.getElementById('shX'),f=document.getElementById('shF'),e=document.getElementById('shE'),c=document.getElementById('shC'),ty=document.getElementById('tally');if(x)x.href='https://twitter.com/intent/tweet?text='+t+'&url='+u;if(f)f.href='https://www.facebook.com/sharer/sharer.php?u='+u;if(e)e.href='mailto:?subject='+encodeURIComponent('Save Altadena — speculation map')+'&body='+t+'%0A%0A'+u;if(c)c.addEventListener('click',function(){navigator.clipboard.writeText(location.href).then(function(){c.textContent='Link copied!';});});var conf=Object.keys(DETAILS).filter(function(a){return !ALT[a];}).length;var mixed=Object.keys(ALT).length;var atrisk=Object.keys(VULN).length;var total=conf+mixed+atrisk;if(ty)ty.innerHTML='Running tally: <b>'+total+'</b> lots affected or at risk ('+conf+' confirmed · '+mixed+' mixed · '+atrisk+' at-risk) · <b>≈'+LOTS+'</b> new lots · <b>≈'+(LOTS+6)+'</b> total new homes proposed · <b>3</b> Certificate-of-Compliance filings (apparent vesting moves).';})();
@@ -131,7 +131,8 @@
     "1145 E Altadena Dr","369 E Altadena Dr","1134 E Altadena Dr","1068 Dolores Dr",
     "25 E Palm St","126 E Palm St","30 W Harriet St",
     "2261 Sinaloa Ave","2271 Maiden Lane",
-    "2262 N Glenrose Ave","416 E Altadena Dr","1049 Concha St"
+    "2262 N Glenrose Ave","416 E Altadena Dr","1049 Concha St",
+    "306 W Ventura St","366 W Harriet St","653 E Pine St"
   ];
   var CITY = ", Altadena, CA 91001";
 
