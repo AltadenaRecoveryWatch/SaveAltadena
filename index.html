@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pass SB 1090 — Two-Track Action Hub | Altadena Recovery Watch</title>
-<meta name="description" content="Two ways to help pass SB 1090 before June 24: file the substantive position letter (policy case) by the June 17 deadline, and send your constituent voice to the Assembly committee members. Petition, testify, RSVP.">
+<meta name="description" content="Two ways to help pass SB 1090 before July 1: file the substantive position letter (policy case) by the June 24 deadline, and send your constituent voice to the Assembly committee members. Petition, testify, RSVP.">
 <meta property="og:title" content="Pass SB 1090 — protect Altadena's recovery">
-<meta property="og:description" content="Two tracks: the policy case (file by June 17) and constituent voice. Hearing June 24. Email, call, sign, RSVP, testify.">
+<meta property="og:description" content="Two tracks: the policy case (file by June 24) and constituent voice. Hearing July 1. Email, call, sign, RSVP, testify.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://altadenarecoverywatch.github.io/SaveAltadena/speculators-og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -56,6 +56,8 @@
   tr.chair{background:#fff6f0;} tr.done{opacity:.5;}
   .lk2{color:var(--coral);text-decoration:none;font-weight:700;white-space:nowrap;}
   .call{color:var(--green);text-decoration:none;font-weight:700;white-space:nowrap;}
+  .logbtn{cursor:pointer;border:1.5px solid #1f3a2e;background:#fff;color:#1f3a2e;border-radius:7px;padding:6px 12px;font-size:12.5px;font-weight:800;margin-left:10px;white-space:nowrap;}
+  .logbtn.logged{background:#1f3a2e;color:#fff;}
   .tag{display:inline-block;background:#eaddd5;color:var(--brick);border-radius:20px;padding:1px 8px;font-size:11px;font-weight:700;margin-left:4px;}
   .tag.pri{background:var(--red);color:#fff;}
   .muted{color:#7a6a62;font-size:13px;}
@@ -82,12 +84,13 @@
   .roadmap .step.future{background:#eadfd8;color:#7a6a62;}
   .roadmap .step.law{background:#fff;color:#a17c00;border:1.5px solid #eab308;font-weight:800;}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 
 <nav><div class="wrap">
   <a class="brand" href="index.html">ALTADENA RECOVERY WATCH</a>
-  <span><a class="lk on" href="index.html">Act Now</a><a class="lk" href="altadena_lots_map.html">The Map</a><a class="lk" href="learn.html">Learn</a><a class="lk" href="resources.html">Resources</a><a class="lk" href="press.html">Press</a><a class="lk" href="altadena_action_app.html#signup">Join</a></span>
+  <span><a class="lk on" href="index.html">Act Now</a><a class="lk" href="altadena_lots_map.html">The Map</a><a class="lk" href="whoswoody.html">Who's Woody?</a><a class="lk" href="learn.html">Learn</a><a class="lk" href="resources.html">Resources</a><a class="lk" href="press.html">Press</a><a class="lk" href="altadena_action_app.html#signup">Join</a></span>
 </div></nav>
 
 <div id="govbar" style="background:linear-gradient(180deg,#243b53,#1b2c40);color:#fff;padding:28px 0 26px;scroll-margin-top:58px;"><div class="wrap">
@@ -114,27 +117,27 @@
 
 <div class="roadmap">
   <div class="rmtitle">The road to protecting Altadena</div>
-  <div class="rmsteps"><span class="step done">✓ Senate passed</span><span class="arr">→</span><span class="step now">● June 24 · HCD cmte</span><span class="arr">→</span><span class="step future">LG cmte</span><span class="arr">→</span><span class="step future">Assembly floor</span><span class="arr">→</span><span class="step future">Back to Senate</span><span class="arr">→</span><span class="step future">Governor signs</span><span class="arr">→</span><span class="step law">★ Becomes law</span></div>
+  <div class="rmsteps"><span class="step done">✓ Senate passed</span><span class="arr">→</span><span class="step now">● July 1 · HCD cmte</span><span class="arr">→</span><span class="step future">LG cmte</span><span class="arr">→</span><span class="step future">Assembly floor</span><span class="arr">→</span><span class="step future">Back to Senate</span><span class="arr">→</span><span class="step future">Governor signs</span><span class="arr">→</span><span class="step law">★ Becomes law</span></div>
 </div>
 
 <div class="hero"><div class="wrap">
-  <h1>Pass SB 1090 — Hearing June 24.</h1>
+  <h1>Pass SB 1090 — Hearing July 1.</h1>
   <p>Two Assembly committees decide whether speculators can keep carving up burned Altadena lots. Build one support letter, then send it two ways.</p>
   <div style="display:flex;flex-wrap:wrap;gap:12px;margin:18px 0;">
     <div style="flex:1;min-width:240px;background:#ee1c25;color:#fff;border-radius:12px;padding:16px 20px;box-shadow:0 2px 8px rgba(0,0,0,.18);">
       <div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;opacity:.95;">📅 Deadline 1 — Support letters due</div>
-      <div style="font-size:22px;font-weight:900;line-height:1.15;margin-top:5px;">Wed, June 17, 2026 · 5:00 p.m.</div>
+      <div style="font-size:22px;font-weight:900;line-height:1.15;margin-top:5px;">Wed, June 24, 2026 · 5:00 p.m.</div>
       <div style="font-size:13.5px;margin-top:4px;opacity:.97;">File your signed position letter (Track 1) via the <a href="https://calegislation.lc.ca.gov/Advocates/" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;">Advocates Portal</a>.</div>
     </div>
     <div style="flex:1;min-width:240px;background:#1f3a2e;color:#fff;border-radius:12px;padding:16px 20px;box-shadow:0 2px 8px rgba(0,0,0,.18);">
       <div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;opacity:.95;">🏛️ Deadline 2 — Committee hearing</div>
-      <div style="font-size:22px;font-weight:900;line-height:1.15;margin-top:5px;">Wed, June 24, 2026 · 9:00 a.m.</div>
-      <div style="font-size:13.5px;margin-top:4px;opacity:.97;">Assembly Housing &amp; Community Development — Capitol Rm 447.</div>
+      <div style="font-size:22px;font-weight:900;line-height:1.15;margin-top:5px;">Wed, July 1, 2026 · 9:00 a.m.</div>
+      <div style="font-size:13.5px;margin-top:4px;opacity:.97;">Assembly Housing &amp; Community Development — State Capitol (room posted in the File Notice).</div>
     </div>
   </div>
   <div class="tracks">
     <div class="trackcard"><h3>① Build your letter</h3><p class="dl">One letter · about 2 minutes</p><p>Personalize a complete SB 1090 support letter with your story and the points you care about most.</p><a class="btn navy" href="#build">Build my letter →</a></div>
-    <div class="trackcard"><h3>② Send it — two ways</h3><p class="dl">File it · and send it to the members</p><p>File it with the committee (by June 17), and send the same letter to the Assembly members — routed by your district. Plus petition, testimony, and RSVP.</p><a class="btn" href="#send">How to send →</a></div>
+    <div class="trackcard"><h3>② Send it — two ways</h3><p class="dl">File it · and send it to the members</p><p>File it with the committee (by June 24), and send the same letter to the Assembly members — routed by your district. Plus petition, testimony, and RSVP.</p><a class="btn" href="#send">How to send →</a></div>
   </div>
   <div class="toc">
     <a href="#govbar">Ask the Governor</a><a href="#build">Build your letter</a><a href="#send">Send it</a><a href="#finder">Am I a constituent?</a><a href="#why">Why it matters</a><a href="#statewide">Statewide</a><a href="#timeline">Dates</a><a href="#share">Share</a><a href="#yardsign">Yard sign</a>
@@ -145,10 +148,10 @@
 <section id="build" class="t1"><div class="wrap">
   <span class="kicker">STEP 1 · BUILD YOUR LETTER</span>
   <h2>Build your SB 1090 support letter</h2>
-  <p class="sub">One letter works for both tracks below. <b>Personalized letters count; identical copy-paste letters get discounted</b> — so add your own story. When it's ready, send it through either (or both) of the two tracks that follow.</p>
+  <p class="sub">One letter works for both tracks. <b>Personalized letters count — identical copy-paste ones get discounted</b>, so add your story.</p>
 
   <h3>Build your letter (about 2 minutes)</h3>
-  <p style="margin:0 0 14px;font-size:15px;line-height:1.55;color:#3a2a24;">A <strong>complete support letter is already written in the box below.</strong> Fill in the fields, then click <strong>Personalize my letter</strong> and the tool drops your name, city, connection, story, and chosen focus points into the letter for you. You can then edit every word, copy it, or download it as Word to sign and file. You don't have to write it from scratch.</p>
+  <p style="margin:0 0 14px;font-size:15px;line-height:1.55;color:#3a2a24;">A <strong>complete support letter is already written below.</strong> Fill in the fields, click <strong>Personalize my letter</strong>, and your details and chosen points drop into it. Then edit, copy, or download it as Word to sign and file — no writing from scratch.</p>
   <div class="grid2">
     <div><label>Your name</label><input id="lname"></div>
     <div><label>Your email</label><input id="lemail" type="email" placeholder="you@example.com"></div>
@@ -171,8 +174,8 @@
   </div>
   <label>Your letter (your full letter is already written below — just replace the [CAPS-IN-BRACKETS] parts with your details, edit freely, then copy or download)</label>
   <textarea id="lout" style="min-height:300px;"></textarea>
-  <div class="row"><button class="btn red" onclick="copyOut()">Copy my letter</button><button class="btn navy" onclick="downloadLetter()">Download as Word (to attach)</button></div>
-  <p class="muted">The Advocates Portal and the committee consultants want a <b>signed letter</b>, not pasted text — download the Word file, add your letterhead/date and signature, save as PDF, and upload or attach it.</p>
+  <div class="row"><button class="btn red" onclick="copyOut()">Copy my letter</button><button class="btn navy" onclick="downloadLetterPDF()">Download as PDF (to sign &amp; file)</button><button class="btn ghost2" onclick="downloadLetter()">…or as Word</button></div>
+  <p class="muted">The Advocates Portal and the committee consultants want a <b>signed letter</b>, not pasted text. Download the <b>PDF</b>, print and sign it (or add a digital signature), and upload or attach it. Want to add letterhead first? Download the <b>Word</b> version, edit and sign, then save as PDF.</p>
 
 </div></section>
 
@@ -180,8 +183,8 @@
 <section id="send" class="t1"><div class="wrap">
   <span class="kicker">STEP 2 · SEND IT — TWO TRACKS</span>
   <h2>Track A — File it with the committee</h2>
-  <div class="alert red"><b>Deadline: Wednesday, June 17, 2026 · 5:00 p.m.</b> for the June 24 hearing. This is the highest-impact action: a signed letter in the committee's official file.</div>
-  <p class="sub">First finalize: click <b>Download as Word</b> in the builder above, add the date and your signature (and letterhead if you have one), and save it as a PDF. Then use <b>either</b> option below — the Portal is the official record; emailing the staff is the simplest. Doing both is great, but one is enough.</p>
+  <div class="alert red"><b>Deadline: Wednesday, June 24, 2026 · 5:00 p.m.</b> for the July 1 hearing. This is the highest-impact action: a signed letter in the committee's official file.</div>
+  <p class="sub">First finalize: click <b>Download as PDF</b> in the builder above, then print &amp; sign it (or add a digital signature). Then use <b>either</b> option below — the Portal is the official record; emailing the staff is the simplest. Doing both is great, but one is enough.</p>
   <div class="grid2">
     <div class="card"><span style="display:inline-block;background:#243b53;color:#fff;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:800;">OPTION A · OFFICIAL</span>
       <h3>File in the Advocates Portal</h3>
@@ -194,14 +197,14 @@
       <button class="btn" style="background:#243b53;margin-top:8px;" onclick="mailLetterAll()">✉ Send via local mail app →</button></div>
   </div>
   <p class="muted">Either way, please cc Sen. Pérez (author) and Asm. Harabedian (co-author) if you can.</p>
-  <div class="staffbox"><b>Part of an organization?</b> Partner orgs filing their own letters add real weight. Grab the short template, personalize it to your group's mission and members, and ask one ally to file by June 17. <div class="row" style="margin-top:7px;"><a class="btn ghost2" href="SB1090_org_letter_template.docx" download>Org letter template (Word)</a><button class="btn ghost2" onclick="copyOrg()">Copy org template</button></div></div>
+  <div class="staffbox"><b>Part of an organization?</b> Partner orgs filing their own letters add real weight. Grab the short template, personalize it to your group's mission and members, and ask one ally to file by June 24. <div class="row" style="margin-top:7px;"><a class="btn ghost2" href="SB1090_org_letter_template.docx" download>Org letter template (Word)</a><button class="btn ghost2" onclick="copyOrg()">Copy org template</button></div></div>
 </div></section>
 
 <!-- ================= TRACK 2 ================= -->
 <section id="track2" class="t2"><div class="wrap">
   <span class="kicker two">STEP 2 · TRACK B — CONSTITUENT VOICE</span>
   <h2>Track B — Send your letter to the members</h2>
-  <p class="sub">Members count constituent contacts. Use the same letter you built above — copy it, then work the list, starting with the <b>Chairs</b>. Tap a member's <b>form</b> to paste your letter, or the number to <b>call</b>, and check <b>“letter”</b> or <b>“called”</b> when done (saves on this device).</p>
+  <p class="sub">Members count constituent contacts. Use the same letter you built above — copy it, then work the list, starting with the <b>Chairs</b>. Tap a member's <b>form</b> to paste your letter, or the number to <b>call</b> — then click <b>“Log call”</b> to track it (saves on this device, so you can step away and pick up where you left off).</p>
 
   <div id="finder" class="finder">
     <b>Are you a constituent of a committee member?</b> That's the most powerful contact you can make.
@@ -227,12 +230,12 @@
     <div class="muted" style="margin-top:6px;">Want to reach the staff who write the bill analysis? File your full letter with the committee in <a href="#send">Track A above</a>.</div>
   </div>
 
-  <h3>Housing &amp; Community Development — hearing June 24 (priority)</h3>
-  <table id="hcd"><thead><tr><th>Member</th><th>District &amp; area</th><th>Email (form)</th><th>✉ letter / 📞 called — check ✓</th></tr></thead><tbody></tbody></table>
-  <div class="row"><button class="btn navy" onclick="logContacts()">✓ Log my calls &amp; letters →</button></div>
+  <h3>Housing &amp; Community Development — hearing July 1 (priority)</h3>
+  <table id="hcd"><thead><tr><th>Member</th><th>District &amp; area</th><th>Email (form)</th><th>Call &amp; log it</th></tr></thead><tbody></tbody></table>
+  <div class="row"><button class="btn navy" onclick="logContacts()">✓ Submit my calls →</button></div>
   <h3>Local Government — hearing TBD</h3>
-  <table id="lg"><thead><tr><th>Member</th><th>District &amp; area</th><th>Email (form)</th><th>✉ letter / 📞 called — check ✓</th></tr></thead><tbody></tbody></table>
-  <div class="row"><button class="btn navy" onclick="logContacts()">✓ Log my calls &amp; letters →</button></div>
+  <table id="lg"><thead><tr><th>Member</th><th>District &amp; area</th><th>Email (form)</th><th>Call &amp; log it</th></tr></thead><tbody></tbody></table>
+  <div class="row"><button class="btn navy" onclick="logContacts()">✓ Submit my calls →</button></div>
   <div class="ok" id="callOk" style="display:none;"></div>
   <div class="staffbox">Not in any of these districts? Your best moves: <b>call</b> the members above (calls count even from non-constituents), and <b>recruit friends who live in these districts</b> to <a href="#build">build and send their own letter above</a>.</div>
 
@@ -249,7 +252,7 @@
 </div></section>
 
 
-<!-- RSVP section removed — June 24 Sacramento sign-ups are now handled via the follow-up email (emails Noel directly). -->
+<!-- RSVP section removed — July 1 Sacramento sign-ups are now handled via the follow-up email (emails Noel directly). -->
 
 <!-- WHY -->
 <section id="why"><div class="wrap">
@@ -269,8 +272,8 @@
   <h2>Key dates</h2>
   <table>
     <tr><th>When</th><th>What</th><th>Do this</th></tr>
-    <tr class="chair"><td><b>Wed, June 17 · 5 p.m.</b></td><td>Position-letter deadline (June 24 hearing)</td><td>File via Track 1</td></tr>
-    <tr><td><b>Wed, June 24 · 9 a.m.</b></td><td>Housing &amp; CD hearing — SB 1090 (Capitol Rm 447)</td><td>RSVP / testify</td></tr>
+    <tr class="chair"><td><b>Wed, June 24 · 5 p.m.</b></td><td>Position-letter deadline (July 1 hearing)</td><td>File via Track 1</td></tr>
+    <tr><td><b>Wed, July 1 · 9 a.m.</b></td><td>Housing &amp; CD hearing — SB 1090 (State Capitol)</td><td>RSVP / testify</td></tr>
     <tr><td>TBD</td><td>Local Government hearing — SB 1090</td><td>Keep calling; watch the <a href="https://www.assembly.ca.gov/dailyfile" target="_blank" rel="noopener">Daily File</a></td></tr>
     <tr><td>Monthly</td><td>Altadena Town Council</td><td>See the <a href="https://www.altadenatowncouncil.org/" target="_blank" rel="noopener">Town Council site</a></td></tr>
   </table>
@@ -279,7 +282,7 @@
 <!-- SHARE -->
 <section id="share"><div class="wrap">
   <h2>Share it</h2>
-  <div class="post">SB 1090 protects Eaton Fire survivors from speculators carving up burned lots before families can rebuild. Hearing June 24 — letters due June 17. Act: [link] #SaveAltadena #SB1090</div>
+  <div class="post">SB 1090 protects Eaton Fire survivors from speculators carving up burned lots before families can rebuild. Hearing July 1 — letters due June 24. Act: [link] #SaveAltadena #SB1090</div>
   <div class="post">SB 1090 is a narrow, one-time fix: after the same fire, the Palisades got relief from these density laws and Altadena was left out. Give Altadena the same protection — vote YES on SB 1090. [link] #SB1090</div>
   <div class="row">
     <a class="btn brick" id="shareFb" target="_blank" rel="noopener">Facebook</a>
@@ -328,7 +331,7 @@ function setBody(){document.getElementById('body').value=BODIES[document.getElem
 function copyBody(){var ta=document.getElementById('body');ta.select();try{document.execCommand('copy');}catch(e){}if(navigator.clipboard)navigator.clipboard.writeText(ta.value);alert('Email text copied — open a member form and paste.');}
 function mailStaff(addr){var v=document.getElementById('body').value,lines=v.split('\n'),subj='Support SB 1090';if(lines[0].indexOf('Subject:')===0){subj=lines[0].replace('Subject:','').trim();lines.shift();}location.href='mailto:'+addr+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(lines.join('\n').replace(/^\n+/,''));}
 function mailAllStaff(){var to='Lisa.Engel@asm.ca.gov,Dori.Ganetsos@asm.ca.gov,Juan.Reyes@asm.ca.gov,Angela.Mapp@asm.ca.gov,Jimmy.MacDonald@asm.ca.gov,Linda.Rios@asm.ca.gov';var v=document.getElementById('body').value,lines=v.split('\n'),subj='SB 1090 (Pérez) — SUPPORT';if(lines[0].indexOf('Subject:')===0){subj=lines[0].replace('Subject:','').trim();lines.shift();}location.href='mailto:'+to+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(lines.join('\n').replace(/^\n+/,''));}
-function mailLetter(addr){location.href='mailto:'+addr+'?subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT (position letter attached)')+'&body='+encodeURIComponent('Dear Committee Consultant,\n\nPlease find attached our letter in SUPPORT of SB 1090 (Pérez), set for hearing June 24. We respectfully ask that it be reflected in the committee analysis and bill file.\n\n[Attach the downloaded letter before sending.]\n\nThank you,\n[Your name]');}
+function mailLetter(addr){location.href='mailto:'+addr+'?subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT (position letter attached)')+'&body='+encodeURIComponent('Dear Committee Consultant,\n\nPlease find attached our letter in SUPPORT of SB 1090 (Pérez), set for hearing July 1. We respectfully ask that it be reflected in the committee analysis and bill file.\n\n[Attach the downloaded letter before sending.]\n\nThank you,\n[Your name]');}
 function form(ad){return 'https://lcmspubcontact.lc.ca.gov/PublicLCMS/ContactPopup.php?district='+ad+'&inframe=N';}
 function fmtPhone(p){return '('+p.slice(0,3)+') '+p.slice(3,6)+'-'+p.slice(6);}
 var HCD=[['Matt Haney','CHAIR','17 · San Francisco','AD17','9163192017',1],['Joe Patterson','Vice Chair','05 · Placer Co. (Rocklin, Roseville)','AD05','9163192005',1],['Anamarie Ávila Farías','','15 · Contra Costa (Martinez, Concord)','AD15','9163192015',0],['Jessica M. Caloza','borders Pasadena','52 · NE Los Angeles (Eagle Rock, Highland Park)','AD52','9163192052',0],['Robert Garcia','','50 · San Bernardino Co. (Fontana, Rialto)','AD50','9163192050',0],['Ash Kalra','','25 · San José (central/east)','AD25','9163192025',0],['Alex Lee','','24 · Fremont · Milpitas · N. San José','AD24','9163192024',0],['Sharon Quirk-Silva','','67 · N. Orange Co. (Fullerton, Buena Park)','AD67','9163192067',0],['Tri Ta','also Local Gov','70 · Coastal Orange Co. (Westminster, Garden Grove)','AD70','9163192070',0],['David J. Tangipa','','08 · Fresno Co. (Clovis, E. Fresno)','AD08','9163192008',0],['Lori D. Wilson','also Local Gov','11 · Solano Co. (Fairfield, Vallejo)','AD11','9163192011',0],['Buffy Wicks','','14 · East Bay (Oakland, Berkeley, Richmond)','AD14','9163192014',0]];
@@ -338,12 +341,12 @@ function getDone(){try{return JSON.parse(localStorage.getItem(KEY)||'[]');}catch
 function setDone(a){try{localStorage.setItem(KEY,JSON.stringify(a));}catch(e){}}
 function rid(cm,ad){return cm+'_'+ad;}
 function updateProg(){document.getElementById('prog').textContent=getDone().length+' of 22 contacted';}
-function toggle(cm,ad,tr){var d=getDone(),id=rid(cm,ad),i=d.indexOf(id);if(i>=0){d.splice(i,1);tr.classList.remove('done');}else{d.push(id);tr.classList.add('done');}setDone(d);updateProg();}
+function toggle(cm,ad,tr){var d=getDone(),id=rid(cm,ad),i=d.indexOf(id),nowDone=i<0;if(i>=0){d.splice(i,1);tr.classList.remove('done');}else{d.push(id);tr.classList.add('done');}setDone(d);updateProg();return nowDone;}
 var LKEY='sb1090_letters_v1';
 function getLetters(){try{return JSON.parse(localStorage.getItem(LKEY)||'[]');}catch(e){return [];}}
 function setLetters(a){try{localStorage.setItem(LKEY,JSON.stringify(a));}catch(e){}}
 function toggleLetter(cm,ad){var d=getLetters(),id=rid(cm,ad),i=d.indexOf(id);if(i>=0){d.splice(i,1);}else{d.push(id);}setLetters(d);}
-function resetChecks(){setDone([]);setLetters([]);document.querySelectorAll('tr.done').forEach(function(t){t.classList.remove('done');});document.querySelectorAll('input.chk,input.lck').forEach(function(c){c.checked=false;});updateProg();}
+function resetChecks(){setDone([]);setLetters([]);document.querySelector('#hcd tbody').innerHTML='';document.querySelector('#lg tbody').innerHTML='';fill('hcd',HCD,'hcd');fill('lg',LG,'lg');updateProg();}
 function fill(id,rows,cm){var tb=document.querySelector('#'+id+' tbody'),done=getDone(),letters=getLetters();rows.forEach(function(r){var tr=document.createElement('tr');var i=rid(cm,r[3]);var dn=done.indexOf(i)>=0;var ltd=letters.indexOf(i)>=0;if(r[5])tr.className='chair';if(dn)tr.className+=' done';
   var role=r[1]?(' <span class="tag'+(r[5]?' pri':'')+'">'+r[1]+'</span>'):'';
   var c1=document.createElement('td');c1.innerHTML='<b>'+r[0]+'</b>'+role;
@@ -352,26 +355,22 @@ function fill(id,rows,cm){var tb=document.querySelector('#'+id+' tbody'),done=ge
   var c4=document.createElement('td');
   var ph=document.createElement('a');ph.className='call';ph.href='tel:+1'+r[4];ph.textContent=fmtPhone(r[4]);
   c4.appendChild(ph);
-  var lbl2=document.createElement('label');lbl2.style.cssText='display:inline-flex;align-items:center;gap:5px;margin-left:10px;font-size:12.5px;white-space:nowrap;cursor:pointer;';
-  var cb2=document.createElement('input');cb2.type='checkbox';cb2.className='lck';cb2.checked=ltd;cb2.style.cssText='width:15px;height:15px;accent-color:#c0572f;';cb2.onclick=function(){toggleLetter(cm,r[3]);};
-  lbl2.appendChild(cb2);lbl2.appendChild(document.createTextNode('letter'));
-  var lbl=document.createElement('label');lbl.style.cssText='display:inline-flex;align-items:center;gap:5px;margin-left:10px;font-size:12.5px;white-space:nowrap;cursor:pointer;';
-  var cb=document.createElement('input');cb.type='checkbox';cb.className='chk';cb.checked=dn;cb.style.cssText='width:15px;height:15px;accent-color:#1f3a2e;';cb.onclick=function(){toggle(cm,r[3],tr);};
-  lbl.appendChild(cb);lbl.appendChild(document.createTextNode('called'));
-  c4.appendChild(lbl2);c4.appendChild(lbl);
+  var btn=document.createElement('button');btn.type='button';btn.className='logbtn'+(dn?' logged':'');
+  btn.textContent=dn?'✓ Call logged':'📞 Click to log call';
+  btn.onclick=function(){var nd=toggle(cm,r[3],tr);btn.textContent=nd?'✓ Call logged':'📞 Click to log call';btn.className='logbtn'+(nd?' logged':'');};
+  c4.appendChild(btn);
   tr.appendChild(c1);tr.appendChild(c2);tr.appendChild(c3);tr.appendChild(c4);tb.appendChild(tr);});}
 function memberFor(cm,ad){var arr=cm==='hcd'?HCD:LG,mem=null;arr.forEach(function(r){if(r[3]===ad)mem=r[0];});return mem;}
 function logContacts(){
   var calls=getDone(),letters=getLetters();
-  if(!calls.length&&!letters.length){alert('Check “called” or “letter” next to the members you contacted in the lists above first.');return;}
+  if(!calls.length){alert('Click “Log call” next to the members you called in the lists above first.');return;}
   var nm=gv('lname'),em=gv('lemail');
   if(!nm||!em){alert('Please add your name and email at the top of the page (in “Build your letter”) so we can record your outreach and follow up.');var ln=document.getElementById('lname');if(ln){ln.focus();ln.scrollIntoView({behavior:'smooth',block:'center'});}return;}
   function row(idr,action){var p=idr.split('_'),cm=p[0],ad=p[1],mem=memberFor(cm,ad);if(!mem)return null;return {name:nm,email:em,official:mem,official_key:ad,committee:cm==='hcd'?'Housing & Community Development':'Local Government',action:action,source:'sb1090-hub'};}
   var rows=[];
   calls.forEach(function(idr){var r=row(idr,'call');if(r)rows.push(r);});
-  letters.forEach(function(idr){var r=row(idr,'letter');if(r)rows.push(r);});
   if(!rows.length){alert('Nothing to log.');return;}
-  fetch(SB_URL+'/rest/v1/outreach_log',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(rows)}).then(function(r){if(r.ok){var nc=rows.filter(function(x){return x.action==='call';}).length,nl=rows.length-nc,ok=document.getElementById('callOk');ok.textContent='Logged '+nl+' letter'+(nl===1?'':'s')+' and '+nc+' call'+(nc===1?'':'s')+' — thank you! We’ll be in touch about next steps.';ok.style.display='block';ok.scrollIntoView({behavior:'smooth',block:'center'});}else{alert('Sorry — logging failed. Please try again or email noelhyun@gmail.com.');}}).catch(function(){alert('Network error — please try again.');});}
+  fetch(SB_URL+'/rest/v1/outreach_log',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(rows)}).then(function(r){if(r.ok){var nc=rows.length,ok=document.getElementById('callOk');ok.textContent='Logged '+nc+' call'+(nc===1?'':'s')+' — thank you! We’ll be in touch about next steps.';ok.style.display='block';ok.scrollIntoView({behavior:'smooth',block:'center'});}else{alert('Sorry — logging failed. Please try again shortly.');}}).catch(function(){alert('Network error — please try again.');});}
 // constituent finder
 var ADMAP={};HCD.forEach(function(r){ADMAP[parseInt(r[2],10)]=ADMAP[parseInt(r[2],10)]||[];ADMAP[parseInt(r[2],10)].push(r[0]+' (Housing & CD)');});
 LG.forEach(function(r){var k=parseInt(r[2],10);ADMAP[k]=ADMAP[k]||[];if(ADMAP[k].indexOf(r[0]+' (Housing & CD)')<0)ADMAP[k].push(r[0]+' (Local Government)');});
@@ -385,8 +384,8 @@ var ARGS=[
   full:"SB 1090 simply lets our community recover on its own terms. It pauses the SB 1123 by-right subdivision pathway during the recovery window so families can come home before speculation locks the map in place. It is look-forward protection — it doesn't take any housing away.",
   bullet:"Recovery first — pause speculative subdivision so families can return before the map is redrawn; SB 1090 is look-forward only and takes no housing away."},
  {k:'fairness',label:"It can't be easier to build than to rebuild",
-  full:"It can't be easier for a developer to build than for the families who lost everything. SB 1123 hands developers a fast, by-right path to carve a burned lot into up to ten units, while the homeowner next door faces slow, discretionary permitting to rebuild a single home. SB 1090 puts survivors first.",
-  bullet:"Fairness — it shouldn't be easier for a developer to build ten units on a cleared lot than for the family next door to rebuild the one home they lost."},
+  full:"It cannot be easier for a developer to build than for the families who lost everything. Under the County's own rules a survivor may rebuild only about 10% larger than the home they lost to keep the fast \"like-for-like\" permit — while a speculator on the very same burned lot may put up as many as ten units, by right, with no hearing. The victim is capped at plus-ten-percent; the opportunist is handed times-ten. That is not disaster recovery; it is disaster exploitation, and SB 1090 ends it.",
+  bullet:"Fairness — a survivor may rebuild only ~10% larger to keep the fast permit, while a speculator on the same burned lot may build ten times more, by right; SB 1090 ends that double standard."},
  {k:'safety',label:'Evacuation & public safety on narrow foothill streets',
   full:"Our foothill neighborhoods sit on narrow, often single-access streets that just failed catastrophically in a deadly, fast-moving fire. Multiplying the households and cars on those same streets is a direct evacuation and life-safety hazard on the very roads that could not clear residents in January 2025.",
   bullet:"Life safety — adding households and cars to narrow, single-access foothill streets that just failed in a deadly fire lengthens evacuation and endangers residents."},
@@ -397,14 +396,14 @@ var ARGS=[
   full:"Equitable recovery means the people who lost their homes — not outside speculators — get to shape how the neighborhood comes back. After a federally declared disaster, those decisions should rest with the residents who live there, not with whoever can file a ministerial SB 1123 lot-split first. SB 1090 restores that local control during recovery without repealing any housing law.",
   bullet:"Equitable recovery — the people who lost their homes, not outside speculators, should shape how the neighborhood rebuilds; SB 1090 restores local control during recovery."},
  {k:'displacement',label:'Speculation & displacement of survivors',
-  full:"Investor and corporate buyers jumped from a small share of Altadena home sales before the fire to roughly half afterward. Letting them subdivide burned lots by right accelerates the displacement of the very families who lost their homes.",
-  bullet:"Speculation — investor purchases jumped from a small share of sales to roughly half after the fire; by-right subdivision accelerates displacement."},
+  full:"Investor and corporate buyers jumped from a small share of Altadena home sales before the fire to roughly half afterward. Letting them subdivide burned lots by right is disaster exploitation: it bids the land beyond what returning families can pay and accelerates the displacement of the very people who lost their homes.",
+  bullet:"Speculation — investor purchases jumped from a small share of sales to roughly half after the fire; by-right subdivision is disaster exploitation that accelerates displacement."},
  {k:'character',label:'Community character & a real rebuilding plan',
   full:"Altadena is fighting to come back as the community its residents knew — not a patchwork of speculative density dropped in lot by lot. A short pause lets a real, community-informed rebuilding plan take shape first.",
   bullet:"Community character — a short pause lets Altadena rebuild as the community residents knew, guided by a plan, not parcel-by-parcel speculation."},
- {k:'eligibility',label:"Contrary to SB 1123's original legislative intent",
-  full:"These subdivisions run counter to the original legislative intent of SB 1123. The Starter Home Revitalization Act was written to create modest \"starter homes\" through infill on lots already served by urban infrastructure — not to let investors carve fire-destroyed lots in a disaster zone into as many as ten units before survivors can return. Applying it to burned Altadena blocks turns the law against its own purpose; SB 1090 restores the intent the Legislature had in mind.",
-  bullet:"Original intent — SB 1123 was meant to create starter homes through ordinary urban infill, not to let speculators subdivide fire-destroyed lots in a disaster zone; these projects betray that purpose."},
+ {k:'eligibility',label:"Most don't even qualify under SB 1123",
+  full:"Many of these subdivisions do not even qualify under SB 1123 — and run counter to its original intent. The Starter Home Revitalization Act was written for urban infill: it requires a site substantially surrounded by existing development (commonly a ~75%-of-perimeter test). The Eaton Fire cleared whole blocks, so these burned lots are now ringed by other vacant, cleared parcels, not standing homes — and the County has already voided at least two of these subdivisions for failing that very requirement. SB 1090 keeps ineligible, speculative projects from slipping through during the chaos of recovery, and protects the urban-infill purpose the Legislature actually intended.",
+  bullet:"Eligibility & intent — SB 1123 was written for urban infill, not fire-cleared disaster lots; most of these projects fail its ~75% developed-perimeter test, and the County has already voided two of them."},
  {k:'statewide',label:'The Altadena disaster zone deserves protection',
   full:"The Altadena disaster zone deserves protection. After the same January 2025 firestorm, the Pacific Palisades received emergency relief from these density provisions — but it was keyed to a fire-hazard map that left most of Altadena out. A community that suffered the same disaster deserves the same protection. SB 1090 is a narrow, one-time fix bounded to the Eaton Fire disaster area and justified by Altadena's specific circumstances, so it sets no precedent anywhere else.",
   bullet:"The Altadena disaster zone deserves protection — the Palisades received emergency relief from these density provisions after the same fire; SB 1090 extends that protection to Altadena, bounded to this disaster area."}
@@ -423,22 +422,23 @@ function gv(id){return (document.getElementById(id).value||'').trim();}
 var DEFAULT_LETTER=
 "[TYPE YOUR NAME / ADDRESS — letterhead if you have one]\n[TYPE THE DATE]\n\n"+
 "The Honorable Matt Haney, Chair\nAssembly Committee on Housing and Community Development\n(Submitted via the California Legislature Advocates Portal)\n\n"+
-"Re: SB 1090 (Pérez) — SUPPORT. Hearing June 24, 2026.\n\n"+
+"Re: SB 1090 (Pérez) — SUPPORT. Hearing July 1, 2026.\n\n"+
 "Dear Chair Haney and Members of the Committee:\n\n"+
 "My name is [TYPE YOUR NAME], and I am [TYPE YOUR CONNECTION — e.g., an Eaton Fire survivor who lost my home] in [TYPE YOUR CITY]. I am writing in support of SB 1090.\n\n"+
 "[TYPE 2–3 SENTENCES OF YOUR OWN STORY HERE — what the fire and this fight mean to you and your neighbors. This personal part is what makes your letter count.]\n\n"+
 "SB 1090 simply lets our community recover on its own terms. It pauses the SB 1123 by-right subdivision pathway during the recovery window so families can come home before speculation locks the map in place. It is look-forward protection — it does not take any housing away.\n\n"+
 "SB 1090 deserves your support for several reasons:\n"+
-"• Fairness — it should not be easier for a developer to build ten units on a cleared lot than for the family next door to rebuild the one home they lost.\n"+
+"• Fairness — a survivor may rebuild only about 10% larger than what they lost to keep the fast permit, while a speculator on the same burned lot may build ten times more, by right and with no hearing.\n"+
 "• Life safety — adding households and cars to narrow, single-access foothill streets that just failed in a deadly fire lengthens evacuation and endangers residents.\n"+
 "• Infrastructure — many lots are on septic (not public sewer), without sidewalks or adequate roads; they do not fit SB 1123's urban-infill premise.\n"+
 "• The disaster zone deserves protection — after the same fire, the Pacific Palisades received relief from these density provisions; the Altadena disaster zone deserves that same protection, which SB 1090 provides.\n"+
-"• Original intent — SB 1123 was written to create starter homes through ordinary urban infill, not to let speculators subdivide fire-destroyed lots in a disaster zone; these projects go against the law's purpose.\n\n"+
+"• Eligibility & intent — many of these projects do not even meet SB 1123's own rules (the ~75% developed-perimeter test), and the County has already voided two of these subdivisions; the law was written for urban infill, not fire-cleared disaster lots.\n\n"+
 "I respectfully urge your AYE vote on SB 1090. Thank you for your consideration.\n\n"+
 "Sincerely,\n[TYPE YOUR NAME]\n[TYPE YOUR CITY]";
 function setDefaultLetter(){var el=document.getElementById('lout');if(el&&!el.value)el.value=DEFAULT_LETTER;}
 var JOINED=false;
 function joinFromBuilder(){if(JOINED)return;var c=document.getElementById('ljoin');if(!c||!c.checked)return;var email=gv('lemail');if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))return;JOINED=true;fetch(SB_URL+'/rest/v1/signups',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify({name:gv('lname')||null,email:email,zip:gv('lcity')||null,consent:true,source:'letter_builder'})}).catch(function(){});}
+function logBuild(action){fetch(SB_URL+'/rest/v1/builder_events',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify({email:gv('lemail')||null,name:gv('lname')||null,city:gv('lcity')||null,action:action})}).catch(function(){});}
 var BKEY='sb1090_builder_v1';
 function saveBuilder(){try{localStorage.setItem(BKEY,JSON.stringify({name:gv('lname'),email:gv('lemail'),city:gv('lcity'),story:gv('lstory'),conns:checkedVals('.lconnchk'),points:checkedVals('.lpchk'),lout:document.getElementById('lout').value}));}catch(e){}}
 function restoreBuilder(){try{var d=JSON.parse(localStorage.getItem(BKEY)||'null');if(!d)return;if(d.name)document.getElementById('lname').value=d.name;if(d.email)document.getElementById('lemail').value=d.email;if(d.city)document.getElementById('lcity').value=d.city;if(d.story)document.getElementById('lstory').value=d.story;(d.conns||[]).forEach(function(v){Array.prototype.forEach.call(document.querySelectorAll('.lconnchk'),function(c){if(c.value===v)c.checked=true;});});(d.points||[]).forEach(function(v){Array.prototype.forEach.call(document.querySelectorAll('.lpchk'),function(c){if(c.value===v)c.checked=true;});});updatePHint();if(d.lout&&d.lout.trim())document.getElementById('lout').value=d.lout;}catch(e){}}
@@ -453,7 +453,7 @@ function buildLetter(){
  var L=
 '[TYPE YOUR NAME / ADDRESS — letterhead if you have one]\n[TYPE THE DATE]\n\n'+
 'The Honorable Matt Haney, Chair\nAssembly Committee on Housing and Community Development\n(Submitted via the California Legislature Advocates Portal)\n\n'+
-'Re: SB 1090 (Pérez) — SUPPORT. Hearing June 24, 2026.\n\n'+
+'Re: SB 1090 (Pérez) — SUPPORT. Hearing July 1, 2026.\n\n'+
 'Dear Chair Haney and Members of the Committee:\n\n'+
 'My name is '+name+', and I am '+conn+' in '+city+'. I am writing in support of SB 1090.\n\n'+
 story+'\n\n'+
@@ -461,10 +461,10 @@ story+'\n\n'+
 'I respectfully urge your AYE vote on SB 1090. Thank you for your consideration.\n\n'+
 'Sincerely,\n'+name+'\n'+city;
  document.getElementById('lout').value=L;
- joinFromBuilder();saveBuilder();
+ joinFromBuilder();logBuild('build');saveBuilder();
  document.getElementById('lout').scrollIntoView({behavior:'smooth',block:'center'});
 }
-function copyOut(){var ta=document.getElementById('lout');if(!ta.value){alert('Click “Build my letter” first.');return;}ta.select();try{document.execCommand('copy');}catch(e){}if(navigator.clipboard)navigator.clipboard.writeText(ta.value);alert('Letter copied. Paste it into the Advocates Portal and your emails.');}
+function copyOut(){var ta=document.getElementById('lout');if(!ta.value){alert('Click “Build my letter” first.');return;}ta.select();try{document.execCommand('copy');}catch(e){}if(navigator.clipboard)navigator.clipboard.writeText(ta.value);logBuild('copy');alert('Letter copied. Paste it into the Advocates Portal and your emails.');}
 function copyMemberVersion(){
  var t=document.getElementById('lout').value||'';
  if(!t.trim()){alert('Personalize your letter in the builder first.');return;}
@@ -475,11 +475,21 @@ function copyMemberVersion(){
  try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);}catch(e){}
  alert('Member version copied! Paste it into your member’s web form, then change “[their name]” to the member you’re writing.');
 }
-function downloadLetter(){var txt=document.getElementById('lout').value;if(!txt){alert('Click “Build my letter” first.');return;}var esc=function(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};var body=txt.split('\n').map(function(l){return l.trim()===''?'<p>&nbsp;</p>':'<p style="margin:0 0 8pt 0;">'+esc(l)+'</p>';}).join('');var html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"></head><body style="font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;">'+body+'</body></html>';var blob=new Blob([html],{type:'application/msword'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='SB1090_support_letter.doc';document.body.appendChild(a);a.click();setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(a.href);},500);}
+function downloadLetterPDF(){var txt=document.getElementById('lout').value;if(!txt){alert('Click “Personalize my letter” first.');return;}
+ if(!window.jspdf||!window.jspdf.jsPDF){alert('PDF tool is still loading — falling back to Word.');return downloadLetter();}
+ var doc=new window.jspdf.jsPDF({unit:'pt',format:'letter'});
+ doc.setFont('times','normal');doc.setFontSize(11.5);
+ var ml=72,mt=72,maxw=612-144,lh=15.5,y=mt;
+ txt.split('\n').forEach(function(line){
+   var parts=(line==='')?['']:doc.splitTextToSize(line,maxw);
+   parts.forEach(function(p){if(y>792-72){doc.addPage();y=mt;}doc.text(p,ml,y);y+=lh;});
+ });
+ doc.save('SB1090_support_letter.pdf');logBuild('download_pdf');}
+function downloadLetter(){var txt=document.getElementById('lout').value;if(!txt){alert('Click “Build my letter” first.');return;}var esc=function(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};var body=txt.split('\n').map(function(l){return l.trim()===''?'<p>&nbsp;</p>':'<p style="margin:0 0 8pt 0;">'+esc(l)+'</p>';}).join('');var html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"></head><body style="font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;">'+body+'</body></html>';var blob=new Blob([html],{type:'application/msword'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='SB1090_support_letter.doc';document.body.appendChild(a);a.click();logBuild('download');setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(a.href);},500);}
 function mailLetterMine(addr){var body=document.getElementById('lout').value||'[Build your letter above, then it will appear here.]';location.href='mailto:'+addr+'?subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT (constituent letter)')+'&body='+encodeURIComponent(body);}
-function mailLetterAll(){var to='Lisa.Engel@asm.ca.gov,Dori.Ganetsos@asm.ca.gov,Juan.Reyes@asm.ca.gov,Angela.Mapp@asm.ca.gov,Jimmy.MacDonald@asm.ca.gov,Linda.Rios@asm.ca.gov';var body=document.getElementById('lout').value||'[Build your letter above, then it will appear here.]';location.href='mailto:'+to+'?subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(body);}
-function gmailLetterAll(){var to='Lisa.Engel@asm.ca.gov,Dori.Ganetsos@asm.ca.gov,Juan.Reyes@asm.ca.gov,Angela.Mapp@asm.ca.gov,Jimmy.MacDonald@asm.ca.gov,Linda.Rios@asm.ca.gov';var body=document.getElementById('lout').value||'[Build your letter above, then it will appear here.]';window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(to)+'&su='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(body),'_blank','noopener');}
-var ORG_TEMPLATE='[ORGANIZATION LETTERHEAD]\n[Date]\n\nThe Honorable Matt Haney, Chair\nAssembly Committee on Housing and Community Development\n(Submitted via the California Legislature Advocates Portal)\n\nRe: SB 1090 (Pérez) — SUPPORT. Hearing June 24, 2026.\n\nDear Chair Haney and Members of the Committee:\n\n[Organization name] writes in support of SB 1090. [One or two sentences: who your organization is, who it represents, and why disaster recovery / housing / community stability is central to your mission.]\n\nSB 1090 gives a community devastated by a declared disaster a narrow, time-limited tool to pause the SB 1123 by-right lot-split pathway during recovery. It is look-forward protection: it does not repeal housing law or block construction — it keeps speculative subdivision from locking in before residents can return and a real rebuilding plan can take shape. [Add one specific concern your organization or members have observed — for example, that it should not be easier for a developer to build than for a survivor to rebuild, or that added density threatens evacuation on narrow fire-damaged streets.]\n\nFor these reasons, [Organization name] respectfully urges your AYE vote on SB 1090.\n\nSincerely,\n[Name, Title]\n[Organization]\n[Contact]\n\ncc: Sen. Sasha Renée Pérez (author); Asm. John Harabedian (co-author); Assembly Committee on Local Government';
+function mailLetterAll(){var to='Lisa.Engel@asm.ca.gov,Dori.Ganetsos@asm.ca.gov,Juan.Reyes@asm.ca.gov,Angela.Mapp@asm.ca.gov,Jimmy.MacDonald@asm.ca.gov,Linda.Rios@asm.ca.gov';var body=document.getElementById('lout').value||'[Build your letter above, then it will appear here.]';logBuild('mailapp');location.href='mailto:'+to+'?subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(body);}
+function gmailLetterAll(){var to='Lisa.Engel@asm.ca.gov,Dori.Ganetsos@asm.ca.gov,Juan.Reyes@asm.ca.gov,Angela.Mapp@asm.ca.gov,Jimmy.MacDonald@asm.ca.gov,Linda.Rios@asm.ca.gov';var body=document.getElementById('lout').value||'[Build your letter above, then it will appear here.]';logBuild('gmail');window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(to)+'&su='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(body),'_blank','noopener');}
+var ORG_TEMPLATE='[ORGANIZATION LETTERHEAD]\n[Date]\n\nThe Honorable Matt Haney, Chair\nAssembly Committee on Housing and Community Development\n(Submitted via the California Legislature Advocates Portal)\n\nRe: SB 1090 (Pérez) — SUPPORT. Hearing July 1, 2026.\n\nDear Chair Haney and Members of the Committee:\n\n[Organization name] writes in support of SB 1090. [One or two sentences: who your organization is, who it represents, and why disaster recovery / housing / community stability is central to your mission.]\n\nSB 1090 gives a community devastated by a declared disaster a narrow, time-limited tool to pause the SB 1123 by-right lot-split pathway during recovery. It is look-forward protection: it does not repeal housing law or block construction — it keeps speculative subdivision from locking in before residents can return and a real rebuilding plan can take shape. [Add one specific concern your organization or members have observed — for example, that it should not be easier for a developer to build than for a survivor to rebuild, or that added density threatens evacuation on narrow fire-damaged streets.]\n\nFor these reasons, [Organization name] respectfully urges your AYE vote on SB 1090.\n\nSincerely,\n[Name, Title]\n[Organization]\n[Contact]\n\ncc: Sen. Sasha Renée Pérez (author); Asm. John Harabedian (co-author); Assembly Committee on Local Government';
 function copyOrg(){if(navigator.clipboard)navigator.clipboard.writeText(ORG_TEMPLATE);try{var t=document.createElement('textarea');t.value=ORG_TEMPLATE;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);}catch(e){}alert('Organization template copied — personalize it to your group before filing.');}
 function mapCall(o){return {caller_name:o.caller_name,caller_city:o.caller_city,member:o.member,committee:o.committee,call_date:o.call_date||null,outcome:o.outcome,notes:o.notes};}
 function mapPet(o){return {name:o.name,city:o.city,comment:o.comment};}
@@ -493,13 +503,13 @@ function mapTest(o){return o;}
 function submitForm(e,table,okId,mapFn,after){e.preventDefault();var f=e.target,row=mapFn(vals(f)),btn=f.querySelector('button[type=submit]');if(btn){btn.disabled=true;btn.textContent='Sending…';}
  fetch(SB_URL+'/rest/v1/'+table,{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(row)}).then(function(r){
    if(r.ok){f.reset();document.getElementById(okId).style.display='block';if(after)after();}
-   else{alert('Sorry — something went wrong. Please try again or email noelhyun@gmail.com.');}
+   else{alert('Sorry — something went wrong. Please try again shortly.');}
  }).catch(function(){alert('Network error — please try again.');}).finally(function(){if(btn){btn.disabled=false;btn.textContent=btn.getAttribute('data-l')||'Submit';}});
  return false;}
 function loadCount(){fetch(SB_URL+'/rest/v1/rpc/petition_count',{method:'POST',headers:H(),body:'{}'}).then(function(r){return r.ok?r.json():null;}).then(function(n){if(n!==null)document.getElementById('petCount').textContent=Number(n).toLocaleString();});}
 function afterPet(){var el=document.getElementById('petCount'),n=parseInt((el.textContent||'0').replace(/,/g,''))||0;el.textContent=(n+1).toLocaleString();}
 function copyLink(){var u=location.href;if(navigator.clipboard)navigator.clipboard.writeText(u);alert('Link copied: '+u);}
-function igShare(){var cap="After the Eaton Fire, speculators are buying burned Altadena lots and using SB 1123 to pack up to 10 units onto them — by right, with no public hearing — before families can even rebuild. SB 1090 would stop it; the committee hearing is June 24. Take action — link in our bio. #SaveAltadena #Altadena #EatonFire #SB1090 #SB1123";if(navigator.clipboard)navigator.clipboard.writeText(cap);alert('Caption copied. Instagram does not allow link-sharing — so: 1) download a graphic below, 2) open Instagram and create a post or story, 3) paste this caption and put the site link in your bio.');}
+function igShare(){var cap="After the Eaton Fire, speculators are buying burned Altadena lots and using SB 1123 to pack up to 10 units onto them — by right, with no public hearing — before families can even rebuild. SB 1090 would stop it; the committee hearing is July 1. Take action — link in our bio. #SaveAltadena #Altadena #EatonFire #SB1090 #SB1123";if(navigator.clipboard)navigator.clipboard.writeText(cap);alert('Caption copied. Instagram does not allow link-sharing — so: 1) download a graphic below, 2) open Instagram and create a post or story, 3) paste this caption and put the site link in your bio.');}
 (function(){var u=encodeURIComponent(location.href);document.getElementById('shareFb').href='https://www.facebook.com/sharer/sharer.php?u='+u;document.getElementById('shareTw').href='https://twitter.com/intent/tweet?text='+encodeURIComponent('Support SB 1090 — protect Altadena\'s fire recovery. Act: ')+u;})();
 Array.prototype.forEach.call(document.querySelectorAll('button[type=submit]'),function(b){b.setAttribute('data-l',b.textContent);});
 populateConns();populateLpoint();setDefaultLetter();restoreBuilder();wireBuilderSave();fill('hcd',HCD,'hcd');fill('lg',LG,'lg');updateProg();
