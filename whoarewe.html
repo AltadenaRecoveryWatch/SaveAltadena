@@ -37,6 +37,17 @@
   .btn.red{background:var(--red);}.btn.brick{background:var(--brick);}
   footer{background:#241a17;color:#cbb;padding:22px 0;font-size:13px;margin-top:10px;}
   footer a{color:#ffd9c9;}
+  .stand{color:var(--brick);font-size:24px;margin:24px 0 4px;}
+  .standsub{color:#5d4b44;font-size:14.5px;margin:0 0 14px;}
+  details.acc{border:1px solid #e7dcd5;border-left:4px solid var(--coral);border-radius:10px;margin:0 0 10px;background:#fff;overflow:hidden;}
+  details.acc summary{list-style:none;cursor:pointer;padding:14px 18px;font-weight:800;color:var(--brick);font-size:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+  details.acc summary::-webkit-details-marker{display:none;}
+  details.acc summary::after{content:'+';font-size:24px;color:var(--coral);font-weight:800;line-height:1;flex:0 0 auto;}
+  details.acc[open] summary::after{content:'–';}
+  details.acc .acc-body{padding:0 18px 16px;font-size:15.5px;line-height:1.55;color:var(--ink);}
+  .graphic{margin:22px 0;text-align:center;}
+  .graphic img{max-width:100%;height:auto;border:1px solid #e7dcd5;border-radius:12px;}
+  .graphic .ph{border:2px dashed #d7c3b8;border-radius:12px;padding:40px 20px;color:#9a8a82;font-size:14px;background:#faf6f4;}
   @media(max-width:620px){.hero h1{font-size:26px;}}
 </style>
 </head>
@@ -58,16 +69,20 @@
 
   <p>Groups we work with include but are not limited to: <a href="https://altadenaheritage.org/" target="_blank" rel="noopener">Altadena Heritage</a> · <a href="https://save-altadena.org/" target="_blank" rel="noopener">Save Altadena</a> · <a href="https://www.facebook.com/groups/beautifulaltadena" target="_blank" rel="noopener">Beautiful Altadena</a>.</p>
 
-  <p>Here is where we stand on SB 1090:</p>
+  <h2 class="stand">Where We Stand</h2>
+  <p class="standsub">Our position on SB 1090 — tap any point to expand.</p>
 
-  <ul class="points">
-    <li><b>Parity, nothing more.</b> The Palisades got this exact protection by executive order (EO N-32-25). Altadena — which lost 45% more, nearly 9,000 homes, businesses, and structures — asks only for the same.</li>
-    <li><b>Disaster capitalism is not a fair housing solution.</b> Out-of-town developers can carve a displaced family's lot into ten by-right units before that family even returns. A survivor may rebuild just 10% larger; a developer next door gets ten times the units. SB 1123 makes it easier to speculate than to come home — the Legislature shouldn't let the market profit off a community that lost everything.</li>
-    <li><b>SB 1090 protects the SHRA's original purpose.</b> The Starter Home Revitalization Act was built for scattered urban infill on abandoned lots — not fire-cleared ones. SB 1090 safeguards that intent; it doesn't repeal the law.</li>
-    <li><b>Without SB 1090, SB 1123 pushes a statewide crisis onto one vulnerable community.</b> It dumps California's housing shortage onto a single, not-yet-recovered disaster zone — historically marginalized, home to renters who lost two-thirds of their rent-stabilized housing, and still without rebuilt roads, sewer, water, or grid to carry more density.</li>
-    <li><b>It will brand the SHRA the “Altadena Fire Sale Act.”</b> A program meant to model responsible infill instead becomes the law that let investors carve up a burn scar — discrediting the very policy.</li>
-    <li><b>Altadena's own framework already delivers high density in our prime corridors.</b> We welcome real, mixed-use density where it belongs — in our commercial corridors. And even with SB 1090, every single-family lot already allows four homes (the house plus a local ADU, a state ADU, and a junior ADU) under our Community Standards District and the County ADU ordinance. Let our own planning framework guide the rebuild, not state laws written for a different reality.</li>
-  </ul>
+  <details class="acc"><summary>Parity, nothing more.</summary><div class="acc-body">The Palisades got this exact protection by executive order (EO N-32-25). Altadena — which lost 45% more, nearly 9,000 homes, businesses, and structures — asks only for the same.</div></details>
+  <details class="acc"><summary>Disaster capitalism is not a fair housing solution.</summary><div class="acc-body">Out-of-town developers can carve a displaced family's lot into ten by-right units before that family even returns. A survivor may rebuild just 10% larger; a developer next door gets ten times the units. SB 1123 makes it easier to speculate than to come home — the Legislature shouldn't let the market profit off a community that lost everything.</div></details>
+  <details class="acc"><summary>SB 1090 protects the SHRA's original purpose.</summary><div class="acc-body">The Starter Home Revitalization Act was built for scattered urban infill on abandoned lots — not fire-cleared ones. SB 1090 safeguards that intent; it doesn't repeal the law.</div></details>
+  <details class="acc"><summary>Without SB 1090, SB 1123 pushes a statewide crisis onto one vulnerable community.</summary><div class="acc-body">It dumps California's housing shortage onto a single, not-yet-recovered disaster zone — historically marginalized, home to renters who lost two-thirds of their rent-stabilized housing, and still without rebuilt roads, sewer, water, or grid to carry more density.</div></details>
+  <details class="acc"><summary>It will brand the SHRA the “Altadena Fire Sale Act.”</summary><div class="acc-body">A program meant to model responsible infill instead becomes the law that let investors carve up a burn scar — discrediting the very policy.</div></details>
+  <details class="acc"><summary>Altadena's own framework already delivers high density in our prime corridors.</summary><div class="acc-body">We welcome real, mixed-use density where it belongs — in our commercial corridors. And even with SB 1090, every single-family lot already allows four homes (the house plus a local ADU, a state ADU, and a junior ADU) under our Community Standards District and the County ADU ordinance. Let our own planning framework guide the rebuild, not state laws written for a different reality.</div></details>
+
+  <div class="graphic">
+    <img src="recovery-before-density.png" alt="Recovery before density. Let Altadena rebuild — support SB 1090." loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+    <div class="ph" style="display:none;">[ Infographic goes here — save the image into the website folder as <b>recovery-before-density.png</b> ]</div>
+  </div>
 
   <div class="cta">
     <a class="btn red" href="index.html#build">✍ Write your letter →</a>
