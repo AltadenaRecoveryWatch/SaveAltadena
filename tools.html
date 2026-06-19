@@ -32,10 +32,13 @@
   .btn.ghost2{background:#fff;color:var(--brick);border:1.5px solid var(--brick);}
   .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px;}
   .card{border:1px solid #e3d2ca;border-radius:12px;padding:18px 20px;margin:12px 0;background:#fff;}
-  .scriptbox{background:#f3f7f4;border:1px solid #bcd9c9;border-left:5px solid var(--green);border-radius:10px;padding:15px 18px;margin:12px 0;}
-  .scriptbox .sh{font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:6px;}
-  .scriptbox p{font-size:14.5px;line-height:1.6;margin:0 0 9px;}
-  .scriptbox p:last-child{margin-bottom:0;}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:10px;}
+  .tile{border:1px solid #e3d2ca;border-radius:14px;padding:18px 18px 20px;background:#fff;display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .tile .ic{font-size:30px;line-height:1;margin-bottom:8px;}
+  .tile h3{color:var(--brick);font-size:17px;margin-bottom:6px;}
+  .tile p{font-size:13.5px;color:#5d4b44;line-height:1.5;margin-bottom:14px;flex:1 1 auto;}
+  .tile .btn{width:100%;text-align:center;padding:11px 12px;font-size:14px;}
+  .tile a.more{display:block;text-align:center;margin-top:8px;font-size:12.5px;font-weight:700;color:var(--coral);text-decoration:none;}
   .flyers{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px;}
   .flyer figure{margin:0;border:1px solid #e3d2ca;border-radius:12px;overflow:hidden;background:#fff;}
   .flyer img{width:100%;display:block;}
@@ -58,44 +61,33 @@
   <p>Everything you need to take action on SB 1090 — print it, share it, hand it out. Two committee hearings: <strong>Wednesday, July 1, 2026</strong>.</p>
 </div></div>
 
-<!-- CALL PACKET -->
+<!-- DOWNLOADS -->
 <section><div class="wrap">
-  <h2>📞 Phone-call packet</h2>
-  <p class="sub">The 30-second script plus the full call list — all 22 committee members with phone numbers and a tally column. Print it and work the list.</p>
-
-  <div class="scriptbox">
-    <div class="sh">Your 30-second call script</div>
-    <p>“Hi, my name is <b>[your name]</b>, and I'm a constituent calling from <b>[your city]</b>. I'm asking the Assemblymember to vote <b>AYE on SB 1090</b> — and to pass it as written, with no amendments.”</p>
-    <p>After the Eaton Fire, out-of-town developers are using SB 1123 to split burned Altadena lots into as many as ten units — by right, with no hearing — before families can even return. SB 1090 puts a narrow, temporary pause on that, and it takes no housing away.</p>
-    <p>Two quick reasons: First, <b>parity</b> — the Palisades already got this exact protection by executive order after the same fire; Altadena lost even more and deserves the same. Second, <b>fairness</b> — a survivor can rebuild only about 10% larger, while a developer next door gets ten times the units. That's disaster capitalism, not recovery.</p>
-    <p>“Please vote AYE on SB 1090 and pass it as written. Thank you.”</p>
+  <h2>Action toolkit</h2>
+  <p class="sub">Grab what you need — print it, share it, hand it out.</p>
+  <div class="tiles">
+    <div class="tile">
+      <div class="ic">📞</div>
+      <h3>Phone-call packet</h3>
+      <p>The 30-second script plus the full call list — all 22 committee members with phone numbers and a tally column.</p>
+      <a class="btn red" href="SB1090_call_packet.pdf" download>⬇ Download PDF</a>
+      <a class="more" href="call_members.html">Call &amp; log online →</a>
+    </div>
+    <div class="tile">
+      <div class="ic">✍</div>
+      <h3>Support-letter template</h3>
+      <p>A ready-to-send SB 1090 letter with instructions at the top — fill in your details, sign, and file it by June 24.</p>
+      <a class="btn brick" href="SB1090_support_letter_with_instructions.docx" download>⬇ Download Word</a>
+      <a class="more" href="index.html#build">Build it online →</a>
+    </div>
+    <div class="tile">
+      <div class="ic">📋</div>
+      <h3>Sign-on petition</h3>
+      <p>One shared letter to print and collect signatures by hand — 20 per page. Great for tabling, doors, and events.</p>
+      <a class="btn red" href="SB1090_petition.pdf" download>⬇ Download PDF</a>
+      <a class="more" href="mailto:hello@altadenarecoverywatch.com">Email completed sheets →</a>
+    </div>
   </div>
-
-  <div class="row">
-    <a class="btn red" href="SB1090_call_packet.pdf" download>⬇ Download the call packet (PDF)</a>
-    <a class="btn ghost2" href="call_members.html">Call &amp; log online →</a>
-  </div>
-</div></section>
-
-<!-- SUPPORT LETTER TEMPLATE -->
-<section><div class="wrap">
-  <h2>✍ Support-letter template</h2>
-  <p class="sub">A ready-to-send SB 1090 support letter with simple instructions at the top — fill in your name, address, and a sentence or two, then file it.</p>
-  <div class="row">
-    <a class="btn brick" href="SB1090_support_letter_with_instructions.docx" download>⬇ Download template letter (Word)</a>
-    <a class="btn ghost2" href="index.html#build">Build it online instead →</a>
-  </div>
-  <p class="muted" style="margin-top:10px;">The committee wants a <b>signed</b> letter. Edit the Word file, sign it, save as PDF, and file it on the Advocates Portal (deadline <b>June 24, 5 p.m.</b>) or email it in.</p>
-</div></section>
-
-<!-- PETITION -->
-<section><div class="wrap">
-  <h2>📋 Sign-on petition (print &amp; collect signatures)</h2>
-  <p class="sub">One shared letter the whole community signs onto — perfect for tabling, doorknocking, meetings, and events. Print it, gather signatures by hand, then return the sheets to us.</p>
-  <div class="row">
-    <a class="btn red" href="SB1090_petition.pdf" download>⬇ Download the petition (PDF)</a>
-  </div>
-  <p class="muted" style="margin-top:10px;">Each page holds 20 signatures (name, address, signature, date). Print as many as you need. Return completed sheets to a volunteer, or photograph/scan and email them to <a href="mailto:hello@altadenarecoverywatch.com">hello@altadenarecoverywatch.com</a>.</p>
 </div></section>
 
 <!-- FLYERS -->
