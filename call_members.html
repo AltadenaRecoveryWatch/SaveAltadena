@@ -136,9 +136,15 @@ function toggle(cm,ad,tr){var d=getDone(),id=rid(cm,ad),i=d.indexOf(id),nowDone=
 var SKEY='sb1090_sent_v1';
 function getSent(){try{return JSON.parse(localStorage.getItem(SKEY)||'[]');}catch(e){return [];}}
 function setSent(a){try{localStorage.setItem(SKEY,JSON.stringify(a));}catch(e){}}
+function validEmail(e){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e);}
+var CKEY='sb1090_caller_v1';
+function saveCaller(){try{localStorage.setItem(CKEY,JSON.stringify({name:gv('lname'),email:gv('lemail')}));}catch(e){}}
+function restoreCaller(){try{var d=JSON.parse(localStorage.getItem(CKEY)||'null');if(!d)return;var n=document.getElementById('lname'),m=document.getElementById('lemail');if(d.name&&n&&!n.value)n.value=d.name;if(d.email&&m&&!m.value)m.value=d.email;}catch(e){}}
+function flushPending(){if(gv('lname')&&validEmail(gv('lemail')))postCalls(getDone());}
+function wireCaller(){['lname','lemail'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',function(){saveCaller();flushPending();});});}
 var _nudged=false;
 function nudgeNE(){if(_nudged)return;_nudged=true;var ln=document.getElementById('lname');if(ln){ln.focus();ln.scrollIntoView({behavior:'smooth',block:'center'});}alert('Add your name and email at the top of this page so each call you log is counted. Your calls are saved here and will send once you do.');}
-function postCalls(ids){var nm=gv('lname'),em=gv('lemail');if(!nm||!em)return false;var sent=getSent(),rows=[],mark=[];ids.forEach(function(idr){if(sent.indexOf(idr)>=0)return;var p=idr.split('_'),cm=p[0],ad=p[1],mem=memberFor(cm,ad);if(!mem)return;rows.push({name:nm,email:em,official:mem,official_key:ad,committee:cm==='hcd'?'Housing & Community Development':'Local Government',action:'call',source:'sb1090-hub'});mark.push(idr);});if(!rows.length)return true;fetch(SB_URL+'/rest/v1/outreach_log',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(rows)}).then(function(r){if(r.ok){var s=getSent();mark.forEach(function(x){if(s.indexOf(x)<0)s.push(x);});setSent(s);}});return true;}
+function postCalls(ids){var nm=gv('lname'),em=gv('lemail');if(!nm||!validEmail(em))return false;var sent=getSent(),rows=[],mark=[];ids.forEach(function(idr){if(sent.indexOf(idr)>=0)return;var p=idr.split('_'),cm=p[0],ad=p[1],mem=memberFor(cm,ad);if(!mem)return;rows.push({name:nm,email:em,official:mem,official_key:ad,committee:cm==='hcd'?'Housing & Community Development':'Local Government',action:'call',source:'sb1090-hub'});mark.push(idr);});if(!rows.length)return true;fetch(SB_URL+'/rest/v1/outreach_log',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(rows)}).then(function(r){if(r.ok){var s=getSent();mark.forEach(function(x){if(s.indexOf(x)<0)s.push(x);});setSent(s);}});return true;}
 var LKEY='sb1090_letters_v1';
 function getLetters(){try{return JSON.parse(localStorage.getItem(LKEY)||'[]');}catch(e){return [];}}
 function setLetters(a){try{localStorage.setItem(LKEY,JSON.stringify(a));}catch(e){}}
@@ -173,7 +179,7 @@ function checkAD(){var v=parseInt((document.getElementById('adInput').value||'')
  if(!v){el.innerHTML='Enter your Assembly district number, or use “Find my district.”';el.style.color='#7a6a62';return;}
  if(ADMAP[v]){el.innerHTML='✅ Yes — AD '+v+' is on a target committee: <b>'+ADMAP[v].join(', ')+'</b>. You are their constituent — contact <b>this member first</b> (find them in the list below) and mention you live in their district. <a class="lk2" target="_blank" rel="noopener" href="'+form('AD'+(v<10?'0'+v:v))+'">Open AD'+(v<10?'0'+v:v)+' form ▸</a>';el.style.color='#1f3a2e';}
  else{el.innerHTML='Your Assemblymember (AD '+v+') isn’t on these committees. Best moves: <b>call</b> the members below (calls count), and <b>recruit friends who live in the committee districts</b> to email their own member.';el.style.color='#7a2e1d';}}
-fill('hcd',HCD,'hcd');fill('lg',LG,'lg');updateProg();
+restoreCaller();fill('hcd',HCD,'hcd');fill('lg',LG,'lg');updateProg();wireCaller();flushPending();
 </script>
 </body>
 </html>
