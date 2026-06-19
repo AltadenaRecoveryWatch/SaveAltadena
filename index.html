@@ -133,10 +133,10 @@
   </div>
   <label>Your story — the most important part. 2–3 sentences in your own words: who you are, your connection to Altadena, what you and your family lost or still face, and why SB 1090 matters to you.</label>
   <textarea id="lstory" style="min-height:110px;" placeholder="e.g., We lost the home we'd lived in for 22 years. We're determined to rebuild — but a developer just filed to split the burned lot next door into nine units, with no hearing and no say for those of us coming back."></textarea>
-  <div class="row"><button class="btn navy" onclick="buildLetter()">Click To Personalize</button></div>
+  <div class="row"><button class="btn navy" onclick="buildLetter()">Click To Build Letter</button></div>
   <label>Your letter (your full letter is already written below — just replace any remaining [ bracketed ] parts, edit freely, then copy or download)</label>
   <textarea id="lout" style="min-height:300px;"></textarea>
-  <div class="row"><button class="btn red" onclick="copyOut()">Copy letter text</button><button class="btn navy" onclick="downloadLetterPDF()">Download as PDF</button></div>
+  <div class="row"><button class="btn navy" onclick="downloadLetterPDF()">Download as PDF</button></div>
   <p class="muted">The Advocates Portal and the committee consultants want a <b>signed letter</b>, not pasted text. Download the <b>PDF</b>, print and sign it (or add a digital signature), and upload or attach it. Want to add letterhead first? Download the <b>Word</b> version, edit and sign, then save as PDF.</p>
 
 </div></section>
@@ -229,8 +229,8 @@ var SB_KEY='sb_publishable_fx2DSgqy0PizzNV3ESY99Q_00jujiO7';
 var CC_US='noelhyun@gmail.com,assemblymember.harabedian@assembly.ca.gov,navartanian@bos.lacounty.gov,fernando.ramirez@sen.ca.gov';
 var STAFF_TO='Lisa.Engel@asm.ca.gov,Dori.Ganetsos@asm.ca.gov,Juan.Reyes@asm.ca.gov,Angela.Mapp@asm.ca.gov,Jimmy.MacDonald@asm.ca.gov,Linda.Rios@asm.ca.gov';
 var STD_LETTER="Dear Chair Haney and Members of the Committee:\n\nI write in support of SB 1090 (Sen. Pérez) and urge an AYE vote — please pass it as currently written. After the January 2025 Eaton Fire, out-of-town developers began using SB 1123 to subdivide burned Altadena lots into as many as ten units by right, with no hearing, before families can rebuild. SB 1090 places a narrow, time-limited pause on that by-right lot-splitting in the disaster area. It is look-forward protection and takes no housing away.\n\nIt should not be easier for an investor to build ten units on a cleared lot than for the family next door to rebuild the one home they lost. Adding households and cars to narrow, single-access foothill streets that just failed in a deadly evacuation is a public-safety risk, and many of these lots are on septic with no rebuilt grid — they are not the urban infill SB 1123 assumes.\n\n[Add a sentence or two in your own words — your connection to Altadena and why this matters to you.]\n\nPlease vote AYE on SB 1090 and pass it as currently written. Thank you.\n\n[Your name]\n[Your city]";
-function quickGmail(){if(typeof logBuild==='function')logBuild('quick_gmail');window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(STAFF_TO)+'&bcc='+encodeURIComponent(CC_US)+'&su='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(STD_LETTER),'_blank','noopener');}
-function quickMail(){if(typeof logBuild==='function')logBuild('quick_mailapp');location.href='mailto:'+STAFF_TO+'?bcc='+CC_US+'&subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(STD_LETTER);}
+function quickGmail(){if(typeof joinFromBuilder==='function')joinFromBuilder();if(typeof logBuild==='function')logBuild('quick_gmail');window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(STAFF_TO)+'&bcc='+encodeURIComponent(CC_US)+'&su='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(STD_LETTER),'_blank','noopener');}
+function quickMail(){if(typeof joinFromBuilder==='function')joinFromBuilder();if(typeof logBuild==='function')logBuild('quick_mailapp');location.href='mailto:'+STAFF_TO+'?bcc='+CC_US+'&subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(STD_LETTER);}
 function H(){return {'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};}
 function vals(f){var o={};Array.prototype.forEach.call(f.elements,function(el){if(el.name)o[el.name]=el.value;});return o;}
 var BODIES={
@@ -387,7 +387,7 @@ function copyMemberVersion(){
  try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);}catch(e){}
  alert('Member version copied! Paste it into your member’s web form, then change “[their name]” to the member you’re writing.');
 }
-function downloadLetterPDF(){var txt=document.getElementById('lout').value;if(!txt){alert('Click “Personalize my letter” first.');return;}
+function downloadLetterPDF(){var txt=document.getElementById('lout').value;if(!txt){alert('Click “Build Letter” first.');return;}
  if(!window.jspdf||!window.jspdf.jsPDF){alert('PDF tool is still loading — falling back to Word.');return downloadLetter();}
  var doc=new window.jspdf.jsPDF({unit:'pt',format:'letter'});
  doc.setFont('times','normal');doc.setFontSize(11.5);
@@ -396,7 +396,7 @@ function downloadLetterPDF(){var txt=document.getElementById('lout').value;if(!t
    var parts=(line==='')?['']:doc.splitTextToSize(line,maxw);
    parts.forEach(function(p){if(y>792-72){doc.addPage();y=mt;}doc.text(p,ml,y);y+=lh;});
  });
- doc.save('SB1090_support_letter.pdf');logBuild('download_pdf');}
+ doc.save('SB1090_support_letter.pdf');joinFromBuilder();logBuild('download_pdf');}
 function downloadLetter(){var txt=document.getElementById('lout').value;if(!txt){alert('Click “Build my letter” first.');return;}var esc=function(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};var body=txt.split('\n').map(function(l){return l.trim()===''?'<p>&nbsp;</p>':'<p style="margin:0 0 8pt 0;">'+esc(l)+'</p>';}).join('');var html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"></head><body style="font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;">'+body+'</body></html>';var blob=new Blob([html],{type:'application/msword'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='SB1090_support_letter.doc';document.body.appendChild(a);a.click();logBuild('download');setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(a.href);},500);}
 function mailLetterMine(addr){var body=document.getElementById('lout').value||'[Build your letter above, then it will appear here.]';location.href='mailto:'+addr+'?bcc='+CC_US+'&subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT (constituent letter)')+'&body='+encodeURIComponent(body);}
 function mailLetterAll(){var to='Lisa.Engel@asm.ca.gov,Dori.Ganetsos@asm.ca.gov,Juan.Reyes@asm.ca.gov,Angela.Mapp@asm.ca.gov,Jimmy.MacDonald@asm.ca.gov,Linda.Rios@asm.ca.gov';var body=document.getElementById('lout').value||'[Build your letter above, then it will appear here.]';logBuild('mailapp');location.href='mailto:'+to+'?bcc='+CC_US+'&subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(body);}

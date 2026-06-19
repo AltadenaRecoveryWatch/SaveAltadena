@@ -67,7 +67,7 @@
 <div class="hero"><div class="wrap">
   <span class="kk">STEP 4 · CONTACT THE MEMBERS</span>
   <h1>Call the committee members</h1>
-  <p>Members count constituent contacts. Work the list — both committees, starting with the <b>Chairs</b>. Tap a number to <b>call</b> (30 seconds, and it counts even if you're not their constituent), or open a member's <b>web form</b> to paste your letter. Click <b>“Click to log call”</b> as you go — your progress saves on this device.</p>
+  <p>Members count constituent contacts. Work the list — both committees, starting with the <b>Chairs</b>. Tap a number to <b>call</b> (30 seconds, and it counts even if you're not their constituent). Click <b>“Click to log call”</b> as you go — your progress saves on this device.</p>
 </div></div>
 
 <section><div class="wrap">
@@ -90,29 +90,17 @@
     <div id="finderResult"></div>
   </div>
 
-  <div class="finder" style="background:#eef5f0;border-color:#bcd9c9;">
-    <b>Have your letter ready.</b> Build or download your SB 1090 support letter on the <a href="index.html#send">homepage (Step 2)</a> — then paste it into each member's web form. Change the greeting to the member you're writing, and add your name and address so they can confirm you're a constituent.
-  </div>
-
   <div class="row"><span class="prog" id="prog">0 of 22 contacted</span> · <button class="btn ghost2" onclick="resetChecks()" style="padding:5px 11px;font-size:13px;">Reset</button></div>
   <p class="muted" style="margin:6px 0 0;">💾 Your checklist <b>saves in this browser</b> — take a break and come back on the same device to finish the list.</p>
 
-  <div class="finder" style="background:#fff7f2;border-color:#e6c9bb;">
-    <b>Why does it say “Open form” instead of an email?</b> California Assembly members don't publish personal email addresses — by design, they take public input through an official web form, one per district. It takes a minute: click <b>Open AD##</b>, paste your letter, add your name and address (so they can confirm you're a constituent), and submit.
-    <div style="margin-top:8px;"><b>Faster:</b> tap any phone number below — a 30-second call is logged and counts, even if you're not their constituent.</div>
-    <div class="muted" style="margin-top:6px;">Want to reach the staff who write the bill analysis? File your full letter with the committee in <a href="index.html#send">Step 2</a>.</div>
-  </div>
-
   <h3>Housing &amp; Community Development — hearing July 1, 9:30 a.m. (priority)</h3>
-  <table id="hcd"><thead><tr><th>Member</th><th>District &amp; area</th><th>Email (form)</th><th>Call &amp; log it</th></tr></thead><tbody></tbody></table>
+  <table id="hcd"><thead><tr><th>Member</th><th>District &amp; area</th><th>Call &amp; log it</th></tr></thead><tbody></tbody></table>
   <div class="row"><button class="btn navy" onclick="logContacts()">✓ Submit my calls →</button></div>
   <h3>Local Government — hearing July 1, 1:30 p.m.</h3>
-  <table id="lg"><thead><tr><th>Member</th><th>District &amp; area</th><th>Email (form)</th><th>Call &amp; log it</th></tr></thead><tbody></tbody></table>
+  <table id="lg"><thead><tr><th>Member</th><th>District &amp; area</th><th>Call &amp; log it</th></tr></thead><tbody></tbody></table>
   <div class="row"><button class="btn navy" onclick="logContacts()">✓ Submit my calls →</button></div>
   <div class="ok" id="callOk" style="display:none;"></div>
   <div class="staffbox">Not in any of these districts? Your best moves: <b>call</b> the members above (calls count even from non-constituents), and <b>recruit friends who live in these districts</b> to <a href="index.html#send">build and send their own letter</a>.</div>
-
-  <div class="alert">Don't forget the fastest path: <b>ask Gov. Newsom for an Executive Order</b> protecting the entire Eaton Fire disaster area. <a href="index.html#govstep">See the talking points in Step 3 ↑</a> <a class="btn green" style="margin-left:6px;" href="tel:+19164452841">Call the Governor: (916) 445-2841</a></div>
 
   <div class="row" style="margin-top:18px;"><a class="btn brick" href="index.html">← Back to Act Now</a></div>
 </div></section>
@@ -152,7 +140,6 @@ function fill(id,rows,cm){var tb=document.querySelector('#'+id+' tbody'),done=ge
   var role=r[1]?(' <span class="tag'+(r[5]?' pri':'')+'">'+r[1]+'</span>'):'';
   var c1=document.createElement('td');c1.innerHTML='<b>'+r[0]+'</b>'+role;
   var c2=document.createElement('td');c2.textContent=r[2];
-  var c3=document.createElement('td');c3.innerHTML='<a class="lk2" target="_blank" rel="noopener" href="'+form(r[3])+'">Open '+r[3]+' ▸</a>';
   var c4=document.createElement('td');
   var ph=document.createElement('a');ph.className='call';ph.href='tel:+1'+r[4];ph.textContent=fmtPhone(r[4]);
   c4.appendChild(ph);
@@ -160,7 +147,7 @@ function fill(id,rows,cm){var tb=document.querySelector('#'+id+' tbody'),done=ge
   btn.textContent=dn?'✓ Call logged':'📞 Click to log call';
   btn.onclick=function(){var nd=toggle(cm,r[3],tr);btn.textContent=nd?'✓ Call logged':'📞 Click to log call';btn.className='logbtn'+(nd?' logged':'');if(nd){if(postCalls([rid(cm,r[3])])===false)nudgeNE();}};
   c4.appendChild(btn);
-  tr.appendChild(c1);tr.appendChild(c2);tr.appendChild(c3);tr.appendChild(c4);tb.appendChild(tr);});}
+  tr.appendChild(c1);tr.appendChild(c2);tr.appendChild(c4);tb.appendChild(tr);});}
 function memberFor(cm,ad){var arr=cm==='hcd'?HCD:LG,mem=null;arr.forEach(function(r){if(r[3]===ad)mem=r[0];});return mem;}
 function logContacts(){
   var calls=getDone();
