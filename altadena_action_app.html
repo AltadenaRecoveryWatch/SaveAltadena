@@ -3,26 +3,110 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Take Action — Protect Altadena (SB 1090)</title>
-<meta http-equiv="refresh" content="0; url=index.html">
-<link rel="canonical" href="https://altadenarecoverywatch.com/index.html">
-<meta name="robots" content="noindex">
+<title>Join the List — Altadena Recovery Watch</title>
+<meta name="description" content="Join Altadena Recovery Watch — get updates on protecting Altadena's recovery from speculative lot-splitting.">
+<link rel="canonical" href="https://altadenarecoverywatch.com/altadena_action_app.html">
+<meta property="og:title" content="Join the List — Altadena Recovery Watch">
+<meta property="og:url" content="https://altadenarecoverywatch.com/altadena_action_app.html">
 <style>
-  body{margin:0;font-family:Helvetica,Arial,sans-serif;background:#faf1ec;color:#241a17;
-       display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:24px;}
-  .box{max-width:520px;}
-  h1{color:#7a2e1d;font-size:22px;margin:0 0 12px;}
-  p{font-size:16px;line-height:1.5;margin:0 0 18px;}
-  a.btn{display:inline-block;background:#7a2e1d;color:#fff;text-decoration:none;
-        padding:13px 24px;border-radius:8px;font-weight:800;}
+  :root{--brick:#7a2e1d;--green:#1f3a2e;--paper:#faf1ec;--ink:#241a17;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);}
+  nav{background:#241a17;color:#fff;}
+  nav .wrap{max-width:1040px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+  nav .brand{color:#fff;text-decoration:none;font-weight:800;letter-spacing:.5px;font-size:15px;}
+  nav a.lk{color:#fff;text-decoration:none;font-size:14px;margin-left:13px;font-weight:600;}
+  nav a.lk.on{color:#ffd9c9;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 18px;}
+  .hero{background:linear-gradient(180deg,#243b53,#1b2c40);color:#fff;padding:30px 0 26px;}
+  .hero h1{margin:0 0 8px;font-size:27px;line-height:1.15;color:#fff;}
+  .hero p{margin:0;font-size:15.5px;color:#dce7f0;max-width:640px;}
+  .card{background:#fff;border:1px solid #ecd6cc;border-radius:14px;max-width:540px;margin:26px auto;padding:24px 24px 22px;box-shadow:0 3px 12px rgba(0,0,0,.06);scroll-margin-top:70px;}
+  .card h2{margin:0 0 4px;color:var(--brick);font-size:21px;}
+  .card .sub{margin:0 0 16px;color:#6b5a52;font-size:14px;}
+  label{display:block;font-weight:700;font-size:13.5px;margin:12px 0 5px;color:#3a2a23;}
+  input[type=text],input[type=email]{width:100%;padding:11px 13px;border:1px solid #cbb9af;border-radius:8px;font-size:15px;font-family:inherit;}
+  input:focus{outline:none;border-color:var(--brick);box-shadow:0 0 0 3px rgba(122,46,29,.12);}
+  .req{color:var(--brick);}
+  .consent{display:flex;gap:9px;align-items:flex-start;margin:15px 0 4px;font-size:12.7px;color:#6b5a52;line-height:1.45;}
+  .consent input{margin-top:2px;}
+  button{margin-top:16px;width:100%;background:var(--brick);color:#fff;border:none;border-radius:9px;padding:13px;font-size:16px;font-weight:800;cursor:pointer;}
+  button:hover{background:#5f2417;}
+  button:disabled{opacity:.6;cursor:default;}
+  .msg{margin-top:14px;padding:12px 14px;border-radius:9px;font-size:14.5px;display:none;}
+  .ok{background:#eef5f0;border:1px solid #bcd9c9;color:#1f3a2e;}
+  .err{background:#fdecea;border:1px solid #e6b3aa;color:#7a2e1d;}
+  .alt{text-align:center;margin:6px auto 30px;font-size:13.5px;color:#6b5a52;}
+  .alt a{color:var(--brick);font-weight:700;}
+  footer{background:#241a17;color:#cbb9af;font-size:12.5px;text-align:center;padding:18px;}
+  footer a{color:#ffd9c9;text-decoration:none;}
 </style>
-<script>window.location.replace('index.html');</script>
 </head>
 <body>
-  <div class="box">
-    <h1>This page has moved</h1>
-    <p>Our action hub is now at <strong>Act Now</strong>. You'll be redirected automatically — if not, tap below.</p>
-    <p><a class="btn" href="index.html">Go to the SB 1090 action hub →</a></p>
-  </div>
+<nav><div class="wrap">
+  <a class="brand" href="index.html">ALTADENA RECOVERY WATCH</a>
+  <span><a class="lk" href="index.html">Act Now</a><a class="lk" href="altadena_lots_map.html">The Map</a><a class="lk" href="whoswoody.html">Who's Woody?</a><a class="lk" href="resources.html">Resources</a><a class="lk" href="press.html">Press</a><a class="lk on" href="altadena_action_app.html#signup">Join</a></span>
+</div></nav>
+
+<div class="hero"><div class="wrap">
+  <h1>Join the list</h1>
+  <p>Get updates on the fight to protect Altadena's recovery — SB 1090, the July 1 hearings, and how to help. We'll only email when it matters.</p>
+</div></div>
+
+<form id="signup" class="card" onsubmit="return submitJoin(event)">
+  <h2>Sign up</h2>
+  <p class="sub">Add your name and email and you're on the list.</p>
+
+  <label for="jname">Name</label>
+  <input type="text" id="jname" name="name" autocomplete="name" placeholder="Your name">
+
+  <label for="jemail">Email <span class="req">*</span></label>
+  <input type="email" id="jemail" name="email" autocomplete="email" placeholder="you@example.com" required>
+
+  <label for="jzip">ZIP code <span style="font-weight:400;color:#9a8a82;">(optional)</span></label>
+  <input type="text" id="jzip" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="91001" maxlength="10">
+
+  <label class="consent"><input type="checkbox" id="jconsent" checked> Yes, keep me updated by email about Altadena Recovery Watch and SB 1090.</label>
+
+  <button type="submit" id="jbtn">Join the list &rarr;</button>
+  <div class="msg ok" id="jok"></div>
+  <div class="msg err" id="jerr"></div>
+</form>
+
+<p class="alt">Want to do more right now? <a href="index.html#build">Build &amp; send a support letter &rarr;</a></p>
+
+<footer>
+  <strong>Altadena Recovery Watch</strong> — in coordination with Save Altadena.
+  <a href="index.html">Act Now</a> · <a href="altadena_lots_map.html">The Map</a> · <a href="press.html">Press</a><br>
+  For organizing awareness only — research, not legal advice.
+</footer>
+
+<script>
+var SB_URL='https://vmjauvdrxzjxzfjrlevv.supabase.co';
+var SB_KEY='sb_publishable_fx2DSgqy0PizzNV3ESY99Q_00jujiO7';
+function H(){return {'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'};}
+function gv(id){return (document.getElementById(id).value||'').trim();}
+function show(id,t){var e=document.getElementById(id);e.textContent=t;e.style.display='block';}
+function hide(id){document.getElementById(id).style.display='none';}
+function submitJoin(ev){
+  ev.preventDefault();
+  hide('jok');hide('jerr');
+  var email=gv('jemail');
+  if(!email||email.indexOf('@')<1||email.indexOf('.')<0){show('jerr','Please enter a valid email address.');return false;}
+  var row={name:gv('jname')||null,email:email,zip:gv('jzip')||null,source:'join',consent:document.getElementById('jconsent').checked};
+  var btn=document.getElementById('jbtn');btn.disabled=true;btn.textContent='Joining…';
+  fetch(SB_URL+'/rest/v1/signups',{method:'POST',headers:H(),body:JSON.stringify(row)})
+   .then(function(r){
+      if(r.ok){
+        document.getElementById('signup').reset();
+        document.getElementById('jconsent').checked=true;
+        show('jok','You’re on the list — thank you for standing with Altadena. Watch your inbox.');
+        btn.textContent='Joined ✓';
+      }else{show('jerr','Sorry, something went wrong. Please try again in a moment.');btn.disabled=false;btn.textContent='Join the list →';}
+   })
+   .catch(function(){show('jerr','Network error — please try again.');btn.disabled=false;btn.textContent='Join the list →';});
+  return false;
+}
+</script>
 </body>
 </html>
