@@ -237,8 +237,8 @@ var SB_KEY='sb_publishable_fx2DSgqy0PizzNV3ESY99Q_00jujiO7';
 var CC_US='hello@altadenarecoverywatch.com,assemblymember.harabedian@assembly.ca.gov,navartanian@bos.lacounty.gov,fernando.ramirez@sen.ca.gov';
 var STAFF_TO='Lisa.Engel@asm.ca.gov,Dori.Ganetsos@asm.ca.gov,Juan.Reyes@asm.ca.gov,Angela.Mapp@asm.ca.gov,Jimmy.MacDonald@asm.ca.gov,Linda.Rios@asm.ca.gov';
 function quickBody(){var lo=document.getElementById('lout');return (lo&&lo.value.trim())?lo.value:DEFAULT_LETTER;}
-function quickGmail(){if(typeof joinFromBuilder==='function')joinFromBuilder();if(typeof logBuild==='function')logBuild('quick_gmail');window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(STAFF_TO)+'&bcc='+encodeURIComponent(CC_US)+'&su='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(quickBody()),'_blank','noopener');}
-function quickMail(){if(typeof joinFromBuilder==='function')joinFromBuilder();if(typeof logBuild==='function')logBuild('quick_mailapp');location.href='mailto:'+STAFF_TO+'?bcc='+CC_US+'&subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(quickBody());}
+function quickGmail(){var b=quickBody();if(!letterReady(b))return;if(typeof joinFromBuilder==='function')joinFromBuilder();if(typeof logBuild==='function')logBuild('quick_gmail');window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(STAFF_TO)+'&bcc='+encodeURIComponent(CC_US)+'&su='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(b),'_blank','noopener');}
+function quickMail(){var b=quickBody();if(!letterReady(b))return;if(typeof joinFromBuilder==='function')joinFromBuilder();if(typeof logBuild==='function')logBuild('quick_mailapp');location.href='mailto:'+STAFF_TO+'?bcc='+CC_US+'&subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(b);}
 function H(){return {'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};}
 function vals(f){var o={};Array.prototype.forEach.call(f.elements,function(el){if(el.name)o[el.name]=el.value;});return o;}
 var BODIES={
@@ -344,9 +344,9 @@ function joinConns(cs){if(cs.length===0)return '';if(cs.length===1)return cs[0];
 function argByKey(k){for(var i=0;i<ARGS.length;i++){if(ARGS[i].k===k)return ARGS[i];}return ARGS[0];}
 function gv(id){return (document.getElementById(id).value||'').trim();}
 function makeLetter(name,addr,story){
- name=name||"[ Your full name ]";
- addr=addr||"[ Your street address, Altadena (or your city), ZIP ]";
- story=story||"[ Personalize here — a sentence or two in your own words: who you are, your connection to Altadena, what you and your family lost or still face, and why SB 1090 matters to you. ]";
+ name=(name||"").trim()||"[ Your full name ]";
+ addr=(addr||"").trim()||"[ Your street address, Altadena (or your city), ZIP ]";
+ story=(story||"").trim();
  var P=[
  "June 22, 2026",
  "Assembly Committee on Housing and Community Development\nRe: SB 1090 (Sen. Pérez) — SUPPORT.  Hearing: July 1, 2026.",
@@ -367,7 +367,19 @@ function makeLetter(name,addr,story){
  "Respectfully,\n"+name+"\n"+addr,
  "cc: Sen. Sasha Renée Pérez (author); Asm. John Harabedian (co-author)"
  ];
- return P.join("\n\n");
+ return P.filter(function(s){return s&&String(s).trim()!=="";}).join("\n\n");
+}
+// Returns true if the letter still contains unfilled [ ... ] fill-in spots.
+function letterHasGaps(t){return /\[[^\]]*\]/.test(t||"");}
+// Gate every outbound action: block empty letters and letters that still have placeholders.
+function letterReady(t){
+ if(!t||!t.trim()){alert('Click “Build my letter” first.');return false;}
+ if(letterHasGaps(t)){
+  alert('Your letter still has fill-in spots in [ brackets ]. Add your name, address, and a personal line under “Build your letter,” click “Build my letter” again, then send.');
+  var f=document.getElementById('lname');if(f){f.focus();f.scrollIntoView({behavior:'smooth',block:'center'});}
+  return false;
+ }
+ return true;
 }
 var DEFAULT_LETTER=makeLetter("","","")
 function setDefaultLetter(){var el=document.getElementById('lout');if(el&&!el.value)el.value=DEFAULT_LETTER;}
@@ -384,10 +396,10 @@ function buildLetter(){
  joinFromBuilder();logBuild('build');saveBuilder();
  document.getElementById('lout').scrollIntoView({behavior:'smooth',block:'center'});
 }
-function copyOut(){var ta=document.getElementById('lout');if(!ta.value){alert('Click “Build my letter” first.');return;}ta.select();try{document.execCommand('copy');}catch(e){}if(navigator.clipboard)navigator.clipboard.writeText(ta.value);logBuild('copy');alert('Letter copied. Paste it into the Advocates Portal and your emails.');}
+function copyOut(){var ta=document.getElementById('lout');if(!letterReady(ta?ta.value:''))return;ta.select();try{document.execCommand('copy');}catch(e){}if(navigator.clipboard)navigator.clipboard.writeText(ta.value);logBuild('copy');alert('Letter copied. Paste it into the Advocates Portal and your emails.');}
 function copyMemberVersion(){
  var t=document.getElementById('lout').value||'';
- if(!t.trim()){alert('Personalize your letter in the builder first.');return;}
+ if(!letterReady(t))return;
  var idx=t.indexOf('Dear Chair Haney');
  if(idx>=0){t=t.slice(idx).replace(/^Dear Chair Haney and Members of the Committee:?/,'Dear Assemblymember [their name],');}
  t=t.replace('I am writing in support of SB 1090.','As your constituent, I am writing to urge you to vote YES on SB 1090.');
@@ -395,7 +407,7 @@ function copyMemberVersion(){
  try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);}catch(e){}
  alert('Member version copied! Paste it into your member’s web form, then change “[their name]” to the member you’re writing.');
 }
-function downloadLetterPDF(){var txt=document.getElementById('lout').value;if(!txt){alert('Click “Build Letter” first.');return;}
+function downloadLetterPDF(){var txt=document.getElementById('lout').value;if(!letterReady(txt))return;
  if(!window.jspdf||!window.jspdf.jsPDF){alert('PDF tool is still loading — falling back to Word.');return downloadLetter();}
  var doc=new window.jspdf.jsPDF({unit:'pt',format:'letter'});
  doc.setFont('times','normal');doc.setFontSize(11.5);
@@ -405,10 +417,10 @@ function downloadLetterPDF(){var txt=document.getElementById('lout').value;if(!t
    parts.forEach(function(p){if(y>792-72){doc.addPage();y=mt;}doc.text(p,ml,y);y+=lh;});
  });
  doc.save('SB1090_support_letter.pdf');joinFromBuilder();logBuild('download_pdf');}
-function downloadLetter(){var txt=document.getElementById('lout').value;if(!txt){alert('Click “Build my letter” first.');return;}var esc=function(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};var body=txt.split('\n').map(function(l){return l.trim()===''?'<p>&nbsp;</p>':'<p style="margin:0 0 8pt 0;">'+esc(l)+'</p>';}).join('');var html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"></head><body style="font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;">'+body+'</body></html>';var blob=new Blob([html],{type:'application/msword'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='SB1090_support_letter.doc';document.body.appendChild(a);a.click();logBuild('download');setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(a.href);},500);}
-function mailLetterMine(addr){var body=document.getElementById('lout').value||'[Build your letter above, then it will appear here.]';location.href='mailto:'+addr+'?bcc='+CC_US+'&subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT (constituent letter)')+'&body='+encodeURIComponent(body);}
-function mailLetterAll(){var to='Lisa.Engel@asm.ca.gov,Dori.Ganetsos@asm.ca.gov,Juan.Reyes@asm.ca.gov,Angela.Mapp@asm.ca.gov,Jimmy.MacDonald@asm.ca.gov,Linda.Rios@asm.ca.gov';var body=document.getElementById('lout').value||'[Build your letter above, then it will appear here.]';logBuild('mailapp');location.href='mailto:'+to+'?bcc='+CC_US+'&subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(body);}
-function gmailLetterAll(){var to='Lisa.Engel@asm.ca.gov,Dori.Ganetsos@asm.ca.gov,Juan.Reyes@asm.ca.gov,Angela.Mapp@asm.ca.gov,Jimmy.MacDonald@asm.ca.gov,Linda.Rios@asm.ca.gov';var body=document.getElementById('lout').value||'[Build your letter above, then it will appear here.]';logBuild('gmail');window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(to)+'&bcc='+encodeURIComponent(CC_US)+'&su='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(body),'_blank','noopener');}
+function downloadLetter(){var txt=document.getElementById('lout').value;if(!letterReady(txt))return;var esc=function(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};var body=txt.split('\n').map(function(l){return l.trim()===''?'<p>&nbsp;</p>':'<p style="margin:0 0 8pt 0;">'+esc(l)+'</p>';}).join('');var html='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"></head><body style="font-family:Calibri,Arial,sans-serif;font-size:11pt;line-height:1.4;">'+body+'</body></html>';var blob=new Blob([html],{type:'application/msword'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='SB1090_support_letter.doc';document.body.appendChild(a);a.click();logBuild('download');setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(a.href);},500);}
+function mailLetterMine(addr){var body=document.getElementById('lout').value;if(!letterReady(body))return;location.href='mailto:'+addr+'?bcc='+CC_US+'&subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT (constituent letter)')+'&body='+encodeURIComponent(body);}
+function mailLetterAll(){var to='Lisa.Engel@asm.ca.gov,Dori.Ganetsos@asm.ca.gov,Juan.Reyes@asm.ca.gov,Angela.Mapp@asm.ca.gov,Jimmy.MacDonald@asm.ca.gov,Linda.Rios@asm.ca.gov';var body=document.getElementById('lout').value;if(!letterReady(body))return;logBuild('mailapp');location.href='mailto:'+to+'?bcc='+CC_US+'&subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(body);}
+function gmailLetterAll(){var to='Lisa.Engel@asm.ca.gov,Dori.Ganetsos@asm.ca.gov,Juan.Reyes@asm.ca.gov,Angela.Mapp@asm.ca.gov,Jimmy.MacDonald@asm.ca.gov,Linda.Rios@asm.ca.gov';var body=document.getElementById('lout').value;if(!letterReady(body))return;logBuild('gmail');window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(to)+'&bcc='+encodeURIComponent(CC_US)+'&su='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(body),'_blank','noopener');}
 var ORG_TEMPLATE='[ORGANIZATION LETTERHEAD]\n[Date]\n\nThe Honorable Matt Haney, Chair\nAssembly Committee on Housing and Community Development\n(Submitted via the California Legislature Advocates Portal)\n\nRe: SB 1090 (Pérez) — SUPPORT. Hearing July 1, 2026.\n\nDear Chair Haney and Members of the Committee:\n\n[Organization name] writes in support of SB 1090. [One or two sentences: who your organization is, who it represents, and why disaster recovery / housing / community stability is central to your mission.]\n\nSB 1090 gives a community devastated by a declared disaster a narrow, time-limited tool to pause the SB 1123 by-right lot-split pathway during recovery. It is look-forward protection: it does not repeal housing law or block construction — it keeps speculative subdivision from locking in before residents can return and a real rebuilding plan can take shape. [Add one specific concern your organization or members have observed — for example, that it should not be easier for a developer to build than for a survivor to rebuild, or that added density threatens evacuation on narrow fire-damaged streets.]\n\nFor these reasons, [Organization name] respectfully urges your AYE vote on SB 1090.\n\nSincerely,\n[Name, Title]\n[Organization]\n[Contact]\n\ncc: Sen. Sasha Renée Pérez (author); Asm. John Harabedian (co-author); Assembly Committee on Local Government';
 function copyOrg(){if(navigator.clipboard)navigator.clipboard.writeText(ORG_TEMPLATE);try{var t=document.createElement('textarea');t.value=ORG_TEMPLATE;document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);}catch(e){}alert('Organization template copied — personalize it to your group before filing.');}
 function mapCall(o){return {caller_name:o.caller_name,caller_city:o.caller_city,member:o.member,committee:o.committee,call_date:o.call_date||null,outcome:o.outcome,notes:o.notes};}
