@@ -53,13 +53,20 @@
   .presslist a.hl:hover{text-decoration:underline;}
   .presslist .blurb{font-size:13.5px;color:#5d4b44;}
   @media(max-width:620px){.grid,.coverage{grid-template-columns:1fr;}}
+  nav .navdrop{position:relative;display:inline-block;margin-left:13px;}
+  nav .navtrig{color:#fff;font-size:14px;font-weight:600;cursor:pointer;}
+  nav .navdrop.on .navtrig{color:#ffd9c9;}
+  nav .navdrop>.navmenu{display:none;position:absolute;top:100%;left:0;background:#fff;min-width:215px;border-radius:8px;box-shadow:0 8px 22px rgba(0,0,0,.20);padding:6px 0;z-index:50;}
+  nav .navdrop:hover>.navmenu,nav .navdrop:focus-within>.navmenu{display:block;}
+  nav .navdrop .navmenu a{display:block;color:#7a2e1d;padding:9px 16px;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;margin:0;}
+  nav .navdrop .navmenu a:hover{background:#faf1ec;}
 </style>
 </head>
 <body>
 
 <nav><div class="wrap">
   <a class="brand" href="index.html">ALTADENA RECOVERY WATCH</a>
-  <span><a class="lk" href="index.html">Act Now</a><a class="lk" href="whoarewe.html">Who We Are</a><a class="lk" href="disaster-capitalism.html">What is Disaster Capitalism?</a><a class="lk" href="altadena_lots_map.html">The Map</a><a class="lk" href="press.html">Press</a><a class="lk" href="tools.html">Tools</a><a class="lk join" href="altadena_action_app.html#signup">Join the List</a></span>
+  <span><a class="lk" href="index.html">Act Now</a><a class="lk" href="whoarewe.html">About</a><span class="navdrop" tabindex="0"><span class="navtrig">The Issue ▾</span><span class="navmenu"><a href="learnmore.html">Our Stance</a><a href="disaster-capitalism.html">What is Disaster Capitalism?</a><a href="altadena_lots_map.html">The Map</a></span></span><a class="lk" href="tools.html">Tools</a><a class="lk on" href="press.html">Press</a><a class="lk" href="altadena_action_app.html#signup">Join</a></span>
 </div></nav>
 
 <header><div class="wrap">
@@ -94,6 +101,11 @@
   </div>
 
   <ul class="presslist">
+    <li>
+      <span class="src">The Center Square / Vincennes Sun-Commercial · June 19, 2026</span>
+      <a class="hl" href="https://www.suncommercial.com/news/national/article_8207f5dd-2976-5a23-8058-d6e3f8a462dc.html" target="_blank" rel="noopener">Altadena residents upset about multiple homes on lots</a>
+      <span class="blurb">Supervisor Kathryn Barger backs SB 1090 to pause SB 9 / SB 1123 in Altadena and says she'll have fire survivors testify at the two Assembly hearings set for July 1.</span>
+    </li>
     <li>
       <span class="src">Pasadena Weekly · June 18, 2026</span>
       <a class="hl" href="https://www.pasadenaweekly.com/news/pushing-back-altadena-residents-stand-against-sb-9-sb-1123-housing-laws/article_1f09b723-bf53-4496-811e-d2b9d36021a1.html" target="_blank" rel="noopener">Pushing Back: Altadena residents stand against SB 9, SB 1123 housing laws</a>

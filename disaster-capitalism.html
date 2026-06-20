@@ -47,13 +47,20 @@
   footer{background:#241a17;color:#cbb;padding:22px 0;font-size:13px;margin-top:10px;}
   footer a{color:#ffd9c9;}
   @media(max-width:760px){.stats{grid-template-columns:1fr 1fr;}header h1{font-size:27px;}.scroll{overflow-x:auto;}}
+  nav .navdrop{position:relative;display:inline-block;margin-left:13px;}
+  nav .navtrig{color:#fff;font-size:14px;font-weight:600;cursor:pointer;}
+  nav .navdrop.on .navtrig{color:#ffd9c9;}
+  nav .navdrop>.navmenu{display:none;position:absolute;top:100%;left:0;background:#fff;min-width:215px;border-radius:8px;box-shadow:0 8px 22px rgba(0,0,0,.20);padding:6px 0;z-index:50;}
+  nav .navdrop:hover>.navmenu,nav .navdrop:focus-within>.navmenu{display:block;}
+  nav .navdrop .navmenu a{display:block;color:#7a2e1d;padding:9px 16px;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;margin:0;}
+  nav .navdrop .navmenu a:hover{background:#faf1ec;}
 </style>
 </head>
 <body>
 
 <nav><div class="wrap">
   <a class="brand" href="index.html">ALTADENA RECOVERY WATCH</a>
-  <span><a class="lk" href="index.html">Act Now</a><a class="lk" href="whoarewe.html">Who We Are</a><a class="lk on" href="disaster-capitalism.html">What is Disaster Capitalism?</a><a class="lk" href="altadena_lots_map.html">The Map</a><a class="lk" href="press.html">Press</a><a class="lk" href="tools.html">Tools</a><a class="lk" href="altadena_action_app.html#signup">Join</a></span>
+  <span><a class="lk" href="index.html">Act Now</a><a class="lk" href="whoarewe.html">About</a><span class="navdrop on" tabindex="0"><span class="navtrig">The Issue ▾</span><span class="navmenu"><a href="learnmore.html">Our Stance</a><a href="disaster-capitalism.html">What is Disaster Capitalism?</a><a href="altadena_lots_map.html">The Map</a></span></span><a class="lk" href="tools.html">Tools</a><a class="lk" href="press.html">Press</a><a class="lk" href="altadena_action_app.html#signup">Join</a></span>
 </div></nav>
 
 <header><div class="wrap">
