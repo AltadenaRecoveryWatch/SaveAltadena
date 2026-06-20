@@ -113,5 +113,33 @@
   <a href="index.html">Act Now</a> · <a href="altadena_lots_map.html">The Map</a> · <a href="disaster-capitalism.html">What is Disaster Capitalism?</a> · <a href="press.html">Press</a> · <a href="altadena_action_app.html#signup">Join the list</a>
 </div></footer>
 
+<script>
+(function(){
+  var SB='https://vmjauvdrxzjxzfjrlevv.supabase.co';
+  var K='sb_publishable_fx2DSgqy0PizzNV3ESY99Q_00jujiO7';
+  function known(){
+    try{var b=JSON.parse(localStorage.getItem('sb1090_builder_v1')||'null');if(b&&b.email)return{email:b.email,name:b.name||null};}catch(e){}
+    try{var c=JSON.parse(localStorage.getItem('sb1090_caller_v1')||'null');if(c&&c.email)return{email:c.email,name:c.name||null};}catch(e){}
+    return {email:null,name:null};
+  }
+  function actionFor(href){href=(href||'').toLowerCase();
+    if(href.indexOf('call_packet')>=0)return 'download_packet';
+    if(href.indexOf('petition')>=0)return 'download_petition';
+    if(href.indexOf('support_letter')>=0)return 'download_letter_template';
+    if(href.indexOf('flyer')>=0)return 'download_flyer';
+    return null;}
+  function logDl(a){
+    var action=actionFor(a.getAttribute('href'));if(!action)return;
+    var who=known();
+    try{fetch(SB+'/rest/v1/builder_events',{method:'POST',keepalive:true,
+      headers:{'apikey':K,'Authorization':'Bearer '+K,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body:JSON.stringify({email:who.email,name:who.name,action:action})});}catch(e){}
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('a[download]'),function(a){
+    a.addEventListener('click',function(){logDl(a);});
+  });
+})();
+</script>
+
 </body>
 </html>
