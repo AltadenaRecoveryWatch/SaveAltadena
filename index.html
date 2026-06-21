@@ -168,7 +168,7 @@
       <a class="btn navy" href="https://calegislation.lc.ca.gov/Advocates/" target="_blank" rel="noopener" onclick="logBuild('portal')">Open the Advocates Portal →</a></div>
     <div class="card"><span style="display:inline-block;background:#c0572f;color:#fff;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:800;">OPTION B · EASIEST</span>
       <h3>Send it in one click</h3>
-      <p>Opens one pre-filled support email addressed to the staff of <b>both committees</b> (Housing &amp; Community Development and Local Government) in Gmail or your mail app — just add your name and press send (attach your downloaded letter if you like). One click covers both. A copy comes to our team, so we'll also file it to the Portal for you.</p>
+      <p>Opens a pre-filled email to the staff of <b>both committees</b> (Housing &amp; Community Development and Local Government) — recipients and subject are already set. <b>Your letter is copied to your clipboard automatically</b>, so just paste it into the email body (Ctrl+V, or Cmd+V on a Mac), or attach the PDF you downloaded — then press send. A copy comes to our team, so we'll also file it to the Portal for you.</p>
       <button class="btn brick" onclick="quickGmail()">✉ Send via Gmail →</button>
       <button class="btn" style="background:#243b53;margin-top:8px;" onclick="quickMail()">✉ Send via mail app →</button></div>
   </div>
@@ -237,8 +237,12 @@ var SB_KEY='sb_publishable_fx2DSgqy0PizzNV3ESY99Q_00jujiO7';
 var CC_US='hello@altadenarecoverywatch.com,assemblymember.harabedian@assembly.ca.gov,navartanian@bos.lacounty.gov,fernando.ramirez@sen.ca.gov';
 var STAFF_TO='Lisa.Engel@asm.ca.gov,Dori.Ganetsos@asm.ca.gov,Juan.Reyes@asm.ca.gov,Angela.Mapp@asm.ca.gov,Jimmy.MacDonald@asm.ca.gov,Linda.Rios@asm.ca.gov';
 function quickBody(){var lo=document.getElementById('lout');return (lo&&lo.value.trim())?lo.value:DEFAULT_LETTER;}
-function quickGmail(){var b=quickBody();if(!letterReady(b))return;if(typeof joinFromBuilder==='function')joinFromBuilder();if(typeof logBuild==='function')logBuild('quick_gmail');window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(STAFF_TO)+'&bcc='+encodeURIComponent(CC_US)+'&su='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(b),'_blank','noopener');}
-function quickMail(){var b=quickBody();if(!letterReady(b))return;if(typeof joinFromBuilder==='function')joinFromBuilder();if(typeof logBuild==='function')logBuild('quick_mailapp');location.href='mailto:'+STAFF_TO+'?bcc='+CC_US+'&subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(b);}
+var CC_PUBLIC='assemblymember.harabedian@assembly.ca.gov,fernando.ramirez@sen.ca.gov';
+var BCC_US='hello@altadenarecoverywatch.com,navartanian@bos.lacounty.gov';
+var SEND_NOTE="Please paste your support letter below — we've copied it to your clipboard, so just press Ctrl+V (Cmd+V on a Mac). Or attach the signed PDF you downloaded above. Thank you for standing with Altadena.";
+function copyLetter(b){try{if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(b);}catch(e){}try{var ta=document.createElement('textarea');ta.value=b;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();document.execCommand('copy');document.body.removeChild(ta);}catch(e){}}
+function quickGmail(){var b=quickBody();if(!letterReady(b))return;if(typeof joinFromBuilder==='function')joinFromBuilder();if(typeof logBuild==='function')logBuild('quick_gmail');copyLetter(b);window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(STAFF_TO)+'&cc='+encodeURIComponent(CC_PUBLIC)+'&bcc='+encodeURIComponent(BCC_US)+'&su='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(SEND_NOTE),'_blank','noopener');}
+function quickMail(){var b=quickBody();if(!letterReady(b))return;if(typeof joinFromBuilder==='function')joinFromBuilder();if(typeof logBuild==='function')logBuild('quick_mailapp');copyLetter(b);location.href='mailto:'+STAFF_TO+'?cc='+encodeURIComponent(CC_PUBLIC)+'&bcc='+encodeURIComponent(BCC_US)+'&subject='+encodeURIComponent('SB 1090 (Pérez) — SUPPORT')+'&body='+encodeURIComponent(SEND_NOTE);}
 function H(){return {'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};}
 function vals(f){var o={};Array.prototype.forEach.call(f.elements,function(el){if(el.name)o[el.name]=el.value;});return o;}
 var BODIES={
