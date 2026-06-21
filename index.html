@@ -162,13 +162,13 @@
         <li>Open the portal and create a free account.</li>
         <li>Search <b>SB 1090</b> and select it.</li>
         <li>Set your position to <b>Support</b>.</li>
-        <li>Choose <b>Assembly Housing &amp; Community Development</b> (and <b>Local Government</b>, if offered).</li>
-        <li>Upload your letter and submit.</li>
+        <li><b>File to BOTH committees</b> — submit once to <b>Assembly Housing &amp; Community Development</b> and again to <b>Assembly Local Government</b>. SB 1090 is heard by both on July 1, and a letter only counts in the committee it's filed with. Same letter both times.</li>
+        <li>Upload your letter and submit (then repeat for the second committee).</li>
       </ol>
       <a class="btn navy" href="https://calegislation.lc.ca.gov/Advocates/" target="_blank" rel="noopener">Open the Advocates Portal →</a></div>
     <div class="card"><span style="display:inline-block;background:#c0572f;color:#fff;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:800;">OPTION B · EASIEST</span>
       <h3>Send it in one click</h3>
-      <p>Opens a pre-filled support email to the committee staff in Gmail or your mail app — just add your name and press send (attach your downloaded letter if you like). A copy comes to our team, so we'll also file it to the Portal for you.</p>
+      <p>Opens one pre-filled support email addressed to the staff of <b>both committees</b> (Housing &amp; Community Development and Local Government) in Gmail or your mail app — just add your name and press send (attach your downloaded letter if you like). One click covers both. A copy comes to our team, so we'll also file it to the Portal for you.</p>
       <button class="btn brick" onclick="quickGmail()">✉ Send via Gmail →</button>
       <button class="btn" style="background:#243b53;margin-top:8px;" onclick="quickMail()">✉ Send via mail app →</button></div>
   </div>
@@ -349,8 +349,8 @@ function makeLetter(name,addr,story){
  story=(story||"").trim();
  var P=[
  "June 22, 2026",
- "Assembly Committee on Housing and Community Development\nRe: SB 1090 (Sen. Pérez) — SUPPORT.  Hearing: July 1, 2026.",
- "Dear Chair Haney and Members of the Committee:",
+ "Assembly Committee on Housing and Community Development\nAssembly Committee on Local Government\nRe: SB 1090 (Sen. Pérez) — SUPPORT.  Hearings: July 1, 2026.",
+ "Dear Chair Haney, Chair Carrillo, and Members of the Committees:",
  "My name is "+name+".",
  story,
  "Altadena is a community deep in trauma and recovery. A year and a half after the Eaton Fire, our families remain displaced, scattered in rentals or doubled up with relatives, fighting insurers, awaiting progress on the Edison lawsuit and permits, while only a small fraction have begun rebuilding. What every one of us needs is the same. Time, and a fair chance, to get back to some semblance of normalcy.",
@@ -401,7 +401,7 @@ function copyMemberVersion(){
  var t=document.getElementById('lout').value||'';
  if(!letterReady(t))return;
  var idx=t.indexOf('Dear Chair Haney');
- if(idx>=0){t=t.slice(idx).replace(/^Dear Chair Haney and Members of the Committee:?/,'Dear Assemblymember [their name],');}
+ if(idx>=0){t=t.slice(idx).replace(/^Dear Chair[^\n]*Committees?:?/,'Dear Assemblymember [their name],');}
  t=t.replace('I am writing in support of SB 1090.','As your constituent, I am writing to urge you to vote YES on SB 1090.');
  if(navigator.clipboard)navigator.clipboard.writeText(t);
  try{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);}catch(e){}
