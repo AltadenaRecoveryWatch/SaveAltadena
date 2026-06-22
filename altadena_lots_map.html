@@ -108,7 +108,63 @@
 <script>
   // ---- Production upgrade path ----
   // 1) Paste exact pin coords here as "address":[lat,lng] to skip live geocoding.
-  var COORDS = {};
+  var COORDS = {
+    "803 E Sacramento St":[34.180299,-118.133819],
+    "95 W Poppyfields Dr":[34.198994,-118.14753],
+    "646 E Palm St":[34.19282,-118.133363],
+    "2761 N Marengo Ave":[34.192491,-118.141607],
+    "768 E Sacramento St":[34.180367,-118.134574],
+    "1484 N Altadena Dr":[34.149082,-118.098627],
+    "3101 La Corona Ave":[34.198661,-118.147003],
+    "2056 Maiden Ln":[34.181177,-118.128322],
+    "3224 N Fair Oaks Ave":[34.199985,-118.144468],
+    "42 W Mountain View St":[34.188171,-118.155346],
+    "157 E Las Flores Dr":[34.198391,-118.142067],
+    "2636 Olive Ave":[34.190748,-118.15652],
+    "2214 N Glenrose Ave":[34.186191,-118.154889],
+    "55 Marathon Rd":[34.200467,-118.143199],
+    "408 W Terrace St":[34.196153,-118.155865],
+    "2309 Maiden Ln":[34.185506,-118.128899],
+    "387 W Mountain View St":[34.188171,-118.154566],
+    "231 W Laurel Dr":[34.201635,-118.149297],
+    "70 Reever Way":[34.201527,-118.145756],
+    "405 W Mendocino St":[34.194066,-118.15718],
+    "455 E Marigold St":[34.194676,-118.136887],
+    "445 E Marigold St":[34.194939,-118.137143],
+    "144 E Pine St":[34.194487,-118.144107],
+    "358 W Loma Alta Dr":[34.202216,-118.150892],
+    "344 Crosby St":[34.184946,-118.158111],
+    "417 W Terrace St":[34.196227,-118.155418],
+    "2096 N Glenrose Ave":[34.186866,-118.155279],
+    "3228 N Fair Oaks Ave":[34.200154,-118.144646],
+    "732 E Mariposa St":[34.188503,-118.134623],
+    "139 E Las Flores Dr":[34.198501,-118.142401],
+    "411 Punahou St":[34.198271,-118.136529],
+    "471 W Altadena Dr":[34.197724,-118.156462],
+    "608 Concha St":[34.199223,-118.131941],
+    "2775 Lake Ave":[34.193254,-118.131255],
+    "411 W Altadena Dr":[34.197194,-118.155312],
+    "1369 E Loma Alta Dr":[34.195375,-118.121047],
+    "1090 E Mendocino St":[34.18575,-118.127991],
+    "2530 N Lincoln Ave":[34.189147,-118.159146],
+    "2569 N Raymond Ave":[34.188959,-118.146178],
+    "634 E Palm St":[34.192829,-118.133976],
+    "401 E Mariposa St":[34.190877,-118.140863],
+    "1225 E Altadena Dr":[34.190766,-118.12539],
+    "2284 Norwic Pl":[34.185076,-118.129704],
+    "101 W Altadena Dr":[34.195221,-118.149105],
+    "34 W Palm St":[34.196644,-118.14731],
+    "2470 N Marengo Ave":[34.187663,-118.143307],
+    "128 E Mariposa St":[34.191181,-118.145976],
+    "169 W Woodbury Rd":[34.183115,-118.154532],
+    "50 Marathon Rd":[34.200107,-118.143551],
+    "1023 Dolores Dr":[34.195537,-118.128839],
+    "1085 E Mendocino St":[34.186056,-118.12828],
+    "2270 N Glenrose Ave":[34.186191,-118.155669],
+    "283 W Mountain View St":[34.188846,-118.154956],
+    "1017 Dolores Dr":[34.195498,-118.129034],
+    "1650 E Mendocino St":[34.185658,-118.116631],
+  };
   // Confirmed County records (shown with a ✔ and details); others are resident-flagged/unverified.
   var DETAILS = {
     "1691 E Mendocino St": "✔ Confirmed — 11-lot tract map (record MAP085316, completed 6/10/2026); now tied to developer Woody Gruninger through 1691 Mendicino, LP (confirmed). <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/4f1a5fa7-025e-4c22-85f1-2cb4fd58f3a1\" target=\"_blank\">view record ↗</a>",
@@ -131,7 +187,7 @@
   // At-risk addresses with a specific confirming note (kept gold, not red).
   var NOTE = { "2262 N Glenrose Ave": "● At-risk — County <b>Sewer Area Study</b> (ESTU2026000072, applied 2/17/2026, in review) required as part of <b>Tentative Parcel Map No. 85060</b> (RPPL2025005460): a subdivision is being pursued. <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/009eb51d-f2b9-4580-9f58-c3f8754f2d10\" target=\"_blank\">view record ↗</a>" };
   // SB 9 projects (NOT SB 1123) — shown in yellow for information only, not flagged as speculation.
-  var SB9 = { "653 E Pine St": true, "366 W Harriet St": true, "306 W Ventura St": true };
+  var SB9 = { "653 E Pine St": true, "366 W Harriet St": true, "306 W Ventura St": true, "95 W Poppyfields Dr":true, "646 E Palm St":true, "2761 N Marengo Ave":true, "768 E Sacramento St":true, "1484 N Altadena Dr":true, "3101 La Corona Ave":true, "2056 Maiden Ln":true, "3224 N Fair Oaks Ave":true, "42 W Mountain View St":true, "157 E Las Flores Dr":true, "2636 Olive Ave":true, "2214 N Glenrose Ave":true, "55 Marathon Rd":true, "408 W Terrace St":true, "2309 Maiden Ln":true, "387 W Mountain View St":true, "231 W Laurel Dr":true, "70 Reever Way":true, "405 W Mendocino St":true, "455 E Marigold St":true, "445 E Marigold St":true, "144 E Pine St":true, "358 W Loma Alta Dr":true, "344 Crosby St":true, "417 W Terrace St":true, "2096 N Glenrose Ave":true, "3228 N Fair Oaks Ave":true, "732 E Mariposa St":true, "139 E Las Flores Dr":true, "411 Punahou St":true, "471 W Altadena Dr":true, "608 Concha St":true, "2775 Lake Ave":true, "411 W Altadena Dr":true, "1369 E Loma Alta Dr":true, "1090 E Mendocino St":true, "2530 N Lincoln Ave":true, "2569 N Raymond Ave":true, "634 E Palm St":true, "401 E Mariposa St":true, "1225 E Altadena Dr":true, "2284 Norwic Pl":true, "101 W Altadena Dr":true, "34 W Palm St":true, "2470 N Marengo Ave":true, "128 E Mariposa St":true, "169 W Woodbury Rd":true, "50 Marathon Rd":true, "1023 Dolores Dr":true, "1085 E Mendocino St":true, "2270 N Glenrose Ave":true, "283 W Mountain View St":true, "1017 Dolores Dr":true, "1650 E Mendocino St":true };
   NOTE["306 W Ventura St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks.";
   NOTE["416 E Altadena Dr"] = "● <b>Suspected SB 1123 — tied to Woody Gruninger.</b> This burned lot is held by a newly formed entity, <b>416 Altadena, LP</b>, whose agent is developer Woody Gruninger — the same developer behind multiple confirmed SB 1123 subdivisions in Altadena. No County subdivision application is on file yet, but it is a strong SB 1123 target.";
   // ---- Ownership / LLC records (California Secretary of State business filings) ----
@@ -149,8 +205,62 @@
   try{document.getElementById("woodyCount").textContent=Object.keys(LLC).length;}catch(e){}
   NOTE["653 E Pine St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Parcel-map pre-application to create <b>3 single-family lots</b> (RPAP2026001355, accepted 4/20/2026). An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/18dfd299-fb02-4a82-84d2-18eb1593f55a\" target=\"_blank\">view record ↗</a>";
   NOTE["366 W Harriet St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB 9 lot subdivision proposing <b>single-family homes with ADUs</b> (RPAP2025004788, applied 10/2/2025, pre-application). An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. <a href=\"https://epicla.lacounty.gov/energov_prod/SelfService/#/plan/28158d49-cf6f-4d1c-b969-bbfb15735f4c\" target=\"_blank\">view record ↗</a>";
+  NOTE["95 W Poppyfields Dr"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Non-Like-for-Like SFR Rebuild @95 W Poppyfields Dr. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000080.";
+  NOTE["646 E Palm St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Non-Like-for-Like SFR Rebuild @ 648 E Palm St. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000118.";
+  NOTE["2761 N Marengo Ave"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB9 and ADUs @2761 N Marengo. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000245.";
+  NOTE["768 E Sacramento St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Non Like for Like Fire Rebuild MFR @ 768 E Sacramento St. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000249.";
+  NOTE["1484 N Altadena Dr"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Non Like For Like SB9s/ADUs@1484 N Altadena. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000262.";
+  NOTE["3101 La Corona Ave"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Eaton Rebuild of SB-9 Units. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000297.";
+  NOTE["2056 Maiden Ln"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Eaton Fire Non-Like-for-Like Rebuild of SFR with new SB9 Unit and Two ADUs @ 2056 Maiden Ln. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000348.";
+  NOTE["3224 N Fair Oaks Ave"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB9 Unit @ 3224 N Fair Oaks. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000493.";
+  NOTE["42 W Mountain View St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Eaton Fire Non-Like-for-Like Rebuild of Two SFRs (SB9) @ 42 W Mountain View St. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000560.";
+  NOTE["157 E Las Flores Dr"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Eaton SB-9 Units @ 157 Los Flores. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000596.";
+  NOTE["2636 Olive Ave"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SFR Rebuild & (N) ADU @ 2636 Olive. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000630.";
+  NOTE["2214 N Glenrose Ave"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB-9 @ 2214 N Glenrose Ave. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000650.";
+  NOTE["55 Marathon Rd"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Non Like For Like SB 9/ADUs@55 Marathon. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000761.";
+  NOTE["408 W Terrace St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Non Like For Like SB 9 @408 W Terrace. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000762.";
+  NOTE["2309 Maiden Ln"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SFR @ 2309 Maiden Lane. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000797.";
+  NOTE["387 W Mountain View St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Eaton Fire Like for Like @ 387 W Mountain View St. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000825.";
+  NOTE["231 W Laurel Dr"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. NON-LIKE-FOR-LIKE @ 231 W Laurel Drive. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000929.";
+  NOTE["70 Reever Way"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB 9 SFR's @ 70 Reever Way. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025000939.";
+  NOTE["405 W Mendocino St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB 9 @ 405 W Mendocino Street. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025001005.";
+  NOTE["455 E Marigold St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Eaton Rebuild @ 455 E Marigold St. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025001022.";
+  NOTE["445 E Marigold St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Eaton Fire Non-Like-for-Like Rebuild of SFR with new ADU @ 445 E Marigold St. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025001116.";
+  NOTE["144 E Pine St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. EATON FIRE @144 E Pine Street Altadena. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025001421.";
+  NOTE["358 W Loma Alta Dr"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SFR Rebuild & (N) ADU @ 358 W Loma Alta (SB9). An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025001425.";
+  NOTE["344 Crosby St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. EATON FIRE REBUILD SFR@344 Crosby Street Altadena. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025001516.";
+  NOTE["417 W Terrace St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SFR rebuild and SB 9 @ 417 W Terrace Street. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025001622.";
+  NOTE["2096 N Glenrose Ave"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB 9 SFR @ 2096 N Glenrose Avenue. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREC2025001661.";
+  NOTE["3228 N Fair Oaks Ave"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. MFR Rebuild with SB 9 @ 3228 Fair Oaks Ave. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025000165.";
+  NOTE["732 E Mariposa St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB 9 and ADUs @ 732 E Mariposa Street. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025000212.";
+  NOTE["139 E Las Flores Dr"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Non-like-for-like SB9 MFR rebuild w/ detached ADUs @139 E Las Flores Dr.. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025000261.";
+  NOTE["411 Punahou St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Eaton Rebuild @ 411 Punahou St. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025000372.";
+  NOTE["471 W Altadena Dr"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Eaton Fire Non Like for Like Rebuild of SB9 Unit with Two ADUs @ 471 W Altadena Dr. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025000630.";
+  NOTE["608 Concha St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. MFR Rebuild @ 608 Concha Street. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025000930.";
+  NOTE["2775 Lake Ave"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Eaton Fire Rebuild SFR&ADU@2775 Lake Avenue Altadena. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025000935.";
+  NOTE["411 W Altadena Dr"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB 9 & ADU@411 W Altadena Drive Altadena. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025000943.";
+  NOTE["1369 E Loma Alta Dr"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB9  SFR @ 1369 E Loma Alta Drive. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025000949.";
+  NOTE["1090 E Mendocino St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB SFR Rebuild and ADU @ 1090 E Mendocino Street. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025000995.";
+  NOTE["2530 N Lincoln Ave"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB 9 SFRs and ADU @ 2530 N Lincoln Avenue. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025001055.";
+  NOTE["2569 N Raymond Ave"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. MFR rebuild and ADUs @ 2569 N Raymond Avenue. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025001240.";
+  NOTE["634 E Palm St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Non-Like-for-Like SB-9 Two-Unit and Attached ADU Rebuild @ 634 E Palm Street. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025001256.";
+  NOTE["401 E Mariposa St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Eaton Fire Non Like for Like SFD and like for like detached ADU @ 401 E Mariposa. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025001285.";
+  NOTE["1225 E Altadena Dr"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB 9 and ADUs @ 1225 E Altadena Drive. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025001510.";
+  NOTE["2284 Norwic Pl"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB 9 and ADU's  @ 2284 NORWIC Place. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2025001511.";
+  NOTE["101 W Altadena Dr"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Non Like-for-Like Rebuild @ 101 W Altadena Drive Altadena. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2026000160.";
+  NOTE["34 W Palm St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB9 Project @ 34 W Palm Street. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2026000591.";
+  NOTE["2470 N Marengo Ave"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2026000609.";
+  NOTE["128 E Mariposa St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. SB9 Project @ 128 E Mariposa. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2026000626.";
+  NOTE["169 W Woodbury Rd"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Eaton Fire Non Like for Like SB 9 @  169 Woodbury Rd. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2026000904.";
+  NOTE["50 Marathon Rd"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Non Like-for-Like Rebuild @ 50 Marathon Road Altadena. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2026001005.";
+  NOTE["1023 Dolores Dr"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2026001125.";
+  NOTE["1085 E Mendocino St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Non Like-for-Like Rebuild @ 1085 E Mendocino Street Altadena. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2026001238.";
+  NOTE["2270 N Glenrose Ave"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. Eaton Fire Non-like-for-like SFR@2270 N Glenrose Ave Altadena. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2026001258.";
+  NOTE["283 W Mountain View St"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2026001296.";
+  NOTE["1017 Dolores Dr"] = "● <b>SB 9 project</b> (not SB 1123) — shown for information only. COC @ 1017 Dolores Dr.. An SB 9 lot split, not the by-right multi-unit SB 1123 subdivision this map tracks. County plan/permit CREB2026001464.";
+  NOTE["1650 E Mendocino St"] = "● County subdivision record on file; the bill is not specified in the County data. Shown in grey pending classification.";
   var LOTS = 84; // total new lots across confirmed subdivisions — update when adding sites
-  (function(){var conf=Object.keys(DETAILS).filter(function(a){return !ALT[a];}).length;var mixed=Object.keys(ALT).length;var atrisk=Object.keys(VULN).length;var sb9c=Object.keys(SB9).length;var total=conf+mixed+atrisk;var parts=[];if(conf)parts.push(conf+' confirmed subdivisions');if(mixed)parts.push(mixed+' mixed-status');if(atrisk)parts.push(atrisk+' at-risk');var sb=document.getElementById('statbar');if(sb){sb.innerHTML='<span class="big">'+total+'</span> Altadena lots affected or at risk<span class="sub">'+parts.join(', ')+'. Each pin is a burned family lot a developer has carved up — or could carve up next. Updated '+new Date().toLocaleDateString()+'.</span>';}})();
+  (function(){var conf=Object.keys(DETAILS).filter(function(a){return !ALT[a];}).length;var mixed=Object.keys(ALT).length;var atrisk=Object.keys(VULN).length;var sb9c=Object.keys(SB9).length;var total=conf+mixed+atrisk;var parts=[];if(conf)parts.push(conf+' confirmed subdivisions');if(mixed)parts.push(mixed+' mixed-status');if(atrisk)parts.push(atrisk+' at-risk');var sb=document.getElementById('statbar');if(sb){sb.innerHTML='<span class="big">'+total+'</span> Altadena lots affected or at risk<span class="sub">'+parts.join(', ')+'. Plus '+sb9c+' SB 9 lot-split filings shown in grey for context. Each pin is a burned family lot a developer has carved up — or could carve up next. Updated '+new Date().toLocaleDateString()+'.</span>';}})();
   (function(){var u=encodeURIComponent(location.href);var t=encodeURIComponent('Out-of-town developers are subdividing burned Altadena lots — 10 confirmed subdivisions turning 10 lots into 80+. See the map and take action:');var x=document.getElementById('shX'),f=document.getElementById('shF'),e=document.getElementById('shE'),c=document.getElementById('shC'),ty=document.getElementById('tally');if(x)x.href='https://twitter.com/intent/tweet?text='+t+'&url='+u;if(f)f.href='https://www.facebook.com/sharer/sharer.php?u='+u;if(e)e.href='mailto:?subject='+encodeURIComponent('Save Altadena — speculation map')+'&body='+t+'%0A%0A'+u;if(c)c.addEventListener('click',function(){navigator.clipboard.writeText(location.href).then(function(){c.textContent='Link copied!';});});var conf=Object.keys(DETAILS).filter(function(a){return !ALT[a];}).length;var mixed=Object.keys(ALT).length;var atrisk=Object.keys(VULN).length;var sb9c=Object.keys(SB9).length;var total=conf+mixed+atrisk;var bits=[];if(conf)bits.push(conf+' confirmed');if(mixed)bits.push(mixed+' mixed');if(atrisk)bits.push(atrisk+' at-risk');if(ty)ty.innerHTML='Running tally: <b>'+total+'</b> lots affected or at risk ('+bits.join(' · ')+') · <b>3</b> Certificate-of-Compliance filings (apparent vesting moves).';})();
   // 2) To show the EXACT fire-hazard and sewer boundaries, replace the approximate polygons below
   //    with real GeoJSON from CAL FIRE (FHSZ) and LA County Public Works (sewer service area),
@@ -159,11 +269,22 @@
   var ADDRESSES = [
     "1691 E Mendocino St","2821 Santa Rosa Ave","1540 E Altadena Dr","412 W Altadena Dr",
     "1145 E Altadena Dr","369 E Altadena Dr","1134 E Altadena Dr","1068 Dolores Dr",
-    "25 E Palm St","30 W Harriet St",
-    "2261 Sinaloa Ave","2271 Maiden Lane",
-    "2262 N Glenrose Ave","416 E Altadena Dr",
-    "306 W Ventura St",
-    "653 E Pine St","366 W Harriet St"
+    "25 E Palm St","30 W Harriet St","2261 Sinaloa Ave","2271 Maiden Lane",
+    "803 E Sacramento St","2262 N Glenrose Ave","416 E Altadena Dr","306 W Ventura St",
+    "653 E Pine St","366 W Harriet St","95 W Poppyfields Dr","646 E Palm St",
+    "2761 N Marengo Ave","768 E Sacramento St","1484 N Altadena Dr","3101 La Corona Ave",
+    "2056 Maiden Ln","3224 N Fair Oaks Ave","42 W Mountain View St","157 E Las Flores Dr",
+    "2636 Olive Ave","2214 N Glenrose Ave","55 Marathon Rd","408 W Terrace St",
+    "2309 Maiden Ln","387 W Mountain View St","231 W Laurel Dr","70 Reever Way",
+    "405 W Mendocino St","455 E Marigold St","445 E Marigold St","144 E Pine St",
+    "358 W Loma Alta Dr","344 Crosby St","417 W Terrace St","2096 N Glenrose Ave",
+    "3228 N Fair Oaks Ave","732 E Mariposa St","139 E Las Flores Dr","411 Punahou St",
+    "471 W Altadena Dr","608 Concha St","2775 Lake Ave","411 W Altadena Dr",
+    "1369 E Loma Alta Dr","1090 E Mendocino St","2530 N Lincoln Ave","2569 N Raymond Ave",
+    "634 E Palm St","401 E Mariposa St","1225 E Altadena Dr","2284 Norwic Pl",
+    "101 W Altadena Dr","34 W Palm St","2470 N Marengo Ave","128 E Mariposa St",
+    "169 W Woodbury Rd","50 Marathon Rd","1023 Dolores Dr","1085 E Mendocino St",
+    "2270 N Glenrose Ave","283 W Mountain View St","1017 Dolores Dr","1650 E Mendocino St"
   ];
   var CITY = ", Altadena, CA 91001";
 
@@ -189,7 +310,7 @@
   ADDRESSES.forEach(function(a,i){var n=i+1;var conf=!!DETAILS[a];var alt=!!ALT[a];var vuln=!!VULN[a];var sb9=!!SB9[a];var col=alt?'#ff8a00':(conf?'#ee1c25':(vuln?'#ff8a00':(sb9?'#9aa0a6':'#8a8a8a')));var mark=alt?' <span style="color:#ff8a00;font-weight:700;">◆</span>':(conf?' <span style="color:#ee1c25;font-weight:700;">✔</span>':(vuln?' <span style="color:#ff8a00;font-weight:700;">●</span>':(sb9?' <span style="color:#6f767d;font-weight:700;">●</span>':'')));var row=document.createElement('div');row.className='item';row.id='row'+n;row.innerHTML='<div class="pin" style="background:'+col+'">'+n+'</div><div><div class="addr">'+a+mark+'</div><div class="sub" id="sub'+n+'">Locating…</div></div>';list.appendChild(row);});
   function cGet(a){try{return (JSON.parse(localStorage.getItem('alt_geo')||'{}'))[a];}catch(e){return null;}}
   function cSet(a,ll){try{var c=JSON.parse(localStorage.getItem('alt_geo')||'{}');c[a]=ll;localStorage.setItem('alt_geo',JSON.stringify(c));}catch(e){}}
-  function place(i,ll){var n=i+1,a=ADDRESSES[i];var info=DETAILS[a]||NOTE[a]||(VULN[a]?'At-risk / watch — resident-flagged, not yet confirmed in County records.':'Resident-flagged · unverified.');var llc=LLC[a]?' <a href="#" onclick="showLLC(\''+a+'\');return false;" style="color:#7a2e1d;font-weight:700;">🏢 Ownership record ↗</a>':'';var m=L.marker(ll,{icon:icon(n,!!DETAILS[a],!!ALT[a],!!VULN[a],!!SB9[a])}).addTo(pinsGroup);m.bindPopup('<strong>'+n+'. '+a+'</strong><br><span style="font-size:12px;color:#888;">'+info+'</span>'+llc+'<br><a href="'+gmaps(a)+'" target="_blank">Open in Google Maps ↗</a>');bounds.push(ll);document.getElementById('sub'+n).innerHTML=(DETAILS[a]?'<span style="color:#0f6e56;font-weight:600;">'+DETAILS[a]+'</span><br>':(NOTE[a]?'<span style="color:#a07a00;">'+NOTE[a]+'</span><br>':(VULN[a]?'<span style="color:#a07a00;font-style:italic;">At-risk / watch — flagged, not yet confirmed.</span><br>':'')))+llc+'<a href="'+gmaps(a)+'" target="_blank">Map ↗</a>';document.getElementById('row'+n).onclick=function(){map.setView(ll,17);m.openPopup();};}
+  function place(i,ll){var n=i+1,a=ADDRESSES[i];var info=DETAILS[a]||NOTE[a]||(VULN[a]?'At-risk / watch — resident-flagged, not yet confirmed in County records.':'Resident-flagged · unverified.');var llc=LLC[a]?' <a href="#" onclick="showLLC(\''+a+'\');return false;" style="color:#7a2e1d;font-weight:700;">🏢 Ownership record ↗</a>':'';var z=(ALT[a]?100000:(DETAILS[a]?200000:(VULN[a]?100000:0)));var m=L.marker(ll,{icon:icon(n,!!DETAILS[a],!!ALT[a],!!VULN[a],!!SB9[a]),zIndexOffset:z}).addTo(pinsGroup);m.bindPopup('<strong>'+n+'. '+a+'</strong><br><span style="font-size:12px;color:#888;">'+info+'</span>'+llc+'<br><a href="'+gmaps(a)+'" target="_blank">Open in Google Maps ↗</a>');bounds.push(ll);document.getElementById('sub'+n).innerHTML=(DETAILS[a]?'<span style="color:#0f6e56;font-weight:600;">'+DETAILS[a]+'</span><br>':(NOTE[a]?'<span style="color:#a07a00;">'+NOTE[a]+'</span><br>':(VULN[a]?'<span style="color:#a07a00;font-style:italic;">At-risk / watch — flagged, not yet confirmed.</span><br>':'')))+llc+'<a href="'+gmaps(a)+'" target="_blank">Map ↗</a>';document.getElementById('row'+n).onclick=function(){map.setView(ll,17);m.openPopup();};}
   function fail(i){var n=i+1;document.getElementById('sub'+n).innerHTML='<span class="bad">auto-location failed</span> · <a href="'+gmaps(ADDRESSES[i])+'" target="_blank">Map ↗</a>';}
   var done=0,found=0;
   function tick(){done++;statusEl.textContent='Located '+found+' of '+ADDRESSES.length+' sites'+(done<ADDRESSES.length?' …':'');if(done===ADDRESSES.length&&bounds.length){map.fitBounds(bounds,{padding:[50,50]});}}
