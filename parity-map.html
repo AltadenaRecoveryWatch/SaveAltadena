@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Same firestorm. Opposite hazard designation. — Altadena vs. Palisades</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+  :root{--brick:#7a2e1d;--coral:#c0572f;--navy:#0b4ea2;--ink:#241a17;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:var(--ink);background:#fff;}
+  .wrap{max-width:1320px;margin:0 auto;padding:18px 18px 26px;}
+  h1{font-size:26px;margin:0 0 2px;color:#111;}
+  .sub{font-size:15px;color:#5d4b44;margin:0 0 14px;}
+  .panels{display:flex;gap:16px;flex-wrap:wrap;}
+  .panel{flex:1 1 600px;min-width:340px;border:1px solid #e3d2ca;border-radius:12px;overflow:hidden;}
+  .phead{padding:9px 14px;color:#fff;font-weight:800;font-size:15px;letter-spacing:.3px;display:flex;justify-content:space-between;align-items:center;}
+  .phead.alt{background:var(--brick);}
+  .phead.pal{background:#2f6b4f;}
+  .phead small{font-weight:600;opacity:.9;font-size:12px;}
+  .map{width:100%;height:560px;background:#eef1f4;}
+  .legend{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;margin:18px 0 8px;font-size:16px;font-weight:700;color:#1f1a17;background:#faf1ec;border:1.5px solid #d8c2b6;border-radius:12px;padding:16px 20px;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+  .legend .lgttl{font-size:13px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:#7a2e1d;width:100%;margin-bottom:2px;}
+  .legend i{display:inline-block;width:34px;height:0;vertical-align:middle;margin-right:10px;}
+  .sw-fhsz{width:24px;height:18px;background:#e36b6b;border:1.5px solid #c84b4b;border-radius:3px;}
+  .sw-rec{border-top:6px solid #4a1709;}
+  .sw-zip{border-top:4px dashed #0b4ea2;}
+  .note{font-size:12.5px;color:#7a6a62;margin:6px 2px 0;}
+  .src{font-size:11.5px;color:#9a8378;margin:10px 2px 0;line-height:1.5;}
+  .ziplabel{font:700 14px/1.1 Arial,Helvetica,sans-serif;color:#0b2e63;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 3px #fff,0 0 3px #fff;white-space:nowrap;}
+  .leaflet-container{background:#eef1f4;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Same firestorm. Opposite hazard designation.</h1>
+  <p class="sub">Why the Palisades is shielded from speculative lot-splitting — and Altadena is left exposed. Fire Hazard Severity Zones, the fire disaster area (burn perimeter), and the SB&nbsp;1090 ZIP areas (91001 / 91003), on one map.</p>
+
+  <div class="panels">
+    <div class="panel">
+      <div class="phead alt"><span>ALTADENA — Eaton Fire</span><small>SB 1090 area: ZIP 91001 / 91003</small></div>
+      <div id="mapAlt" class="map"></div>
+    </div>
+    <div class="panel">
+      <div class="phead pal"><span>PACIFIC PALISADES — Palisades Fire</span><small>Almost entirely in the Very High zone</small></div>
+      <div id="mapPal" class="map"></div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span class="lgttl">Map legend</span>
+    <span><i class="sw-fhsz"></i> Very High Fire Hazard Severity Zone (CAL FIRE)</span>
+    <span><i class="sw-rec"></i> Fire disaster area — burn perimeter</span>
+    <span><i class="sw-zip"></i> ZIP-code boundary (SB 1090 area — Altadena)</span>
+  </div>
+  <p class="note"><strong>Note:</strong> ZIP 91003 is a PO-box-only ZIP with no separate boundary; the SB&nbsp;1090 Altadena area is shown by ZIP 91001. The Palisades sits almost entirely inside the Very High zone (shielded from SB&nbsp;1123 and given SB&nbsp;9 relief by executive order), while most of Altadena's burned residential core lies <em>outside</em> the Very High zone — so SB&nbsp;1123 applies and the SB&nbsp;9 relief does not.</p>
+  <p class="src">Sources: Fire Hazard Severity Zones — CAL FIRE (services.gis.ca.gov). Burn / recovery footprint — LA County, "Palisades and Eaton Dissolved Fire Perimeters" (as of 2025-01-21). ZIP boundaries — U.S. Census ZCTA. Basemap © CARTO, © OpenStreetMap contributors. Prepared by Altadena Recovery Watch.</p>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
+<script>
+const FHSZ='https://services.gis.ca.gov/arcgis/rest/services/Environment/Fire_Severity_Zones/MapServer';
+const PERIM_BASE='https://services.arcgis.com/RmCCgQtiZLDCtblq/arcgis/rest/services/Palisades_and_Eaton_Dissolved_Fire_Perimeters_as_of_20250121/FeatureServer';
+const ZIPSRC='https://raw.githubusercontent.com/OpenDataDE/State-zip-code-GeoJSON/master/ca_california_zip_codes_geo.min.json';
+let zipPromise=null;
+function getZips(){ if(!zipPromise) zipPromise=fetch(ZIPSRC).then(r=>r.json()); return zipPromise; }
+
+// perimLayer: 0 = Eaton, 1 = Palisades. wantZips: array of ZIPs to outline (empty = none).
+function buildMap(divId, perimLayer, wantZips, bounds){
+  const map=L.map(divId,{zoomControl:true,attributionControl:false});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:19,crossOrigin:true}).addTo(map);
+  L.esri.dynamicMapLayer({url:FHSZ,layers:[0,1],opacity:0.55}).addTo(map);
+  // DISASTER AREA = fire perimeter, drawn bold with a white casing so it reads on both light and red backgrounds
+  const PURL=PERIM_BASE+'/'+perimLayer;
+  L.esri.featureLayer({url:PURL,style:()=>({color:'#ffffff',weight:7,opacity:0.95,fill:false})}).addTo(map);
+  L.esri.featureLayer({url:PURL,style:()=>({color:'#4a1709',weight:4,opacity:1,fill:true,fillColor:'#7a2e1d',fillOpacity:0.07})}).addTo(map);
+  if(wantZips && wantZips.length){
+    getZips().then(all=>{
+      const want=new Set(wantZips);
+      const feats=all.features.filter(f=>want.has(String(f.properties.ZCTA5CE10)));
+      L.geoJSON({type:'FeatureCollection',features:feats},{
+        style:{color:'#0b4ea2',weight:3,fill:false,dashArray:'7 5'},
+        onEachFeature:(f,lyr)=>{const c=lyr.getBounds().getCenter();
+          const z=String(f.properties.ZCTA5CE10);
+          const lab = z==='91001' ? 'ZIP 91001 / 91003' : 'ZIP '+z;
+          L.marker(c,{interactive:false,icon:L.divIcon({className:'ziplabel',html:lab,iconSize:[120,18]})}).addTo(map);}
+      }).addTo(map);
+    }).catch(()=>{});
+  }
+  if(bounds) map.fitBounds(bounds);
+  return map;
+}
+// Altadena: Eaton perimeter (layer 0) + ZIP 91001/91003
+buildMap('mapAlt',0,['91001'],[[34.158,-118.205],[34.255,-118.075]]);
+// Pacific Palisades: Palisades perimeter (layer 1), no ZIP line, view fit to the burn perimeter
+buildMap('mapPal',1,[],[[34.022,-118.700],[34.135,-118.492]]);
+</script>
+</body>
+</html>
