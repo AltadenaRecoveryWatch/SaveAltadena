@@ -45,6 +45,8 @@
   .logbtn.logged{background:#1f3a2e;color:#fff;}
   .tag{display:inline-block;background:#eaddd5;color:var(--brick);border-radius:20px;padding:1px 8px;font-size:11px;font-weight:700;margin-left:4px;}
   .tag.pri{background:var(--red);color:#fff;}
+  .mcell{display:flex;align-items:center;gap:10px;}
+  .mthumb{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:center top;border:1px solid #d8c3b8;flex:0 0 46px;background:#eee;}
   .muted{color:#7a6a62;font-size:13px;}
   .ok{display:none;background:#e7f7ee;border:1px solid #1f3a2e;color:#1f3a2e;border-radius:7px;padding:9px 12px;margin-top:8px;font-weight:700;}
   .prog{font-weight:800;color:var(--green);}
@@ -158,7 +160,8 @@ function toggleLetter(cm,ad){var d=getLetters(),id=rid(cm,ad),i=d.indexOf(id);if
 function resetChecks(){setDone([]);setLetters([]);document.querySelector('#hcd tbody').innerHTML='';document.querySelector('#lg tbody').innerHTML='';fill('hcd',HCD,'hcd');fill('lg',LG,'lg');updateProg();}
 function fill(id,rows,cm){var tb=document.querySelector('#'+id+' tbody'),done=getDone(),letters=getLetters();rows.forEach(function(r){var tr=document.createElement('tr');var i=rid(cm,r[3]);var dn=done.indexOf(i)>=0;if(r[5])tr.className='chair';if(dn)tr.className+=' done';
   var role=r[1]?(' <span class="tag'+(r[5]?' pri':'')+'">'+r[1]+'</span>'):'';
-  var c1=document.createElement('td');c1.innerHTML='<b>'+r[0]+'</b>'+role;
+  var dd=r[3].replace(/^AD/,'');
+  var c1=document.createElement('td');c1.innerHTML='<div class="mcell"><img class="mthumb" loading="lazy" alt="'+r[0]+'" src="https://webapi.assembly.ca.gov/district-media/assets/members/assembly_member_'+dd+'.jpg"><span><b>'+r[0]+'</b>'+role+'</span></div>';
   var c2=document.createElement('td');c2.textContent=r[2];
   var c4=document.createElement('td');
   var ph=document.createElement('a');ph.className='call';ph.href='tel:+1'+r[4];ph.textContent=fmtPhone(r[4]);
