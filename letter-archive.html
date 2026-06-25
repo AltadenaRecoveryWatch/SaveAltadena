@@ -113,6 +113,7 @@
       <div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;opacity:.95;">📞 Take action now — call the committee offices</div>
       <div style="font-size:21px;font-weight:900;line-height:1.15;margin-top:5px;">20 seconds. One YES at a time.</div>
       <div style="font-size:13.5px;margin-top:6px;opacity:.97;font-style:italic;">“Hi, I’m a constituent from [your city/ZIP]. Please ask [Assemblymember] to vote YES on SB 1090 to protect Altadena’s fire survivors from speculative lot-splitting. Thank you.”</div>
+      <a class="btn ghost2" href="call_members.html" style="margin-top:11px;">📞 Get the call list &amp; script →</a>
     </div>
     <div style="flex:1;min-width:230px;background:#1f3a2e;color:#fff;border-radius:12px;padding:16px 20px;box-shadow:0 2px 8px rgba(0,0,0,.18);">
       <div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;opacity:.95;">🏛️ Vote day — both committees</div>
@@ -121,21 +122,63 @@
     </div>
   </div>
   <div class="toc">
-    <a href="call_members.html">📞 Call now</a><a href="#govstep">Call the Governor</a>
+    <a href="call_members.html">📞 Call now</a><a href="#govstep">Call the Governor</a><a href="#build">Build a letter</a><a href="#send">Send a letter</a>
   </div>
 </div></div>
 
-<!-- ================= LETTER STEPS MOVED TO letter-archive.html (kept for reference, not linked) ================= -->
-<!-- ================= ACTION STEPS ================= -->
-<section id="track2" class="t1"><div class="wrap">
-  <span class="kicker two">STEP 1 · CALL THE COMMITTEE MEMBERS</span>
-  <h2>Call the committee members</h2>
-  <p class="sub">This is the single most powerful thing you can do before July 1 — members count constituent calls. We've put the full roster — both committees, with one-tap phone numbers, the official web-form links, a constituent-district checker, call logging, and the phone-bank downloads — on its own page so it's easy to work the list.</p>
-  <a class="btn navy" href="call_members.html" style="font-size:16px;padding:13px 22px;">📞 Go to the call list &amp; script →</a>
+<!-- ================= TRACK 1 ================= -->
+<section id="build" class="t1"><div class="wrap">
+  <span class="kicker">STEP 1 · BUILD YOUR LETTER</span>
+  <h2>Build your SB 1090 support letter</h2>
+
+  <div class="grid2">
+    <div><label>Your full name</label><input id="lname" placeholder="Jane Doe"></div>
+    <div><label>Your email <span style="font-weight:400;color:#9a8a82;">(for updates — not printed in the letter)</span></label><input id="lemail" type="email" placeholder="you@example.com"></div>
+  </div>
+  <div class="grid2">
+    <div><label>Your mailing address <span style="font-weight:400;color:#9a8a82;">(street, city, ZIP — for your signature)</span></label><input id="lcity" placeholder="123 Maple St, Altadena, CA 91001"></div>
+    <div><label style="display:flex;gap:8px;align-items:center;font-weight:400;font-size:13.5px;cursor:pointer;margin-top:26px;"><input type="checkbox" id="ljoin" checked style="width:16px;height:16px;flex:0 0 16px;accent-color:#7a2e1d;"> Add me to the Save Altadena list for SB 1090 updates</label></div>
+  </div>
+  <label>Your story — the most important part. 2–3 sentences in your own words: who you are, your connection to Altadena, what you and your family lost or still face, and why SB 1090 matters to you.</label>
+  <textarea id="lstory" style="min-height:110px;" placeholder="e.g., We lost the home we'd lived in for 22 years. We're determined to rebuild — but a developer just filed to split the burned lot next door into nine units, with no hearing and no say for those of us coming back."></textarea>
+  <div class="row"><button class="btn navy" onclick="buildLetter()">Click To Build Letter</button></div>
+  <label>Your letter (your full letter is already written below — just replace any remaining [ bracketed ] parts, edit freely, then copy or download)</label>
+  <textarea id="lout" style="min-height:300px;"></textarea>
+  <div class="row"><button class="btn navy" onclick="downloadLetterPDF()">Download as PDF</button></div>
+  <p class="muted">The Advocates Portal and the committee consultants want a <b>signed letter</b>, not pasted text. Download the <b>PDF</b>, print and sign it (or add a digital signature), and upload or attach it. Want to add letterhead first? Download the <b>Word</b> version, edit and sign, then save as PDF.</p>
+
 </div></section>
 
+<!-- ================= SEND · TRACK A — COMMITTEE ================= -->
+<section id="send" class="t1"><div class="wrap">
+  <span class="kicker">STEP 2 · SEND YOUR LETTER</span>
+  <h2>Send your letter to the committee</h2>
+  <div class="alert red"><b>Deadline: Wednesday, June 24, 2026 · 5:00 p.m.</b> for the July 1 hearing. A signed letter in the committee's official file is the single highest-impact thing you can do.</div>
+
+  <p class="sub"><b>Submit your letter — two ways.</b> The Portal is the committee's official record; the one-click email is the easiest. Either one works — doing both is great.</p>
+  <div class="grid2">
+    <div class="card"><span style="display:inline-block;background:#243b53;color:#fff;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:800;">OPTION A · OFFICIAL</span>
+      <h3>Submit on the Advocates Portal</h3>
+      <ol style="margin:6px 0 12px 18px;padding:0;font-size:14.5px;line-height:1.6;">
+        <li>Open the portal and create a free account.</li>
+        <li>Search <b>SB 1090</b> and select it.</li>
+        <li>Set your position to <b>Support</b>.</li>
+        <li><b>File to BOTH committees</b> — submit once to <b>Assembly Housing &amp; Community Development</b> and again to <b>Assembly Local Government</b>. SB 1090 is heard by both on July 1, and a letter only counts in the committee it's filed with. Same letter both times.</li>
+        <li>Upload your letter and submit (then repeat for the second committee).</li>
+      </ol>
+      <a class="btn navy" href="https://calegislation.lc.ca.gov/Advocates/" target="_blank" rel="noopener" onclick="logBuild('portal')">Open the Advocates Portal →</a></div>
+    <div class="card"><span style="display:inline-block;background:#c0572f;color:#fff;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:800;">OPTION B · EASIEST</span>
+      <h3>Send it in one click</h3>
+      <p>Opens a pre-filled email to the staff of <b>both committees</b> (Housing &amp; Community Development and Local Government) — recipients and subject are already set. <b>Your letter is copied to your clipboard automatically</b>, so just paste it into the email body (Ctrl+V, or Cmd+V on a Mac), or attach the PDF you downloaded — then press send. A copy comes to our team, so we'll also file it to the Portal for you.</p>
+      <button class="btn brick" onclick="quickGmail()">✉ Send via Gmail →</button>
+      <button class="btn" style="background:#243b53;margin-top:8px;" onclick="quickMail()">✉ Send via mail app →</button></div>
+  </div>
+  <p class="muted">Every adult in your household should file their own letter — that's how we reach 500+. Please cc Sen. Pérez (author) and Asm. Harabedian (co-author) if you can.</p>
+</div></section>
+
+<!-- ================= TRACK 2 ================= -->
 <section id="govstep" class="t2"><div class="wrap">
-  <span class="kicker">STEP 2 · CALL THE GOVERNOR</span>
+  <span class="kicker">STEP 3 · CALL THE GOVERNOR</span>
   <h2>Ask Gov. Newsom for an Executive Order</h2>
   <p class="sub">The fastest protection of all. The Governor extended SB 9 relief to fire-hazard zones in the burn areas by executive order (N-32-25) — but the hazard map left most of Altadena out. He can protect the entire Eaton Fire area with a stroke of the pen — and unlike SB 1090, an order can reach back to the speculative subdivisions already filed since the fire. Two minutes:</p>
   <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:12px;">
@@ -152,27 +195,34 @@
     </ul></div>
 </div></section>
 
+<section id="track2" class="t1"><div class="wrap">
+  <span class="kicker two">STEP 4 · CONTACT THE MEMBERS</span>
+  <h2>Call the committee members</h2>
+  <p class="sub">Members count constituent calls. We've put the full roster — both committees, with one-tap phone numbers, the official web-form links, a constituent-district checker, call logging, and the phone-bank downloads — on its own page so it's easy to work the list.</p>
+  <a class="btn navy" href="call_members.html" style="font-size:16px;padding:13px 22px;">📞 Go to Step 4 — Contact the members →</a>
+</div></section>
+
 
 <!-- RSVP section removed — July 1 Sacramento sign-ups are now handled via the follow-up email (emails Noel directly). -->
 
 <!-- WHY / STATEWIDE / KEY DATES / SHARE sections removed per request -->
 
-<!-- JOIN THE LIST -->
-<section id="signup" class="t1"><div class="wrap">
-  <h2>Join the list</h2>
-  <p class="sub">Get updates on the fight to protect Altadena's recovery — SB 1090, the July 1 hearings, and how to help. We'll only email when it matters.</p>
-  <form class="card" style="max-width:540px;" onsubmit="return submitJoin(event)">
-    <label for="jname">Name</label>
-    <input type="text" id="jname" autocomplete="name" placeholder="Your name">
-    <label for="jemail">Email *</label>
-    <input type="email" id="jemail" autocomplete="email" placeholder="you@example.com" required>
-    <label for="jzip">ZIP code <span style="font-weight:400;color:#9a8a82;">(optional)</span></label>
-    <input type="text" id="jzip" inputmode="numeric" autocomplete="postal-code" placeholder="91001" maxlength="10">
-    <label style="display:flex;gap:8px;align-items:center;font-weight:400;font-size:13.5px;margin:10px 0 0;cursor:pointer;"><input type="checkbox" id="jconsent" checked style="width:16px;height:16px;flex:0 0 16px;accent-color:#7a2e1d;"> Yes, keep me updated by email about Altadena Recovery Watch and SB 1090.</label>
-    <div class="row"><button type="submit" id="jbtn" class="btn brick">Join the list →</button></div>
-    <div class="ok" id="jok"></div>
-    <div id="jerr" style="display:none;background:#fff3f0;border:1px solid #ee1c25;color:#a3160f;border-radius:7px;padding:9px 12px;margin-top:8px;font-weight:700;"></div>
+<!-- YARD SIGN -->
+<section id="yardsign" class="t1"><div class="wrap">
+  <h2>Put a "Save Altadena" sign in your yard</h2>
+  <p class="sub">A street full of signs shows legislators and neighbors how many of us are watching. Signs are coordinated by volunteer Gilien Silsby and cost <strong>$13 each — reimburse Gilien via Venmo (@Gilien-Silsby)</strong>. Fill this in and we'll open an email to Gilien with your request.</p>
+  <form onsubmit="return yardRequest(event)">
+    <div class="grid2">
+      <div><label>Name</label><input name="name" required></div>
+      <div><label>Email</label><input name="email" type="email" required></div>
+    </div>
+    <div class="grid2">
+      <div><label>Address</label><input name="address" required></div>
+      <div><label>Mobile (optional)</label><input name="phone"></div>
+    </div>
+    <div class="row"><button class="btn" type="submit">Request a yard sign →</button></div>
   </form>
+  <p class="muted">This opens an email to Gilien Silsby (gsilsby10@gmail.com), who coordinates the signs. She'll confirm the cost and her Venmo for reimbursement.</p>
 </div></section>
 
 <!-- Volunteer section removed — roles are now captured via what people click in the follow-up email. -->
@@ -298,23 +348,6 @@ function updatePHint(){var n=checkedVals('.lpchk').length,h=document.getElementB
 function joinConns(cs){if(cs.length===0)return '';if(cs.length===1)return cs[0];if(cs.length===2)return cs[0]+' and '+cs[1];return cs.slice(0,-1).join(', ')+', and '+cs[cs.length-1];}
 function argByKey(k){for(var i=0;i<ARGS.length;i++){if(ARGS[i].k===k)return ARGS[i];}return ARGS[0];}
 function gv(id){return (document.getElementById(id).value||'').trim();}
-function _sjShow(id,t){var e=document.getElementById(id);if(e){e.textContent=t;e.style.display='block';}}
-function _sjHide(id){var e=document.getElementById(id);if(e)e.style.display='none';}
-function submitJoin(ev){
-  ev.preventDefault();_sjHide('jok');_sjHide('jerr');
-  var email=gv('jemail');
-  if(!email||email.indexOf('@')<1||email.indexOf('.')<0){_sjShow('jerr','Please enter a valid email address.');return false;}
-  var row={name:gv('jname')||null,email:email,zip:gv('jzip')||null,source:'home',consent:document.getElementById('jconsent').checked};
-  var btn=document.getElementById('jbtn');btn.disabled=true;btn.textContent='Joining…';
-  fetch(SB_URL+'/rest/v1/signups',{method:'POST',headers:H(),body:JSON.stringify(row)})
-   .then(function(r){
-      if(r.ok){var f=document.querySelector('#signup form');if(f)f.reset();document.getElementById('jconsent').checked=true;
-        _sjShow('jok','You’re on the list — thank you for standing with Altadena. Watch your inbox.');btn.textContent='Joined ✓';}
-      else{_sjShow('jerr','Sorry, something went wrong. Please try again in a moment.');btn.disabled=false;btn.textContent='Join the list →';}
-   })
-   .catch(function(){_sjShow('jerr','Network error — please try again.');btn.disabled=false;btn.textContent='Join the list →';});
-  return false;
-}
 function makeLetter(name,addr,story){
  name=(name||"").trim()||"[ Your full name ]";
  addr=(addr||"").trim()||"[ Your street address, Altadena (or your city), ZIP ]";
