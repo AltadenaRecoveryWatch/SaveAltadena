@@ -32,6 +32,7 @@
   .sub{color:#5d4b44;font-size:14px;margin-bottom:12px;}
   .alert{background:var(--warm);border-left:5px solid var(--coral);border-radius:8px;padding:11px 15px;margin:10px 0;font-size:14.5px;}
   input{font:14px 'Helvetica Neue',Arial,sans-serif;width:100%;padding:9px;border:1px solid #d7c3b8;border-radius:7px;background:#fff;}
+  input[type=checkbox],input[type=radio]{width:auto;padding:0;}
   label{display:block;font-size:13px;font-weight:700;color:#5d4b44;margin:8px 0 3px;}
   .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0;}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
@@ -87,6 +88,10 @@
       <input id="lname" placeholder="Your name" style="max-width:240px;">
       <input id="lemail" type="email" placeholder="you@example.com" style="max-width:280px;">
     </div>
+    <label for="ljoin_call" style="display:flex;align-items:flex-start;gap:8px;margin-top:11px;font-size:13.5px;color:#3a2c27;cursor:pointer;">
+      <input type="checkbox" id="ljoin_call" checked style="margin-top:2px;flex:0 0 auto;width:18px;height:18px;">
+      <span>Keep me updated — add me to the Altadena Recovery Watch list</span>
+    </label>
   </div>
 
   <div id="finder" class="finder">
@@ -152,7 +157,22 @@ function flushPending(){if(gv('lname')&&validEmail(gv('lemail')))postCalls(getDo
 function wireCaller(){['lname','lemail'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',function(){saveCaller();flushPending();});});}
 var _nudged=false;
 function nudgeNE(){if(_nudged)return;_nudged=true;var ln=document.getElementById('lname');if(ln){ln.focus();ln.scrollIntoView({behavior:'smooth',block:'center'});}alert('Add your name and email at the top of this page so each call you log is counted. Your calls are saved here and will send once you do.');}
-function postCalls(ids){var nm=gv('lname'),em=gv('lemail');if(!nm||!validEmail(em))return false;var sent=getSent(),rows=[],mark=[];ids.forEach(function(idr){if(sent.indexOf(idr)>=0)return;var p=idr.split('_'),cm=p[0],ad=p[1],mem=memberFor(cm,ad);if(!mem)return;rows.push({name:nm,email:em,official:mem,official_key:ad,committee:cm==='hcd'?'Housing & Community Development':'Local Government',action:'call',source:'sb1090-hub'});mark.push(idr);});if(!rows.length)return true;fetch(SB_URL+'/rest/v1/outreach_log',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(rows)}).then(function(r){if(r.ok){var s=getSent();mark.forEach(function(x){if(s.indexOf(x)<0)s.push(x);});setSent(s);}});return true;}
+function postCalls(ids){var nm=gv('lname'),em=gv('lemail');if(!nm||!validEmail(em))return false;var sent=getSent(),rows=[],mark=[];ids.forEach(function(idr){if(sent.indexOf(idr)>=0)return;var p=idr.split('_'),cm=p[0],ad=p[1],mem=memberFor(cm,ad);if(!mem)return;rows.push({name:nm,email:em,official:mem,official_key:ad,committee:cm==='hcd'?'Housing & Community Development':'Local Government',action:'call',source:'sb1090-hub'});mark.push(idr);});if(!rows.length)return true;fetch(SB_URL+'/rest/v1/outreach_log',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(rows)}).then(function(r){if(r.ok){var s=getSent();mark.forEach(function(x){if(s.indexOf(x)<0)s.push(x);});setSent(s);}});maybeJoin();return true;}
+var JKEY='sb1090_joined_v1';
+function hasJoined(){try{return localStorage.getItem(JKEY)==='1';}catch(e){return false;}}
+// Adds the caller to the coalition signups list IF the opt-in box is checked (default checked).
+// Unchecked -> calls are still logged to outreach_log; nothing is written to signups.
+function maybeJoin(){
+  var c=document.getElementById('ljoin_call');
+  if(!c||!c.checked)return;            // opted out: do NOT add to signups
+  if(hasJoined())return;               // only add once per browser
+  var nm=gv('lname'),em=gv('lemail');
+  if(!nm||!validEmail(em))return;
+  try{localStorage.setItem(JKEY,'1');}catch(e){}
+  fetch(SB_URL+'/rest/v1/signups',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify({name:nm,email:em,consent:true,source:'call_page'})})
+    .then(function(r){if(!r.ok){try{localStorage.removeItem(JKEY);}catch(e){}}})
+    .catch(function(){try{localStorage.removeItem(JKEY);}catch(e){}});
+}
 var LKEY='sb1090_letters_v1';
 function getLetters(){try{return JSON.parse(localStorage.getItem(LKEY)||'[]');}catch(e){return [];}}
 function setLetters(a){try{localStorage.setItem(LKEY,JSON.stringify(a));}catch(e){}}
@@ -181,6 +201,7 @@ function logContacts(){
   var sent=getSent();var rows=[],mark=[];
   calls.forEach(function(idr){if(sent.indexOf(idr)>=0)return;var r=row(idr,'call');if(r){rows.push(r);mark.push(idr);}});
   if(!rows.length){alert('All your logged calls are already submitted — thank you!');return;}
+  maybeJoin();
   fetch(SB_URL+'/rest/v1/outreach_log',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(rows)}).then(function(r){if(r.ok){var ss=getSent();mark.forEach(function(x){if(ss.indexOf(x)<0)ss.push(x);});setSent(ss);var nc=rows.length,ok=document.getElementById('callOk');ok.textContent='Logged '+nc+' call'+(nc===1?'':'s')+' — thank you! We’ll be in touch about next steps.';ok.style.display='block';ok.scrollIntoView({behavior:'smooth',block:'center'});}else{alert('Sorry — logging failed. Please try again shortly.');}}).catch(function(){alert('Network error — please try again.');});}
 var ADMAP={};HCD.forEach(function(r){ADMAP[parseInt(r[2],10)]=ADMAP[parseInt(r[2],10)]||[];ADMAP[parseInt(r[2],10)].push(r[0]+' (Housing & CD)');});
 LG.forEach(function(r){var k=parseInt(r[2],10);ADMAP[k]=ADMAP[k]||[];if(ADMAP[k].indexOf(r[0]+' (Housing & CD)')<0)ADMAP[k].push(r[0]+' (Local Government)');});
