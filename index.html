@@ -112,13 +112,20 @@
     <div style="flex:2;min-width:270px;background:#c0572f;color:#fff;border-radius:12px;padding:16px 20px;box-shadow:0 2px 8px rgba(0,0,0,.18);">
       <div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;opacity:.95;">📞 Take action now — call the committee offices</div>
       <div style="font-size:21px;font-weight:900;line-height:1.15;margin-top:5px;">20 seconds. One YES at a time.</div>
-      <div style="font-size:13.5px;margin-top:6px;opacity:.97;font-style:italic;">“Hi, I’m a constituent from [your city/ZIP]. Please ask [Assemblymember] to vote YES on SB 1090 to protect Altadena’s fire survivors from speculative lot-splitting. Thank you.”</div>
+      <div style="font-size:13.5px;margin-top:6px;opacity:.97;font-style:italic;">“Hi, I’m a constituent from [your city/ZIP]. Please ask [Assemblymember] to vote YES on SB 1090 — and to make it effective as soon as possible. Every day of delay, speculators lock up more burned Altadena lots. Thank you.”</div>
     </div>
     <div style="flex:1;min-width:230px;background:#1f3a2e;color:#fff;border-radius:12px;padding:16px 20px;box-shadow:0 2px 8px rgba(0,0,0,.18);">
       <div style="font-size:12px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;opacity:.95;">🏛️ Vote day — both committees</div>
       <div style="font-size:21px;font-weight:900;line-height:1.15;margin-top:5px;">Wed, July 1, 2026</div>
       <div style="font-size:13.5px;margin-top:4px;opacity:.97;">Must clear <b>both</b>: Housing &amp; Community Development (9:30 a.m.) and Local Government (1:30 p.m.). If it stalls in either, the bill dies.</div>
     </div>
+  </div>
+  <div id="callgoal" style="background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:12px;padding:14px 18px;margin:6px 0 2px;">
+    <div style="font-weight:800;color:#fff;font-size:15px;">Community goal: 7,000 calls to Sacramento before July 1</div>
+    <div style="background:rgba(255,255,255,.22);border-radius:999px;height:22px;overflow:hidden;margin:10px 0 7px;">
+      <div id="callgoalfill" style="background:#ff7a45;height:22px;width:0%;border-radius:999px;transition:width .9s ease;"></div>
+    </div>
+    <div id="callgoaltxt" style="font-size:13.5px;color:#ffe9e0;font-weight:600;">Loading our progress…</div>
   </div>
   <div class="toc">
     <a href="call_members.html">📞 Call now</a><a href="#govstep">Call the Governor</a>
@@ -422,12 +429,13 @@ function submitForm(e,table,okId,mapFn,after){e.preventDefault();var f=e.target,
  }).catch(function(){alert('Network error — please try again.');}).finally(function(){if(btn){btn.disabled=false;btn.textContent=btn.getAttribute('data-l')||'Submit';}});
  return false;}
 function loadCount(){fetch(SB_URL+'/rest/v1/rpc/petition_count',{method:'POST',headers:H(),body:'{}'}).then(function(r){return r.ok?r.json():null;}).then(function(n){if(n!==null)document.getElementById('petCount').textContent=Number(n).toLocaleString();});}
+function loadCallGoal(){var GOAL=7000;function paint(n,ap){var pct=Math.max(2,Math.min(100,Math.round(n/GOAL*100)));var f=document.getElementById('callgoalfill');if(f)f.style.width=pct+'%';var t=document.getElementById('callgoaltxt');if(t)t.innerHTML='<b>'+n.toLocaleString()+(ap?'+':'')+'</b> of '+GOAL.toLocaleString()+' calls made — '+pct+'% of the way. Keep them coming!';}fetch(SB_URL+'/rest/v1/rpc/sb1090_call_count',{method:'POST',headers:H(),body:'{}'}).then(function(r){return r.ok?r.json():null;}).then(function(n){var v=Number(n);if(n===null||isNaN(v))paint(714,true);else paint(v,false);}).catch(function(){paint(714,true);});}
 function afterPet(){var el=document.getElementById('petCount'),n=parseInt((el.textContent||'0').replace(/,/g,''))||0;el.textContent=(n+1).toLocaleString();}
 function copyLink(){var u=location.href;if(navigator.clipboard)navigator.clipboard.writeText(u);alert('Link copied: '+u);}
 function igShare(){var cap="After the Eaton Fire, out-of-town developers are buying burned Altadena lots and using SB 1123 to pack up to 10 units onto them — by right, with no public hearing — before families can even rebuild. SB 1090 would stop it; the committee hearing is July 1. Take action — link in our bio. #SaveAltadena #Altadena #EatonFire #SB1090 #SB1123";if(navigator.clipboard)navigator.clipboard.writeText(cap);alert('Caption copied. Instagram does not allow link-sharing — so: 1) download a graphic below, 2) open Instagram and create a post or story, 3) paste this caption and put the site link in your bio.');}
 (function(){var u=encodeURIComponent(location.href);document.getElementById('shareFb').href='https://www.facebook.com/sharer/sharer.php?u='+u;document.getElementById('shareTw').href='https://twitter.com/intent/tweet?text='+encodeURIComponent('Support SB 1090 — protect Altadena\'s fire recovery. Act: ')+u;})();
 Array.prototype.forEach.call(document.querySelectorAll('button[type=submit]'),function(b){b.setAttribute('data-l',b.textContent);});
-populateConns();populateLpoint();setDefaultLetter();restoreBuilder();wireBuilderSave();
+populateConns();populateLpoint();setDefaultLetter();restoreBuilder();wireBuilderSave();loadCallGoal();
 </script>
 </body>
 </html>
