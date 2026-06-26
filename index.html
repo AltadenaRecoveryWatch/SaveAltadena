@@ -433,9 +433,9 @@ function loadCallGoal(){var GOAL=7000;function paint(n,ap){var pct=Math.max(2,Ma
 function afterPet(){var el=document.getElementById('petCount'),n=parseInt((el.textContent||'0').replace(/,/g,''))||0;el.textContent=(n+1).toLocaleString();}
 function copyLink(){var u=location.href;if(navigator.clipboard)navigator.clipboard.writeText(u);alert('Link copied: '+u);}
 function igShare(){var cap="After the Eaton Fire, out-of-town developers are buying burned Altadena lots and using SB 1123 to pack up to 10 units onto them — by right, with no public hearing — before families can even rebuild. SB 1090 would stop it; the committee hearing is July 1. Take action — link in our bio. #SaveAltadena #Altadena #EatonFire #SB1090 #SB1123";if(navigator.clipboard)navigator.clipboard.writeText(cap);alert('Caption copied. Instagram does not allow link-sharing — so: 1) download a graphic below, 2) open Instagram and create a post or story, 3) paste this caption and put the site link in your bio.');}
-(function(){var u=encodeURIComponent(location.href);document.getElementById('shareFb').href='https://www.facebook.com/sharer/sharer.php?u='+u;document.getElementById('shareTw').href='https://twitter.com/intent/tweet?text='+encodeURIComponent('Support SB 1090 — protect Altadena\'s fire recovery. Act: ')+u;})();
+(function(){var u=encodeURIComponent(location.href);var fb=document.getElementById('shareFb');if(fb)fb.href='https://www.facebook.com/sharer/sharer.php?u='+u;var tw=document.getElementById('shareTw');if(tw)tw.href='https://twitter.com/intent/tweet?text='+encodeURIComponent('Support SB 1090 — protect Altadena\'s fire recovery. Act: ')+u;})();
 Array.prototype.forEach.call(document.querySelectorAll('button[type=submit]'),function(b){b.setAttribute('data-l',b.textContent);});
-populateConns();populateLpoint();setDefaultLetter();restoreBuilder();wireBuilderSave();loadCallGoal();
+try{loadCallGoal();}catch(e){}populateConns();populateLpoint();setDefaultLetter();restoreBuilder();wireBuilderSave();
 </script>
 </body>
 </html>
