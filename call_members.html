@@ -82,6 +82,14 @@
 
 <section><div class="wrap">
 
+  <div id="callgoal" style="background:#eef5f0;border:1px solid #bcd9c9;border-left:5px solid #1f3a2e;border-radius:12px;padding:15px 18px;margin:0 0 14px;">
+    <div style="font-weight:800;color:#1f3a2e;font-size:16px;">Community goal: 7,000 calls to Sacramento before July 1</div>
+    <div style="background:#d8e6dd;border-radius:999px;height:22px;overflow:hidden;margin:11px 0 7px;">
+      <div id="callgoalfill" style="background:#1f3a2e;height:22px;width:0%;border-radius:999px;transition:width .9s ease;"></div>
+    </div>
+    <div id="callgoaltxt" style="font-size:14px;color:#3a2c27;font-weight:600;">Loading our progress…</div>
+  </div>
+
   <div class="finder" style="background:#fff7f2;border-color:#e6c9bb;">
     <b>First — add your name and email</b> so each call you log is counted (and we can follow up about next steps). It only needs to be entered once.
     <div class="row" style="margin-top:9px;">
@@ -106,11 +114,11 @@
 
   <div class="staffbox" style="background:#f3f7f4;border:1px solid #bcd9c9;border-left:5px solid #1f3a2e;border-radius:10px;padding:15px 18px;margin:14px 0;">
     <div style="font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#1f3a2e;margin-bottom:6px;">📞 Your 30-second call script</div>
-    <p style="margin:0 0 9px;font-size:14.5px;line-height:1.6;">“Hi, my name is <b>[your name]</b>, and I'm a constituent calling from <b>[your city]</b>. I'm asking the Assemblymember to vote <b>AYE on SB 1090</b> — and to make it effective as soon as possible.</p>
+    <p style="margin:0 0 9px;font-size:14.5px;line-height:1.6;">“Hi, my name is <b>[your name]</b>, and I'm a constituent calling from <b>[your city]</b>. I'm asking the Assemblymember to vote <b>AYE on SB 1090</b> — and, just as urgently, to <b>make it take effect immediately</b>. This can't wait: every day of delay, speculators file new subdivisions and lock up more burned Altadena lots before survivors can rebuild.</p>
     <p style="margin:0 0 9px;font-size:14.5px;line-height:1.6;">SB 1090 puts a narrow, temporary pause on urban lot splits in Altadena, protecting responsible and resilient recovery pathways while taking no housing away. We deserve <b>parity</b> and should have the same protection as the Palisades. Second, it should not be easier for a developer to build than for a survivor to rebuild.</p>
     <p style="margin:0 0 9px;font-size:14.5px;line-height:1.6;">And we <b>support the amendment that allows SB 9 projects for 100% deed-restricted low-to-moderate-income affordable housing</b> — so Altadena can rebuild the income diversity that makes it special and bring renters and working families home.</p>
-    <p style="margin:0;font-size:14.5px;line-height:1.6;">Please vote AYE on SB 1090 and make it effective as soon as possible. Thank you.”</p>
-    <div class="muted" style="margin-top:10px;">Reach voicemail? Leave the same message — name, city, and “please vote AYE on SB 1090, and make it effective as soon as possible.” It still counts.</div>
+    <p style="margin:0;font-size:14.5px;line-height:1.6;">Please vote AYE on SB 1090 — and <b>make it effective as soon as possible</b>. Every day of delay hurts Altadena's fire survivors. Thank you.”</p>
+    <div class="muted" style="margin-top:10px;">Reach voicemail? Leave the same message — name, city, and “please vote AYE on SB 1090, and make it effective as soon as possible — this is urgent for Altadena's fire survivors.” It still counts.</div>
   </div>
 
   <div class="row"><span class="prog" id="prog">0 of 22 contacted</span></div>
@@ -157,7 +165,7 @@ function flushPending(){if(gv('lname')&&validEmail(gv('lemail')))postCalls(getDo
 function wireCaller(){['lname','lemail'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',function(){saveCaller();flushPending();});});}
 var _nudged=false;
 function nudgeNE(){if(_nudged)return;_nudged=true;var ln=document.getElementById('lname');if(ln){ln.focus();ln.scrollIntoView({behavior:'smooth',block:'center'});}alert('Add your name and email at the top of this page so each call you log is counted. Your calls are saved here and will send once you do.');}
-function postCalls(ids){var nm=gv('lname'),em=gv('lemail');if(!nm||!validEmail(em))return false;var sent=getSent(),rows=[],mark=[];ids.forEach(function(idr){if(sent.indexOf(idr)>=0)return;var p=idr.split('_'),cm=p[0],ad=p[1],mem=memberFor(cm,ad);if(!mem)return;rows.push({name:nm,email:em,official:mem,official_key:ad,committee:cm==='hcd'?'Housing & Community Development':'Local Government',action:'call',source:'sb1090-hub'});mark.push(idr);});if(!rows.length)return true;fetch(SB_URL+'/rest/v1/outreach_log',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(rows)}).then(function(r){if(r.ok){var s=getSent();mark.forEach(function(x){if(s.indexOf(x)<0)s.push(x);});setSent(s);}});maybeJoin();return true;}
+function postCalls(ids){var nm=gv('lname'),em=gv('lemail');if(!nm||!validEmail(em))return false;var sent=getSent(),rows=[],mark=[];ids.forEach(function(idr){if(sent.indexOf(idr)>=0)return;var p=idr.split('_'),cm=p[0],ad=p[1],mem=memberFor(cm,ad);if(!mem)return;rows.push({name:nm,email:em,official:mem,official_key:ad,committee:cm==='hcd'?'Housing & Community Development':'Local Government',action:'call',source:'sb1090-hub'});mark.push(idr);});if(!rows.length)return true;fetch(SB_URL+'/rest/v1/outreach_log',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(rows)}).then(function(r){if(r.ok){var s=getSent();mark.forEach(function(x){if(s.indexOf(x)<0)s.push(x);});setSent(s);loadCallGoal();}});maybeJoin();return true;}
 var JKEY='sb1090_joined_v1';
 function hasJoined(){try{return localStorage.getItem(JKEY)==='1';}catch(e){return false;}}
 // Adds the caller to the coalition signups list IF the opt-in box is checked (default checked).
@@ -202,14 +210,15 @@ function logContacts(){
   calls.forEach(function(idr){if(sent.indexOf(idr)>=0)return;var r=row(idr,'call');if(r){rows.push(r);mark.push(idr);}});
   if(!rows.length){alert('All your logged calls are already submitted — thank you!');return;}
   maybeJoin();
-  fetch(SB_URL+'/rest/v1/outreach_log',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(rows)}).then(function(r){if(r.ok){var ss=getSent();mark.forEach(function(x){if(ss.indexOf(x)<0)ss.push(x);});setSent(ss);var nc=rows.length,ok=document.getElementById('callOk');ok.textContent='Logged '+nc+' call'+(nc===1?'':'s')+' — thank you! We’ll be in touch about next steps.';ok.style.display='block';ok.scrollIntoView({behavior:'smooth',block:'center'});}else{alert('Sorry — logging failed. Please try again shortly.');}}).catch(function(){alert('Network error — please try again.');});}
+  fetch(SB_URL+'/rest/v1/outreach_log',{method:'POST',headers:Object.assign(H(),{'Prefer':'return=minimal'}),body:JSON.stringify(rows)}).then(function(r){if(r.ok){var ss=getSent();mark.forEach(function(x){if(ss.indexOf(x)<0)ss.push(x);});setSent(ss);loadCallGoal();var nc=rows.length,ok=document.getElementById('callOk');ok.textContent='Logged '+nc+' call'+(nc===1?'':'s')+' — thank you! We’ll be in touch about next steps.';ok.style.display='block';ok.scrollIntoView({behavior:'smooth',block:'center'});}else{alert('Sorry — logging failed. Please try again shortly.');}}).catch(function(){alert('Network error — please try again.');});}
 var ADMAP={};HCD.forEach(function(r){ADMAP[parseInt(r[2],10)]=ADMAP[parseInt(r[2],10)]||[];ADMAP[parseInt(r[2],10)].push(r[0]+' (Housing & CD)');});
 LG.forEach(function(r){var k=parseInt(r[2],10);ADMAP[k]=ADMAP[k]||[];if(ADMAP[k].indexOf(r[0]+' (Housing & CD)')<0)ADMAP[k].push(r[0]+' (Local Government)');});
 function checkAD(){var v=parseInt((document.getElementById('adInput').value||'').replace(/\D/g,''),10);var el=document.getElementById('finderResult');
  if(!v){el.innerHTML='Enter your Assembly district number, or use “Find my district.”';el.style.color='#7a6a62';return;}
  if(ADMAP[v]){el.innerHTML='✅ Yes — AD '+v+' is on a target committee: <b>'+ADMAP[v].join(', ')+'</b>. You are their constituent — contact <b>this member first</b> (find them in the list below) and mention you live in their district. <a class="lk2" target="_blank" rel="noopener" href="'+form('AD'+(v<10?'0'+v:v))+'">Open AD'+(v<10?'0'+v:v)+' form ▸</a>';el.style.color='#1f3a2e';}
  else{el.innerHTML='Your Assemblymember (AD '+v+') isn’t on these committees. Best moves: <b>call</b> the members below (calls count), and <b>recruit friends who live in the committee districts</b> to email their own member.';el.style.color='#7a2e1d';}}
-restoreCaller();fill('hcd',HCD,'hcd');fill('lg',LG,'lg');updateProg();wireCaller();flushPending();
+function loadCallGoal(){var GOAL=7000;function paint(n,ap){var pct=Math.max(2,Math.min(100,Math.round(n/GOAL*100)));var f=document.getElementById('callgoalfill');if(f)f.style.width=pct+'%';var t=document.getElementById('callgoaltxt');if(t)t.innerHTML='<b>'+n.toLocaleString()+(ap?'+':'')+'</b> of '+GOAL.toLocaleString()+' calls made — '+pct+'% of the way. Keep them coming!';}fetch(SB_URL+'/rest/v1/rpc/sb1090_call_count',{method:'POST',headers:H(),body:'{}'}).then(function(r){return r.ok?r.json():null;}).then(function(n){var v=Number(n);if(n===null||isNaN(v))paint(714,true);else paint(v,false);}).catch(function(){paint(714,true);});}
+restoreCaller();fill('hcd',HCD,'hcd');fill('lg',LG,'lg');updateProg();wireCaller();flushPending();loadCallGoal();
 </script>
 </body>
 </html>
