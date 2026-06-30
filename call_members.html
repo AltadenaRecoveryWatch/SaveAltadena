@@ -83,7 +83,7 @@
 <section><div class="wrap">
 
   <div id="callgoal" style="background:#eef5f0;border:1px solid #bcd9c9;border-left:5px solid #1f3a2e;border-radius:12px;padding:15px 18px;margin:0 0 14px;">
-    <div style="font-weight:800;color:#1f3a2e;font-size:16px;">Community goal: 7,000 calls to Sacramento before July 1</div>
+    <div style="font-weight:800;color:#1f3a2e;font-size:16px;">Community goal: 5,000 calls to Sacramento before July 1</div>
     <div style="background:#d8e6dd;border-radius:999px;height:22px;overflow:hidden;margin:11px 0 7px;">
       <div id="callgoalfill" style="background:#1f3a2e;height:22px;width:0%;border-radius:999px;transition:width .9s ease;"></div>
     </div>
@@ -217,7 +217,7 @@ function checkAD(){var v=parseInt((document.getElementById('adInput').value||'')
  if(!v){el.innerHTML='Enter your Assembly district number, or use “Find my district.”';el.style.color='#7a6a62';return;}
  if(ADMAP[v]){el.innerHTML='✅ Yes — AD '+v+' is on a target committee: <b>'+ADMAP[v].join(', ')+'</b>. You are their constituent — contact <b>this member first</b> (find them in the list below) and mention you live in their district. <a class="lk2" target="_blank" rel="noopener" href="'+form('AD'+(v<10?'0'+v:v))+'">Open AD'+(v<10?'0'+v:v)+' form ▸</a>';el.style.color='#1f3a2e';}
  else{el.innerHTML='Your Assemblymember (AD '+v+') isn’t on these committees. Best moves: <b>call</b> the members below (calls count), and <b>recruit friends who live in the committee districts</b> to email their own member.';el.style.color='#7a2e1d';}}
-function loadCallGoal(){var GOAL=7000;function paint(n,ap){var pct=Math.max(2,Math.min(100,Math.round(n/GOAL*100)));var f=document.getElementById('callgoalfill');if(f)f.style.width=pct+'%';var t=document.getElementById('callgoaltxt');if(t)t.innerHTML='<b>'+n.toLocaleString()+(ap?'+':'')+'</b> of '+GOAL.toLocaleString()+' calls made — '+pct+'% of the way. Keep them coming!';}fetch(SB_URL+'/rest/v1/rpc/sb1090_call_count',{method:'POST',headers:H(),body:'{}'}).then(function(r){return r.ok?r.json():null;}).then(function(n){var v=Number(n);if(n===null||isNaN(v))paint(714,true);else paint(v,false);}).catch(function(){paint(714,true);});}
+function loadCallGoal(){var GOAL=5000;function paint(n,ap){var pct=Math.max(2,Math.min(100,Math.round(n/GOAL*100)));var f=document.getElementById('callgoalfill');if(f)f.style.width=pct+'%';var t=document.getElementById('callgoaltxt');if(t)t.innerHTML='<b>'+n.toLocaleString()+(ap?'+':'')+'</b> of '+GOAL.toLocaleString()+' calls made — '+pct+'% of the way. Keep them coming!';}fetch(SB_URL+'/rest/v1/rpc/sb1090_call_count',{method:'POST',headers:H(),body:'{}'}).then(function(r){return r.ok?r.json():null;}).then(function(n){var v=Number(n);if(n===null||isNaN(v))paint(714,true);else paint(v,false);}).catch(function(){paint(714,true);});}
 restoreCaller();fill('hcd',HCD,'hcd');fill('lg',LG,'lg');updateProg();wireCaller();flushPending();loadCallGoal();
 </script>
 </body>
