@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Responsible &amp; Resilient Recovery in Altadena</title>
+<style>
+  @page { size: Letter landscape; margin: 0.28in 0.22in; }
+  :root{
+    --brick:#7a2e1d; --coral:#c0572f; --red:#ee1c25; --warm:#faf1ec; --ink:#241a17; --green:#1f3a2e;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; color:var(--ink); line-height:1.35;}
+  .hero{border-bottom:3px solid var(--brick); padding-bottom:11px;}
+  .infobox{margin:0;}
+  .infobox img{display:block; margin:0 auto; max-width:100%; max-height:3.5in; border:1px solid #e3d2ca; border-radius:9px;}
+  /* two-column body for landscape */
+  .cols{display:table; width:100%; margin-top:2px;}
+  .col{display:table-cell; width:50%; vertical-align:top;}
+  .cols .col:first-child{padding-right:5px;}
+  .cols .col:last-child{padding-left:5px;}
+  /* both pathway images render identical size, side by side */
+  .cols .col img{display:block; margin:0 auto; width:auto; max-width:100%; max-height:3.6in; border:1px solid #e3d2ca; border-radius:9px;}
+  .kicker{font-size:9px; text-transform:uppercase; letter-spacing:1.6px; color:var(--coral); font-weight:800;}
+  h1{color:var(--brick); font-size:25px; line-height:1.05; margin:3px 0 6px;}
+  .lede{font-size:12.5px; color:#4a3a34; line-height:1.4;}
+  .lede b{color:var(--brick);}
+
+  /* PAUSE band */
+  .pause{display:flex; align-items:center; gap:12px; background:var(--warm); border-left:5px solid var(--red); border-radius:8px; padding:11px 14px; margin:13px 0 6px;}
+  .pause .ic{flex:0 0 auto; width:34px; height:34px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center;}
+  .pause .tx{font-size:11px; color:#3a2c27; line-height:1.34;}
+  .pause .tx b{color:var(--brick); font-size:11.6px;}
+
+  .passband{background:var(--brick); color:#fff; text-align:center; font-size:22px; font-weight:800; letter-spacing:1.2px; padding:10px 12px; border-radius:8px; margin:11px 0 4px;}
+  .passband .sub{font-size:14px; font-weight:700; letter-spacing:.4px;}
+  h2{color:var(--brick); font-size:14px; margin:10px 0 7px; text-align:center; letter-spacing:.2px;}
+  h2 span{display:inline-block; border-bottom:2px solid var(--coral); padding-bottom:4px;}
+
+  .row{display:flex; gap:11px; margin-bottom:11px;}
+  .card{flex:1; border:1px solid #e3d2ca; border-radius:10px; padding:13px 13px 12px; display:flex; flex-direction:column;}
+  .card.lead{border:1.5px solid var(--coral); background:#fffaf7;}
+  .chip{display:flex; align-items:center; gap:9px; margin-bottom:6px;}
+  .ic{flex:0 0 auto; width:40px; height:40px; border-radius:50%; background:var(--brick); display:flex; align-items:center; justify-content:center;}
+  .card.lead .ic{background:var(--coral); width:44px; height:44px;}
+  .name{font-weight:800; color:var(--brick); font-size:12.5px; line-height:1.12;}
+  .card.lead .name{font-size:13.5px;}
+  .tag{display:inline-block; font-size:10px; text-transform:uppercase; letter-spacing:.6px; font-weight:800; color:#fff; background:var(--green); padding:3px 9px; border-radius:10px; margin-top:3px;}
+  .tag.aff{background:var(--coral);}
+  .tag.home{background:var(--green);}
+  .capline{font-size:12.5px; color:#3a2c27; line-height:1.36; margin-top:6px;}
+  .capline b{color:var(--brick);}
+  .desc{font-size:10.6px; color:#3a2c27; line-height:1.36; margin-top:2px;}
+  .card.lead .desc{font-size:11.2px;}
+  .desc b{color:var(--brick);}
+  .blt{list-style:none; margin:5px 0 0; display:flex; flex-wrap:wrap; gap:3px 22px;}
+  .blt li{flex:1 1 42%; font-size:12.5px; color:#3a2c27; line-height:1.36; padding-left:14px; position:relative;}
+  .blt li:before{content:"\25B8"; position:absolute; left:0; color:var(--coral); font-weight:800;}
+  .blt li b{color:var(--brick);}
+  .support{margin-top:8px; border-top:1px dashed #e0cdc2; padding-top:6px;}
+  .support .lbl{font-size:8px; text-transform:uppercase; letter-spacing:.7px; font-weight:800; color:var(--green); margin-right:5px;}
+  .support .org{display:inline-block; background:#eef4ef; color:var(--green); border:1px solid #cfe0d4; border-radius:9px; padding:2px 9px; font-weight:700; font-size:9.3px; margin:0 4px 0 0;}
+  .card.afford{display:block; border:none; background:transparent; padding:0;}
+  .afford .blt li{flex:1 1 100%;}
+  .afford-img{display:block; margin:0 0 9px; position:relative;}
+  .gc-title{position:absolute; top:1px; left:1px; right:1px; height:21.5%; background:#fdf8f2; border-radius:8px 8px 0 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 8px;}
+  .gc-t{color:var(--brick); font-family:'Arial Narrow','Liberation Sans Narrow','Nimbus Sans Narrow',Arial,sans-serif; font-weight:700; font-size:27px; letter-spacing:.3px; line-height:1;}
+  .gc-s{color:#3a2c27; font-size:11.5px; font-weight:700; margin-top:4px;}
+  .afford-img img{display:block; margin:0 auto; max-width:100%; max-height:2.3in; border-radius:8px; border:1px solid #e3d2ca;}
+
+  .bottom{display:flex; align-items:center; gap:13px; background:var(--green); color:#eafff5; border-radius:10px; padding:13px 16px; margin-top:14px;}
+  .bottom .big{font-size:15px; font-weight:800; color:#fff; line-height:1.1;}
+  .bottom .sm{font-size:12px; line-height:1.4; margin-top:4px;}
+  .bottom b{color:#ffd9c9;}
+
+  .foot{margin-top:11px; padding-top:7px; border-top:1px solid #e3d2ca; font-size:8.2px; color:#6a564e; line-height:1.35;}
+  .foot strong{color:var(--brick);}
+  .cfoot{margin-top:11px; padding-top:9px; border-top:1px solid #e3d2ca; text-align:center;}
+  .cfoot .cf-lbl{font-size:10.5px; text-transform:uppercase; letter-spacing:.9px; font-weight:800; color:var(--green); margin-bottom:7px;}
+  .cfoot .org{display:inline-block; background:#eef4ef; color:var(--green); border:1px solid #cfe0d4; border-radius:12px; padding:3px 12px; font-weight:700; font-size:11.5px; margin:3px 4px;}
+  .cfoot .cf-fine{font-size:8px; color:#6a564e; margin-top:9px;}
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="kicker">Altadena Recovery Watch &middot; Recovery That Brings Our Neighbors Home</div>
+    <h1>Responsible &amp; Resilient Recovery in Altadena — What Pathways Remain</h1>
+  </div>
+
+  <div class="bottom">
+    <div>
+      <div class="big">Pause the speculation. Keep every responsible path open.</div>
+      <div class="sm">We are against speculation that prices fire survivors and local non-profits out of their own town — and for smart, responsible ways to rebuild and come home. Density and affordability are welcome in Altadena; speculation that displaces survivors is not. <b>Support SB 1090.</b></div>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="col">
+      <div class="infobox">
+        <img src="img/ARW_one_lot_can_hold.png" alt="Diagram: one lot can hold your rebuilt home plus up to four ADUs under L.A. County's 2026 ADU Ordinance — no lot split, still allowed even if SB 1090 passes.">
+      </div>
+      <span class="tag home">Homeowner options</span>
+      <ul class="blt">
+        <li><b>Like-for-like</b> rebuild</li>
+        <li><b>Non-like-for-like</b> rebuild</li>
+        <li>Up to <b>4 ADUs</b> under the County ADU ordinance — no SB 9 or SB 1123</li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="card lead afford">
+        <div class="afford-img">
+          <img src="img/ARW_garden_court.png" alt="Affordable, gentle density: multiple small affordable homes arranged around a shared garden on one lot.">
+          <div class="gc-title"><div class="gc-t">Affordable, Gentle Density</div><div class="gc-s">Allows SB 9 for 100% income-restricted projects</div></div>
+        </div>
+        <span class="tag aff">Renters return</span>
+        <ul class="blt">
+          <li><b>100% affordable</b> for low- and moderate-income households (up to <b>150% AMI</b>)</li>
+          <li>Deed-restricted to stay affordable for <b>55 years</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="passband">PASS SB 1090 <span class="sub">— Keep Altadena Land in Altadena Hands</span></div>
+
+  <div class="cfoot">
+    <div class="cf-lbl">Altadena Recovery Watch — a coalition of:</div>
+    <div class="cf-pills">
+      <span class="org">Altadena Heritage</span>
+      <span class="org">Altadena Historical Society</span>
+      <span class="org">Save Altadena</span>
+      <span class="org">Sustainable Community Development Corporation</span>
+      <span class="org">Greenline Housing</span>
+      <span class="org">Altadena Community Land Trust</span>
+      <span class="org">Altadena Tenants' Union</span>
+    </div>
+  </div>
+
+</body>
+</html>
