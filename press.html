@@ -76,102 +76,125 @@
 
 <section><div class="wrap">
 
-  <div class="coverage" style="margin-bottom:20px;">
-    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;border:1px solid #e3d2ca;background:#000;">
-      <iframe src="https://abc7.com/video/embed?pid=19316482" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen frameborder="0"></iframe>
+  <style>
+    .featgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin:6px 0 10px;}
+    .featgrid .fcard{border:1px solid #e3d2ca;border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column;}
+    .featgrid .fmedia{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#7a2e1d;}
+    .featgrid .fmedia iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+    .featgrid .fmedia img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;}
+    .featgrid .fmedia .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;font-weight:800;font-size:16px;padding:12px;background:linear-gradient(135deg,#7a2e1d,#c0572f);}
+    .featgrid .fbody{padding:12px 14px 14px;}
+    .featgrid .fsrc{font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--coral);font-weight:800;}
+    .featgrid .fhl{display:block;font-size:15.5px;font-weight:800;color:var(--brick);text-decoration:none;margin:3px 0 5px;line-height:1.25;}
+    .featgrid .fhl:hover{text-decoration:underline;}
+    .featgrid .fcap{font-size:13px;color:#5d4b44;}
+    .arw{display:inline-block;background:#1f3a2e;color:#eafff5;font-size:10.5px;font-weight:800;border-radius:6px;padding:1px 6px;margin-left:5px;vertical-align:middle;}
+    .covgroup{margin:18px 0 0;}
+    .covgroup h3{color:var(--brick);font-size:16px;margin:0 0 4px;border-bottom:2px solid #e3d2ca;padding-bottom:5px;}
+    .covlist{list-style:none;margin:0;padding:0;}
+    .covlist li{padding:7px 0;border-bottom:1px solid #eee;font-size:14px;line-height:1.4;}
+    .covlist .o{color:var(--coral);font-weight:800;}
+    .covlist .d{color:#8a7a72;font-size:12.5px;}
+    .covlist a{color:var(--brick);text-decoration:none;font-weight:600;}
+    .covlist a:hover{text-decoration:underline;}
+    @media(max-width:760px){.featgrid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:520px){.featgrid{grid-template-columns:1fr;}}
+  </style>
+
+  <h2 style="margin:0 0 2px;">Featured coverage</h2>
+  <p class="sub" style="margin-bottom:12px;">The biggest moments — TV segments, the parity story, the July&nbsp;1 committee wins, and pieces featuring Altadena Recovery Watch.</p>
+  <div class="featgrid">
+
+    <div class="fcard">
+      <div class="fmedia"><iframe src="https://abc7.com/video/embed?pid=19316482" allowfullscreen frameborder="0"></iframe></div>
+      <div class="fbody"><div class="fsrc">ABC7 Los Angeles · June 17, 2026</div>
+        <a class="fhl" href="https://abc7.com/post/eaton-fire-zone-rebuilding-plans-prompt-outrage-hundreds-pack-altadena-council-meeting/19316551/" target="_blank" rel="noopener">Rebuilding plans prompt outrage; hundreds pack Altadena town hall</a>
+        <div class="fcap">Leanne Suter reports from the packed town hall — 400+ residents.</div></div>
     </div>
-    <div>
-      <div style="font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--coral);font-weight:800;">ABC7 Los Angeles (KABC) · June 17, 2026</div>
-      <h3 style="color:var(--brick);font-size:18px;margin:4px 0 8px;">"Eaton Fire zone rebuilding plans prompt outrage; hundreds pack Altadena town hall meeting"</h3>
-      <p style="font-size:14.5px;color:#3a2c27;margin-bottom:12px;">ABC7's Leanne Suter reports from the June 16 town hall — 400+ residents, an audible gasp at "49% of burn-zone properties bought by developers," and Supervisor Barger and Sen. Pérez backing a 5-year Altadena exemption.</p>
-      <a class="dl" href="https://abc7.com/post/eaton-fire-zone-rebuilding-plans-prompt-outrage-hundreds-pack-altadena-council-meeting/19316551/" target="_blank" rel="noopener">▶ Full story</a>
+
+    <div class="fcard">
+      <div class="fmedia"><a href="https://www.nbclosangeles.com/video/news/local/some-altadena-residents-push-back-against-multi-unit-rebuilds/3905230/" target="_blank" rel="noopener" style="position:absolute;inset:0;display:block;"><img src="https://media.nbclosangeles.com/2026/06/48936984435-1080pnbcstations.jpg?quality=85&strip=all&resize=1200,675" alt="NBC4 Los Angeles video"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:rgba(238,28,37,.92);box-shadow:0 2px 10px rgba(0,0,0,.35);"></span><span style="position:absolute;top:50%;left:51%;transform:translate(-50%,-50%);border-style:solid;border-width:10px 0 10px 17px;border-color:transparent transparent transparent #fff;"></span></a></div>
+      <div class="fbody"><div class="fsrc">NBC4 Los Angeles · June 16, 2026</div>
+        <a class="fhl" href="https://www.nbclosangeles.com/video/news/local/some-altadena-residents-push-back-against-multi-unit-rebuilds/3905230/" target="_blank" rel="noopener">Residents push back against multi-unit rebuilds</a>
+        <div class="fcap">Survivors confront speculative rebuilds on burned lots.</div></div>
     </div>
+
+    <div class="fcard">
+      <div class="fmedia"><img src="https://bloximages.chicago2.vip.townnews.com/pasadenaweekly.com/content/tncms/assets/v3/editorial/5/e5/5e597c69-5144-41cf-a01e-2ea919650941/6a32e67402853.image.jpg" alt="" loading="lazy"></div>
+      <div class="fbody"><div class="fsrc">Pasadena Weekly · June 18, 2026 <span class="arw">★ ARW</span></div>
+        <a class="fhl" href="https://www.pasadenaweekly.com/news/pushing-back-altadena-residents-stand-against-sb-9-sb-1123-housing-laws/article_1f09b723-bf53-4496-811e-d2b9d36021a1.html" target="_blank" rel="noopener">Pushing Back: Altadena residents stand against SB 9, SB 1123</a>
+        <div class="fcap">County confirms no approved/pending SB 1123 applications in the burn area.</div></div>
+    </div>
+
+    <div class="fcard">
+      <div class="fmedia"><div class="ph">MyNewsLA</div></div>
+      <div class="fbody"><div class="fsrc">MyNewsLA · June 29, 2026 <span class="arw">★ ARW</span></div>
+        <a class="fhl" href="https://mynewsla.com/government/2026/06/29/backers-to-rally-for-altadena-recovery-legislation/" target="_blank" rel="noopener">Supervisor Barger to Rally with Community for Altadena Recovery Legislation</a>
+        <div class="fcap">Barger and the community — including ARW — rally for SB 1090.</div></div>
+    </div>
+
+    <div class="fcard">
+      <div class="fmedia"><div class="ph">LAist · PARITY</div></div>
+      <div class="fbody"><div class="fsrc">LAist (KPCC) · Sept. 16, 2025</div>
+        <a class="fhl" href="https://laist.com/news/housing-homelessness/los-angeles-fires-rebuilding-pacific-palisades-altadena-eaton-sb9-duplexes-bass-barger" target="_blank" rel="noopener">Duplexes banned in post-fire Palisades — but still allowed in Altadena</a>
+        <div class="fcap">The Palisades-vs-Altadena gap SB 1090 is meant to close.</div></div>
+    </div>
+
+    <div class="fcard">
+      <div class="fmedia"><div class="ph">CBS Los Angeles</div></div>
+      <div class="fbody"><div class="fsrc">CBS Los Angeles · June 29, 2026</div>
+        <a class="fhl" href="https://www.cbsnews.com/losangeles/news/altadena-supports-state-legislation-temporarily-stop-multi-unit-development/" target="_blank" rel="noopener">Altadena backs state legislation to temporarily stop multi-unit development</a>
+        <div class="fcap">Kara Finnstrom on the community rallying behind SB 1090.</div></div>
+    </div>
+
   </div>
 
-  <div class="coverage">
-    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:10px;border:1px solid #e3d2ca;background:#000;">
-      <iframe src="https://www.youtube.com/embed/xvBwlL0qEaU" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen frameborder="0"></iframe>
-    </div>
-    <div>
-      <div style="font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--coral);font-weight:800;">NBC4 Los Angeles</div>
-      <h3 style="color:var(--brick);font-size:18px;margin:4px 0 8px;">"Some Altadena residents push back against multi-unit rebuilds"</h3>
-      <p style="font-size:14.5px;color:#3a2c27;margin-bottom:12px;">NBC4 reports on Eaton Fire survivors confronting speculative multi-unit rebuilds on burned Altadena lots — and the push to pass SB 1090.</p>
-      <a class="dl" href="https://www.nbclosangeles.com/video/news/local/some-altadena-residents-push-back-against-multi-unit-rebuilds/3905230/" target="_blank" rel="noopener">▶ Watch the story</a>
-    </div>
+
+  <h2 style="margin:22px 0 2px;">More coverage</h2>
+  <div class="covgroup">
+    <h3>📰 Print &amp; online</h3>
+    <ul class="covlist">
+      <li><span class="o">KFI AM 640</span> <span class="d">· Jul 1, 2026</span> — <a href="https://kfiam640.iheart.com/content/2026-07-01-altadena-residents-unite-against-dense-developments/" target="_blank" rel="noopener">Altadena residents unite against dense developments</a></li>
+      <li><span class="o">The Center Square</span> <span class="d">· Jul 1, 2026</span> — <a href="https://thecentersquare.com/california/article_9e98cf94-3505-4e2f-bdbb-8a8a17c50fef.html" target="_blank" rel="noopener">WATCH: Panel OKs making rebuilding easier in Altadena (July 1 committee win)</a></li>
+      <li><span class="o">Pasadena Star-News</span> <span class="d">· Jun 30, 2026</span> — <a href="https://www.pasadenastarnews.com/2026/06/30/as-altadena-rebuilds-state-housing-bill-fuels-debate-over-density/" target="_blank" rel="noopener">As Altadena rebuilds, state housing bill fuels debate over density</a></li>
+      <li><span class="o">Pasadena Now</span> <span class="d">· Jun 30, 2026</span> — <a href="https://pasadenanow.com/main/altadena-coalition-rallies-to-push-sb-1090" target="_blank" rel="noopener">Altadena Coalition Rallies to Push SB 1090</a></li>
+      <li><span class="o">KNX News</span> <span class="d">· Jun 29, 2026</span> — <a href="https://www.audacy.com/knxnews/news/local/eaton-fire-survivors-rally-for-bill-stopping-land-grab-by-developers" target="_blank" rel="noopener">Eaton Fire survivors rally for bill stopping land grab by developers</a></li>
+      <li><span class="o">Pasadena Now</span> <span class="d">· Jun 27, 2026</span> — <a href="https://pasadenanow.com/main/altadena-groups-to-gather-in-support-of-sb-1090-ahead-of-july-1-assembly-hearing" target="_blank" rel="noopener">Altadena groups to gather in support of SB 1090 ahead of July 1 hearing</a> <span class="arw">★ ARW</span></li>
+      <li><span class="o">Pasadena Now</span> <span class="d">· Jun 24, 2026</span> — <a href="https://pasadenanow.com/main/altadena-town-council-schedules-emergency-meeting-on-housing-density-debate" target="_blank" rel="noopener">Altadena Town Council schedules emergency meeting on housing density debate</a></li>
+      <li><span class="o">Pasadena Star-News</span> <span class="d">· Jun 23, 2026</span> — <a href="https://www.pasadenastarnews.com/2026/06/23/emergency-altadena-town-council-meeting-to-gather-support-for-land-use-legislation/" target="_blank" rel="noopener">Emergency Altadena Town Council meeting to gather support for land-use legislation</a></li>
+      <li><span class="o">New York Post (via Yahoo)</span> <span class="d">· Jun 21, 2026</span> — <a href="https://www.yahoo.com/news/politics/articles/la-leaders-powerless-stop-insidious-222326927.html" target="_blank" rel="noopener">LA leaders say they're powerless to stop insidious plan to forever change Altadena</a></li>
+      <li><span class="o">The Center Square / Sun-Commercial</span> <span class="d">· Jun 19, 2026</span> — <a href="https://www.suncommercial.com/news/national/article_8207f5dd-2976-5a23-8058-d6e3f8a462dc.html" target="_blank" rel="noopener">Altadena residents upset about multiple homes on lots</a></li>
+      <li><span class="o">Pasadena Now</span> <span class="d">· Jun 17, 2026</span> — <a href="https://pasadenanow.com/main/bill-to-shield-altadena-from-developers-divides-the-town-it-aims-to-protect" target="_blank" rel="noopener">Bill to Shield Altadena From Developers Takes Center Stage at Town Council</a> <span class="arw">★ ARW</span></li>
+      <li><span class="o">Spectrum News 1</span> <span class="d">· Jun 17, 2026</span> — <a href="https://spectrumnews1.com/ca/la/housing/2026/06/17/altadena--development--building--construction-" target="_blank" rel="noopener">In Altadena, homeowners debate impact of subdividing lots</a></li>
+      <li><span class="o">KNX News</span> <span class="d">· Jun 17, 2026</span> — <a href="https://www.audacy.com/knxnews/news/local/some-altadena-residents-worried-about-losing-the-community-they-knew" target="_blank" rel="noopener">Some Altadena residents worried about losing the community they knew</a></li>
+      <li><span class="o">New York Post (via Yahoo)</span> <span class="d">· Jun 17, 2026</span> — <a href="https://www.yahoo.com/news/us/articles/fury-altadena-residents-learn-once-015416678.html" target="_blank" rel="noopener">Fury as Altadena residents learn once-picturesque neighborhood will never return</a></li>
+      <li><span class="o">CBS Los Angeles</span> <span class="d">· Jun 16, 2026</span> — <a href="https://www.cbsnews.com/losangeles/news/altadena-eaton-fire-victims-council-meeting-home-developers-split-lots/" target="_blank" rel="noopener">Eaton Fire survivors sound off at Altadena council meeting</a></li>
+      <li><span class="o">Pasadena Now</span> <span class="d">· Jun 16, 2026</span> — <a href="https://pasadenanow.com/main/altadena-roundtable-tonight-closes-la-forum-series-on-rebuilding-at-town-scale" target="_blank" rel="noopener">Altadena Roundtable closes LA Forum series on rebuilding at town scale</a></li>
+      <li><span class="o">Pasadena Now</span> <span class="d">· Jun 12, 2026</span> — <a href="https://pasadenanow.com/main/local-electeds-seek-protections-from-density-laws-already-suspended-for-palisades" target="_blank" rel="noopener">Local Electeds Seek Protections From Density Laws Already Suspended for Palisades</a> <span class="arw">★ ARW</span></li>
+      <li><span class="o">LAist (KPCC)</span> <span class="d">· Dec 30, 2025</span> — <a href="https://laist.com/news/housing-homelessness/los-angeles-fires-january-2025-redfin-investor-purchase-empty-lots-sales" target="_blank" rel="noopener">Investors are buying close to half the empty lots in LA burn zones</a></li>
+      <li><span class="o">LAist (KPCC)</span> <span class="d">· Oct 6, 2025</span> — <a href="https://laist.com/news/climate-environment/corporations-buying-altadena-lots" target="_blank" rel="noopener">Corporations are buying up Altadena lots — policies to counter it have failed</a></li>
+    </ul>
+  </div>
+  <div class="covgroup">
+    <h3>📺 TV &amp; video clips</h3>
+    <ul class="covlist">
+      <li><span class="o">CBS LA — Kara Finnstrom</span> <span class="d">· YouTube</span> — <a href="https://www.youtube.com/watch?v=xErJs1b__KA" target="_blank" rel="noopener">▶ Altadena backs SB 1090 to pause multi-unit development (video)</a></li>
+      <li><span class="o">Spectrum News 1</span> <span class="d">· Instagram</span> — <a href="https://www.instagram.com/reel/DZ_WE-fgSVR/" target="_blank" rel="noopener">▶ Altadena lot-splitting coverage (reel)</a></li>
+      <li><span class="o">Spectrum News 1</span> <span class="d">· Facebook</span> — <a href="https://www.facebook.com/watch/?v=1549512183533181" target="_blank" rel="noopener">▶ Altadena lot-splitting coverage (video)</a></li>
+      <li><span class="o">ABC7 — Marc Cota-Robles</span> <span class="d">· Instagram</span> — <a href="https://www.instagram.com/reel/DaOJK0HPmr7/" target="_blank" rel="noopener">▶ Survivors take the fight to Sacramento (reel)</a></li>
+      <li><span class="o">KFI AM 640</span> <span class="d">· Instagram</span> — <a href="https://www.instagram.com/p/DZvUFjVS41q/" target="_blank" rel="noopener">▶ Altadena residents unite against dense developments (post)</a></li>
+      <li><span class="o">KNX News</span> <span class="d">· Facebook</span> — <a href="https://www.facebook.com/watch/?v=4442959645962844" target="_blank" rel="noopener">▶ Eaton Fire survivors rally to stop the land grab (video)</a></li>
+    </ul>
+  </div>
+  <div class="covgroup">
+    <h3>✍️ Opinion &amp; official</h3>
+    <ul class="covlist">
+      <li><span class="o">Ellen B. Snortland (Substack)</span> <span class="d">· Apr 25, 2025</span> — <a href="https://ellenbsnortland.substack.com/p/altadena-not-for-sale" target="_blank" rel="noopener">Altadena Not For Sale!</a></li>
+      <li><span class="o">Voices from the Burn Zone (Substack)</span> <span class="d">· Jun 15, 2026</span> — <a href="https://voicesfromtheburnzone.substack.com/p/speak-up-altadena-town-council-meets" target="_blank" rel="noopener">Speak Up, Altadena: Town Council Meets Tuesday Night</a></li>
+      <li><span class="o">Sen. Sasha Renée Pérez (official)</span> <span class="d">· Jun 11, 2026</span> — <a href="https://sd25.senate.ca.gov/news/elected-leaders-announce-community-driven-legislation-protect-altadena-real-estate-speculators" target="_blank" rel="noopener">Elected leaders announce legislation to protect Altadena from speculators</a></li>
+    </ul>
   </div>
 
-  <ul class="presslist">
-    <li>
-      <span class="src">Pasadena Star-News · June 30, 2026</span>
-      <a class="hl" href="https://www.pasadenastarnews.com/2026/06/30/as-altadena-rebuilds-state-housing-bill-fuels-debate-over-density/" target="_blank" rel="noopener">As Altadena rebuilds, state housing bill fuels debate over density</a>
-      <span class="blurb">The Pasadena Star-News covers the debate over SB 1090 as Altadena rebuilds — weighing protection for Eaton Fire survivors against state density laws (SB 9 / SB 1123) — on the eve of the July 1 Assembly committee hearings.</span>
-    </li>
-    <li>
-      <span class="src">New York Post (via Yahoo News) · June 21, 2026</span>
-      <a class="hl" href="https://www.yahoo.com/news/politics/articles/la-leaders-powerless-stop-insidious-222326927.html" target="_blank" rel="noopener">LA leaders say they're powerless to stop insidious plan to forever change Altadena community</a>
-      <span class="blurb">The New York Post reports on local officials' frustration that current law gives them few tools to stop by-right SB 9 / SB 1123 lot-splitting from reshaping Altadena's burn-zone neighborhoods — the gap SB 1090 is meant to close.</span>
-    </li>
-    <li>
-      <span class="src">Pasadena Star-News · June 23, 2026</span>
-      <a class="hl" href="https://www.pasadenastarnews.com/2026/06/23/emergency-altadena-town-council-meeting-to-gather-support-for-land-use-legislation/" target="_blank" rel="noopener">Emergency Altadena Town Council meeting to gather support for land-use legislation</a>
-      <span class="blurb">An emergency Altadena Town Council meeting is called to rally community support for state land-use legislation — the SB 1090 effort to pause SB 9 / SB 1123 by-right lot-splitting in the Eaton Fire recovery area.</span>
-    </li>
-    <li>
-      <span class="src">The Center Square / Vincennes Sun-Commercial · June 19, 2026</span>
-      <a class="hl" href="https://www.suncommercial.com/news/national/article_8207f5dd-2976-5a23-8058-d6e3f8a462dc.html" target="_blank" rel="noopener">Altadena residents upset about multiple homes on lots</a>
-      <span class="blurb">Supervisor Kathryn Barger backs SB 1090 to pause SB 9 / SB 1123 in Altadena and says she'll have fire survivors testify at the two Assembly hearings set for July 1.</span>
-    </li>
-    <li>
-      <span class="src">Pasadena Weekly · June 18, 2026</span>
-      <a class="hl" href="https://www.pasadenaweekly.com/news/pushing-back-altadena-residents-stand-against-sb-9-sb-1123-housing-laws/article_1f09b723-bf53-4496-811e-d2b9d36021a1.html" target="_blank" rel="noopener">Pushing Back: Altadena residents stand against SB 9, SB 1123 housing laws</a>
-      <span class="blurb">Kateri Wozny reports residents’ pushback on SB 9 / SB 1123 in the burn zone. A Dolores Drive SB 1123 developer concedes his project is now at a standstill, and the County confirms there are no approved or pending SB 1123 applications in the Eaton Fire area — “many parcels … do not presently qualify.” Frames the fight over how the “substantially surrounded by qualified urban uses” (≈75%) standard applies when neighboring homes burned.</span>
-    </li>
-    <li>
-      <span class="src">New York Post (via Yahoo News) · June 17, 2026</span>
-      <a class="hl" href="https://www.yahoo.com/news/us/articles/fury-altadena-residents-learn-once-015416678.html" target="_blank" rel="noopener">Fury as Altadena residents learn once picturesque neighborhood destroyed by Eaton fire will never return</a>
-      <span class="blurb">The New York Post covers residents' anger and grief as speculative buying and by-right lot-splitting threaten to permanently change the character of the Altadena neighborhoods destroyed by the Eaton Fire.</span>
-    </li>
-    <li>
-      <span class="src">ABC7 Los Angeles (KABC) · June 17, 2026</span>
-      <a class="hl" href="https://abc7.com/post/eaton-fire-zone-rebuilding-plans-prompt-outrage-hundreds-pack-altadena-council-meeting/19316551/" target="_blank" rel="noopener">Eaton Fire zone rebuilding plans prompt outrage; hundreds pack Altadena town hall meeting</a>
-      <span class="blurb">ABC7's Leanne Suter reports from the June 16 town hall — 400+ residents, an audible gasp at the news that 49% of burn-zone properties have been bought by developers, and Supervisor Barger and Sen. Pérez backing a 5-year Altadena exemption from SB 9 / SB 1123.</span>
-    </li>
-    <li>
-      <span class="src">Spectrum News 1 · June 17, 2026</span>
-      <a class="hl" href="https://spectrumnews1.com/ca/la/housing/2026/06/17/altadena--development--building--construction-" target="_blank" rel="noopener">In Altadena, homeowners debate impact of subdividing lots as rebuilding continues</a>
-      <span class="blurb">Spectrum News 1 (Chace Beech) reports on the debate over SB 9 lot-splitting in Altadena, with residents saying the laws are being used irresponsibly by outside developers.</span>
-    </li>
-    <li>
-      <span class="src">Pasadena Now · June 17, 2026</span>
-      <a class="hl" href="https://pasadenanow.com/main/bill-to-shield-altadena-from-developers-divides-the-town-it-aims-to-protect" target="_blank" rel="noopener">Bill to Shield Altadena From Developers Divides the Town It Aims to Protect</a>
-      <span class="blurb">Sen. Pérez presents SB 1090 to a packed June 16 town council meeting; affordable-housing nonprofits warn a blanket SB 9 / SB 1123 ban could also stall their projects, and the Jan. 1, 2027 start invites a developer rush. First Assembly Housing Committee hearing July 1.</span>
-    </li>
-    <li>
-      <span class="src">NBC Los Angeles (NBC4) · June 16, 2026</span>
-      <a class="hl" href="https://www.nbclosangeles.com/video/news/local/some-altadena-residents-push-back-against-multi-unit-rebuilds/3905230/" target="_blank" rel="noopener">Some Altadena residents push back against multi-unit rebuilds</a>
-      <span class="blurb">NBC4 report on residents opposing multi-unit rebuilds on Eaton Fire lots amid developer-density concerns.</span>
-    </li>
-    <li>
-      <span class="src">CBS Los Angeles · June 16, 2026</span>
-      <a class="hl" href="https://www.cbsnews.com/losangeles/news/altadena-eaton-fire-victims-council-meeting-home-developers-split-lots/" target="_blank" rel="noopener">Eaton Fire survivors sound off at Altadena council meeting to prevent invasion of home developers</a>
-      <span class="blurb">Survivors packed the June 16 town council meeting demanding restrictions on developers buying burned lots for multi-unit projects; Supervisor Barger backed tougher rules.</span>
-    </li>
-    <li>
-      <span class="src">Pasadena Now · June 16, 2026</span>
-      <a class="hl" href="https://pasadenanow.com/main/altadena-roundtable-tonight-closes-la-forum-series-on-rebuilding-at-town-scale" target="_blank" rel="noopener">Altadena Roundtable Tonight Closes LA Forum Series on Rebuilding at Town Scale</a>
-      <span class="blurb">The LA Forum’s three-week “Alt:adena” recovery series closes with a roundtable on rebuilding at neighborhood scale — affordable housing, alternative homeownership models, and economic-development strategies (panelists include the Greenline Housing Foundation and Beacon Housing).</span>
-    </li>
-    <li>
-      <span class="src">Voices from the Burn Zone · June 15, 2026</span>
-      <a class="hl" href="https://voicesfromtheburnzone.substack.com/p/speak-up-altadena-town-council-meets" target="_blank" rel="noopener">Speak Up, Altadena: Town Council Meets Tuesday Night</a>
-      <span class="blurb">A call to attend the June 16 Town Council meeting on SB 9 / SB 1090.</span>
-    </li>
-    <li>
-      <span class="src">Pasadena Now · June 12, 2026</span>
-      <a class="hl" href="https://pasadenanow.com/main/local-electeds-seek-protections-from-density-laws-already-suspended-for-palisades" target="_blank" rel="noopener">Local Electeds Seek Protections From Density Laws Already Suspended for Palisades</a>
-      <span class="blurb">Officials back an SB 1090 moratorium on SB 9 / SB 1123 for Altadena; investors bought 44% of 91001 lots sold in Q3 2025.</span>
-    </li>
-  </ul>
 </div></section>
 
 <div class="wrap" style="padding:6px 18px 0;">
