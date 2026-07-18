@@ -188,16 +188,14 @@
     document.getElementById('f_err').style.display='none';
     var btn=document.getElementById('f_btn'); btn.disabled=true; btn.textContent='Sending…';
     var row={
-      email: email,
-      rank1: map[1], rank2: map[2], rank3: map[3],
-      comment: gv('f_comment') || null,
-      source: 'sb1090_priorities_survey'
+      p_email: email,
+      p_rank1: map[1], p_rank2: map[2], p_rank3: map[3],
+      p_comment: gv('f_comment') || null
     };
-    fetch(SB_URL+'/rest/v1/sb1090_priorities?on_conflict=email',{
+    fetch(SB_URL+'/rest/v1/rpc/submit_sb1090_priority',{
       method:'POST',
       headers:{
-        'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json',
-        'Prefer':'resolution=merge-duplicates,return=minimal'
+        'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'
       },
       body: JSON.stringify(row)
     })
