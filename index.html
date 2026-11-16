@@ -92,6 +92,7 @@
   nav .navdrop .navmenu a:hover{background:#faf1ec;}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="supabase-retired.js"></script>
 </head>
 <body>
 
@@ -176,18 +177,9 @@
 <section id="signup" class="t1"><div class="wrap">
   <h2>Join the list</h2>
   <p class="sub">Get updates on the fight to protect Altadena's recovery — SB 1090's next steps toward the Assembly floor, and how to help. We'll only email when it matters.</p>
-  <form class="card" style="max-width:540px;" onsubmit="return submitJoin(event)">
-    <label for="jname">Name</label>
-    <input type="text" id="jname" autocomplete="name" placeholder="Your name">
-    <label for="jemail">Email *</label>
-    <input type="email" id="jemail" autocomplete="email" placeholder="you@example.com" required>
-    <label for="jzip">ZIP code <span style="font-weight:400;color:#9a8a82;">(optional)</span></label>
-    <input type="text" id="jzip" inputmode="numeric" autocomplete="postal-code" placeholder="91001" maxlength="10">
-    <label style="display:flex;gap:8px;align-items:center;font-weight:400;font-size:13.5px;margin:10px 0 0;cursor:pointer;"><input type="checkbox" id="jconsent" checked style="width:16px;height:16px;flex:0 0 16px;accent-color:#7a2e1d;"> Yes, keep me updated by email about Altadena Recovery Watch and SB 1090.</label>
-    <div class="row"><button type="submit" id="jbtn" class="btn brick">Join the list →</button></div>
-    <div class="ok" id="jok"></div>
-    <div id="jerr" style="display:none;background:#fff3f0;border:1px solid #ee1c25;color:#a3160f;border-radius:7px;padding:9px 12px;margin-top:8px;font-weight:700;"></div>
-  </form>
+  <div class="card" style="max-width:540px;">
+    <script async src="https://eocampaign1.com/form/9a0a4320-e204-11f1-a355-c35eebc61e9b.js" data-form="9a0a4320-e204-11f1-a355-c35eebc61e9b"></script>
+  </div>
 </div></section>
 
 <!-- Volunteer section removed — roles are now captured via what people click in the follow-up email. -->
